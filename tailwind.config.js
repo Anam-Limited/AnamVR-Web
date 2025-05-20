@@ -14,6 +14,9 @@ module.exports = {
         "8xl": "1350px",
         "9xl": "1920px",
       },
+      borderRadius: {
+        1: "1px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -79,5 +82,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

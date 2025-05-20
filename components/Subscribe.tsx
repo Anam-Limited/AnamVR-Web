@@ -1,54 +1,92 @@
+"use client";
+
 import type React from "react";
-
+import element from "../src/assets/elements.png";
 import { useState } from "react";
-import { Mail, Send, ArrowRight } from "lucide-react";
 
-export default function StayUpdated() {
+export default function SubscribeSection() {
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle subscription logic here
-    alert(`Thank you for subscribing with: ${email}`);
-    setEmail("");
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      setEmail("");
+
+      // Reset success message after 3 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 3000);
+    }, 1000);
   };
 
   return (
-    <div className="bg-gradient-to-br from-purple-100 to-blue-200 p-6 rounded-3xl h-full">
-      <h3 className="font-bold text-purple-900 mb-3 flex items-center">
-        <Mail size={18} className="text-purple-600 mr-2" />
-        Stay Updated
-      </h3>
-      <p className="text-sm text-purple-800 mb-4">
-        Subscribe to our newsletter for the latest updates and mental health
-        tips.
-      </p>
+    <section className="border-t py-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
+          <div className="flex-shrink-0">
+            <div className="w-40">
+              <img
+                src={element}
+                alt="Element"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
 
-      <form onSubmit={handleSubmit} className="mb-4">
-        <div className="flex">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Your email address"
-            className="bg-white border border-purple-200 text-purple-900 text-sm rounded-l-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5"
-            required
-          />
-          <button
-            type="submit"
-            className="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-r-lg text-sm px-4 py-2.5"
-          >
-            <Send size={16} />
-          </button>
+          <div className="flex-grow max-w-2xl">
+            <h2 className="text-3xl font-bold text-gray-800 mb-3">
+              Stay in the loop
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Be the first to get updates on our latest content, special offers,
+              and new features.
+            </p>
+
+            <div className="mt-2 text-sm text-gray-500">
+              By signing up, you're agreeing to receive marketing emails from
+              AnamVR. You can unsubscribe at any time. For more details, check
+              out our{" "}
+              <a href="/privacy" className="underline hover:text-[#7745b8]">
+                Privacy Policy
+              </a>
+              .
+            </div>
+          </div>
+
+          <div className="w-full md:w-auto flex-shrink-0 mt-4 md:mt-0">
+            {isSuccess ? (
+              <div className="bg-green-50 text-green-700 px-6 py-4 rounded-lg">
+                Thanks for subscribing!
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex w-full max-w-md">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email address"
+                  required
+                  className="flex-grow px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7745b8]/30"
+                />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-gray-900 hover:bg-black text-white font-medium px-6 py-3 rounded-r-lg transition-colors"
+                >
+                  {isSubmitting ? "Subscribing..." : "Subscribe"}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
-      </form>
-
-      <a
-        href="/contact"
-        className="flex items-center text-purple-700 hover:text-purple-900 text-sm font-medium mt-4"
-      >
-        Contact us <ArrowRight size={16} className="ml-1" />
-      </a>
-    </div>
+      </div>
+    </section>
   );
 }

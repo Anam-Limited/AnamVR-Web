@@ -156,7 +156,7 @@ export default function Description() {
 
       {/* Carousel */}
       <div
-        className="relative overflow-hidden"
+        className="relative overflow-hidden rounded-3xl"
         ref={carouselRef}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -220,7 +220,7 @@ export default function Description() {
         {/* Navigation arrows */}
         <button
           onClick={handlePrevious}
-          className={`absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md transition-all ${
+          className={`absolute left-4 bottom-0 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md transition-all ${
             activeIndex === 0
               ? "opacity-50 cursor-not-allowed pointer-events-none"
               : "hover:bg-opacity-100"
@@ -232,7 +232,7 @@ export default function Description() {
         </button>
         <button
           onClick={handleNext}
-          className={`absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md transition-all ${
+          className={`absolute right-4 bottom-0 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md transition-all ${
             activeIndex === features.length - 1
               ? "opacity-50 cursor-not-allowed pointer-events-none"
               : "hover:bg-opacity-100"

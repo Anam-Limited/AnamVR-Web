@@ -13,10 +13,4 @@ export const blogPosts: BlogPostType[] = [
     readTime: "3 min read",
     url: "/blog/meditation",
   },
-  {
-    id: 3,
-    title: "Improve Your Sleep Quality",
-    readTime: "4 min read",
-    url: "/blog/sleep",
-  },
 ];

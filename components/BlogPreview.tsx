@@ -1,4 +1,5 @@
 import type { BlogPostType } from "../data/index";
+import { ArrowRight, PenLine } from "lucide-react";
 
 interface BlogPreviewProps {
   blogPosts: BlogPostType[];
@@ -6,24 +7,31 @@ interface BlogPreviewProps {
 
 export default function BlogPreview({ blogPosts }: BlogPreviewProps) {
   return (
-    <div className="bg-purple-100 p-6 rounded-3xl shadow-sm h-full">
-      <h3 className="font-bold text-xl text-purple-900 mb-3">
-        Latest from our blog
-      </h3>
-      <div className="space-y-3">
-        {blogPosts.map((post) => (
-          <a
-            key={post.id}
-            href={post.url}
-            className="block hover:bg-purple-50 p-2 rounded-lg transition-colors"
-          >
-            <h4 className="font-medium text-purple-900 text-md">
-              {post.title}
-            </h4>
-            <p className="text-sm text-purple-700">{post.readTime}</p>
-          </a>
-        ))}
+    <div className="md:col-span-3 lg:col-span-4 bg-purple-100 p-6 rounded-3xl shadow-sm h-full flex flex-col justify-between">
+      {" "}
+      <div className="flex flex-col">
+        <h3 className="flex items-center font-bold text-xl text-purple-900 mb-3">
+          <PenLine size={18} className="text-purple-900 mr-2" />
+          Latest from our blog
+        </h3>
+        <div className="space-y-3 mb-12">
+          {blogPosts.map((post) => (
+            <a
+              key={post.id}
+              href={post.url}
+              className="block hover:bg-purple-50 p-2 rounded-lg transition-colors"
+            >
+              <h4 className="font-medium text-purple-900 text-md">
+                {post.title}
+              </h4>
+              <p className="text-sm text-purple-700">{post.readTime}</p>
+            </a>
+          ))}
+        </div>
       </div>
+      <button className="flex items-center text-purple-900 hover:text-purple-950 text-base font-semibold">
+        View all <ArrowRight size={16} className="ml-1 font-semibold" />
+      </button>
     </div>
   );
 }
