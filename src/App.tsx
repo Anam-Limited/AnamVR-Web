@@ -20,6 +20,7 @@ import Description from "../components/Description";
 import ShopPreview from "../components/ShopPreview";
 import Contact from "../components/Contact";
 import Questions from "../components/Questions";
+import Chatbot from "../components/Chatbot";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

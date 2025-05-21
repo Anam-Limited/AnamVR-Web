@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useChatbot } from "../context/ChatbotContext";
 
 import PhoneMockup from "../src/assets/mockup1.png";
 import assemblyLogo from "../src/assets/AnamVR-IconNoBg.png";
@@ -9,6 +10,7 @@ import anamvrLogo from "../src/assets/AnamVR-IconNoBg.png";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const { openChat } = useChatbot(); // Get the openChat function from context
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,33 +34,43 @@ export default function Header() {
       {/* Left navigation */}
       <nav className="hidden md:flex items-center space-x-6">
         <a
-          href="#home"
+          href="/"
           className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
         >
           Home
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a
-          href="#download"
+          href="download"
           className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
         >
           Download
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a
-          href="#shop"
+          href="shop"
           className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
         >
           Shop
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a
-          href="#blog"
+          href="blog"
           className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
         >
           Blog
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
         </a>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            openChat(); // Open the chatbot when Contact is clicked
+          }}
+          className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
+        >
+          Contact
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
+        </button>
       </nav>
 
       {/* Logo (center) */}
