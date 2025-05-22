@@ -1,9 +1,9 @@
 "use client";
 
 import type React from "react";
-
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const features = [
   {
@@ -57,6 +57,11 @@ export default function Description() {
   const [startX, setStartX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Scroll animations
+  const headerAnimation = useScrollAnimation();
+  const tabsAnimation = useScrollAnimation({ delay: 200 });
+  const carouselAnimation = useScrollAnimation({ delay: 400 });
 
   const handleTabClick = (index: number) => {
     setActiveIndex(index);
@@ -127,7 +132,12 @@ export default function Description() {
 
   return (
     <div className="max-w-7xl mt-16 mx-auto px-4 py-12">
-      <div className="text-center text-purple-900 mb-16 flex flex-col items-center">
+      <div
+        ref={headerAnimation.ref}
+        className={`text-center text-purple-900 mb-16 flex flex-col items-center 
+              transition-opacity duration-700 ease-out 
+              ${headerAnimation.isVisible ? "animate-fade-in" : "opacity-0"}`}
+      >
         <span className="font-semibold text-5xl">
           Empowering you on your journey
         </span>
@@ -135,8 +145,14 @@ export default function Description() {
           towards better mental health
         </span>
       </div>
+
       {/* Tabs */}
-      <div className="flex justify-center mb-8 overflow-x-auto no-scrollbar">
+      <div
+        ref={tabsAnimation.ref}
+        className={`flex justify-center mb-8 overflow-x-auto no-scrollbar transition-opacity duration-700 ease-out ${
+          tabsAnimation.isVisible ? "animate-slide-up" : "opacity-0"
+        }`}
+      >
         <div className="flex space-x-2 p-1 bg-gray-300 rounded-full">
           {features.map((feature, index) => (
             <button
@@ -156,8 +172,10 @@ export default function Description() {
 
       {/* Carousel */}
       <div
-        className="relative overflow-hidden rounded-3xl"
-        ref={carouselRef}
+        ref={carouselAnimation.ref}
+        className={`relative overflow-hidden rounded-3xl transition-opacity duration-900 ease-out ${
+          carouselAnimation.isVisible ? "animate-slide-up" : "opacity-0"
+        }`}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleSwipeEnd}
@@ -177,7 +195,7 @@ export default function Description() {
           {features.map((feature) => (
             <div
               key={feature.id}
-              className={`w-full flex-shrink-0 ${feature.color} rounded-3xl overflow-hidden`}
+              className={`w-full flex-shrink-0 ${feature.color} rounded-3xl overflow-hidden transition-all duration-700`}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 min-h-[550px]">
                 <div className="hidden md:flex items-center justify-center p-20">
@@ -191,7 +209,7 @@ export default function Description() {
                     </span>
                   </div>
                 </div>
-                <div className="p-10 md:p-16 flex flex-col justify-center">
+                <div className="p-10 md:p-16 flex flex-col justify-center transition-all duration-700 animate-fade-in">
                   <h2
                     className={`text-4xl md:text-5xl font-bold ${feature.textColor} mb-2`}
                   >

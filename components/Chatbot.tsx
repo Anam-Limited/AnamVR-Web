@@ -4,32 +4,11 @@ import type React from "react";
 
 import { useState, useEffect, useRef } from "react";
 import { useChatbot } from "../context/ChatbotContext";
-import {
-  X,
-  SendHorizonal,
-  ChevronDown,
-  ChevronUp,
-  MessageCircle,
-  ThumbsUp,
-  ThumbsDown,
-} from "lucide-react";
+import { X, ChevronDown, ChevronUp, MessageCircle } from "lucide-react";
 
-import { faqs, popularQuestions, Category, FAQ } from "../data/chatQuestions";
-
-// Group FAQs by category for better organization
-const groupedFAQs: Record<Category, FAQ[]> = {
-  general: faqs.filter((faq) => faq.category === "general"),
-  technical: faqs.filter((faq) => faq.category === "technical"),
-  features: faqs.filter((faq) => faq.category === "features"),
-  pricing: faqs.filter((faq) => faq.category === "pricing"),
-  support: faqs.filter((faq) => faq.category === "support"),
-  clinical: faqs.filter((faq) => faq.category === "clinical"),
-  business: faqs.filter((faq) => faq.category === "business"),
-};
-
-// Popular starting questions for each category
-
-// Modified chatbot to integrate categories into the chat flow
+import { faqs, popularQuestions } from "../data/chatQuestions";
+import type { FAQ } from "../data/chatQuestions";
+import type { Category } from "../data/chatQuestions";
 
 export default function Chatbot() {
   const { showChat, closeChat } = useChatbot();
@@ -45,7 +24,6 @@ export default function Chatbot() {
   const [lastAnsweredQuestion, setLastAnsweredQuestion] = useState<
     string | null
   >(null);
-  const [showFeedback, setShowFeedback] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
 
   // Initialize chat when opened
@@ -135,7 +113,6 @@ export default function Chatbot() {
     setTimeout(() => {
       setMessages((prev) => [...prev, { sender: "bot", text: faq.answer }]);
       setIsTyping(false);
-      setShowFeedback(true);
 
       // Set related questions as new options
       if (faq.relatedQuestions && faq.relatedQuestions.length > 0) {
@@ -147,36 +124,9 @@ export default function Chatbot() {
     }, 1000);
   };
 
-  const handleFeedback = (isHelpful: boolean) => {
-    setMessages((prev) => [
-      ...prev,
-      {
-        sender: "bot",
-        text: isHelpful
-          ? "Thanks for your feedback! I'm glad that was helpful."
-          : "Thanks for your feedback. I'll try to provide better information next time.",
-      },
-    ]);
-    setShowFeedback(false);
-
-    if (!isHelpful) {
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          {
-            sender: "bot",
-            text: "Would you like to explore a different category?",
-          },
-        ]);
-        setShowCategories(true);
-      }, 1000);
-    }
-  };
-
   const resetChat = () => {
     setMessages([
       { sender: "bot", text: "Let's start over. How can I help you today?" },
-      { sender: "bot", text: "Please select a category you're interested in:" },
     ]);
     setShowCategories(true);
     setActiveCategory(null);
@@ -368,26 +318,6 @@ export default function Chatbot() {
               </div>
             </div>
           )}
-
-          {/* Feedback buttons after bot answers */}
-          {/* {showFeedback && !isTyping && (
-            <div className="flex justify-center mt-2">
-              <div className="flex gap-3">
-                <button
-                  onClick={() => handleFeedback(true)}
-                  className="flex items-center gap-1 px-3 py-1.5 bg-white hover:bg-gray-100 rounded-full text-xs text-gray-700 transition-colors shadow-sm"
-                >
-                  <ThumbsUp size={14} /> Helpful
-                </button>
-                <button
-                  onClick={() => handleFeedback(false)}
-                  className="flex items-center gap-1 px-3 py-1.5 bg-white hover:bg-gray-100 rounded-full text-xs text-gray-700 transition-colors shadow-sm"
-                >
-                  <ThumbsDown size={14} /> Not helpful
-                </button>
-              </div>
-            </div>
-          )} */}
         </div>
       </div>
 

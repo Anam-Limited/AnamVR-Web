@@ -3,6 +3,7 @@
 import type React from "react";
 
 import { useState } from "react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export default function Contact() {
@@ -14,6 +15,7 @@ export default function Contact() {
     message: "",
     newsletter: false,
   });
+  const animation = useScrollAnimation({ delay: 100 });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -48,7 +50,12 @@ export default function Contact() {
   };
 
   return (
-    <div className="md:col-span-3 lg:col-span-12 rounded-3xl mt-16 overflow-hidden">
+    <div
+      ref={animation.ref}
+      className={`md:col-span-3 lg:col-span-12 rounded-3xl mt-16 overflow-hidden transition-opacity duration-700 ease-out ${
+        animation.isVisible ? "animate-slide-up" : "opacity-0"
+      }`}
+    >
       <div className="grid grid-cols-1 lg:grid-cols-12 bg-gradient-to-br from-[#eacfff]/30 via-[#bcdbeb]/30 to-[#e9ffdb]/30">
         {/* Left side - Contact info */}
         <div className="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between">

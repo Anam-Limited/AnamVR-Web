@@ -1,9 +1,17 @@
 import { ArrowRight, ShoppingCart } from "lucide-react";
 import vrImage from "../src/assets/vr-image.png";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function ShopPreview() {
+  const animation = useScrollAnimation({ delay: 400 });
+
   return (
-    <div className="md:col-span-3 lg:col-span-5 bg-blue-100 p-6 rounded-3xl h-full flex flex-col">
+    <div
+      ref={animation.ref}
+      className={`md:col-span-3 lg:col-span-5 bg-blue-100 p-6 rounded-3xl h-full flex flex-col transition-opacity duration-700 ease-out ${
+        animation.isVisible ? "animate-slide-up" : "opacity-0"
+      }`}
+    >
       <h3 className="flex items-center font-bold text-xl text-blue-900 mb-3">
         <ShoppingCart size={18} className="text-blue-900 mr-2" />
         Shop

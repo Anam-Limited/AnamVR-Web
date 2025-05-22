@@ -2,10 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { useChatbot } from "../context/ChatbotContext";
 
-import PhoneMockup from "../src/assets/mockup1.png";
-import assemblyLogo from "../src/assets/AnamVR-IconNoBg.png";
-import spineLogo from "../src/assets/AnamVR-IconNoBg.png";
-import paretoLogo from "../src/assets/AnamVR-IconNoBg.png";
 import anamvrLogo from "../src/assets/AnamVR-IconNoBg.png";
 
 export default function Header() {
@@ -84,11 +80,11 @@ export default function Header() {
 
       {/* Right section buttons */}
       <div className="hidden md:flex items-center space-x-4">
-        <button className="bg-[#7745b8] text-white px-5 py-2 rounded-full font-medium hover:bg-[#8a5cc7] transition-colors shadow-md">
+        <button className="bg-[#7745b8] text-white px-5 py-2 rounded-full font-medium hover:bg-[#572994] transition-colors shadow-md">
           For Individuals
         </button>
-        <button className="bg-white text-[#7745b8] border-2 border-[#7745b8] px-5 py-1.5 rounded-full font-medium hover:bg-[#eacfff] hover:border-[#8a5cc7] transition-colors shadow-sm">
-          For Organizations
+        <button className="bg-white text-[#7745b8] border-2 border-[#7745b8] px-5 py-1.5 rounded-full font-medium hover:bg-[#572994] hover:border-[#572994] hover:text-white transition-colors shadow-sm">
+          For Organisations
         </button>
       </div>
 

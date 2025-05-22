@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const questions = [
   {
@@ -31,6 +32,7 @@ const questions = [
 
 export default function Questions() {
   const [activeIndex, setActiveIndex] = useState<number | undefined>();
+  const animation = useScrollAnimation({ delay: 100 });
 
   function handleToggle(index: number) {
     if (activeIndex === index) {
@@ -42,7 +44,12 @@ export default function Questions() {
 
   return (
     <>
-      <div className="max-w-7xl mt-16 mx-auto px-4 py-12">
+      <div
+        ref={animation.ref}
+        className={`max-w-7xl mt-16 mx-auto px-4 py-12 transition-opacity duration-700 ease-out ${
+          animation.isVisible ? "animate-slide-up" : "opacity-0"
+        }`}
+      >
         <div className="text-center text-purple-900 mb-16 flex flex-col items-center">
           <span className="font-semibold text-5xl">
             Frequently asked questions

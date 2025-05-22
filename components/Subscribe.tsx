@@ -3,11 +3,14 @@
 import type React from "react";
 import element from "../src/assets/elements.png";
 import { useState } from "react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function SubscribeSection() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const animation = useScrollAnimation({ delay: 100 });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +30,12 @@ export default function SubscribeSection() {
   };
 
   return (
-    <section className="border-t py-16">
+    <section
+      ref={animation.ref}
+      className={`border-t py-16 transition-opacity duration-700 ease-out ${
+        animation.isVisible ? "animate-slide-up" : "opacity-0"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
           <div className="flex-shrink-0">

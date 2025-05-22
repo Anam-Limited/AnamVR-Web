@@ -1,9 +1,17 @@
 import { Heart, Moon } from "lucide-react";
 import mockup from "../src/assets/mockup.jpg";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function AppScreenshot() {
+  const animation = useScrollAnimation({ delay: 500 });
+
   return (
-    <div className="col-span-3 bg-orange-300 rounded-3xl flex items-center justify-center relative overflow-hidden">
+    <div
+      ref={animation.ref}
+      className={`col-span-3 bg-orange-300 rounded-3xl flex items-center justify-center relative overflow-hidden transition-opacity duration-700 ease-out ${
+        animation.isVisible ? "animate-slide-up" : "opacity-0"
+      }`}
+    >
       <img
         src={mockup}
         alt="App Screenshot"

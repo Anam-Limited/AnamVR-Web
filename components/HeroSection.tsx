@@ -1,8 +1,16 @@
 import { ArrowRight } from "lucide-react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function HeroSection() {
+  const animation = useScrollAnimation({ delay: 100 });
+
   return (
-    <div className="md:col-span-6 lg:col-span-4 md:row-span-2 bg-gradient-to-br from-purple-500 to-purple-600 text-white p-8 md:p-10 rounded-3xl flex flex-col justify-between">
+    <div
+      ref={animation.ref}
+      className={`md:col-span-6 lg:col-span-4 md:row-span-2 bg-gradient-to-br from-purple-500 to-purple-600 text-white p-8 md:p-10 rounded-3xl flex flex-col justify-between transition-opacity duration-700 ease-out ${
+        animation.isVisible ? "animate-slide-up" : "opacity-0"
+      }`}
+    >
       <div>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           Know more about AnamVR
