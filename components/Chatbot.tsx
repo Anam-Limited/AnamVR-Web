@@ -1,109 +1,73 @@
+"use client";
+
+import type React from "react";
+
 import { useState, useEffect, useRef } from "react";
 import { useChatbot } from "../context/ChatbotContext";
-import { X, SendHorizonal } from "lucide-react";
+import {
+  X,
+  SendHorizonal,
+  ChevronDown,
+  ChevronUp,
+  MessageCircle,
+  ThumbsUp,
+  ThumbsDown,
+} from "lucide-react";
 
-type FAQ = {
-  keywords: string[];
-  answer: string;
+import { faqs, popularQuestions, Category, FAQ } from "../data/chatQuestions";
+
+// Group FAQs by category for better organization
+const groupedFAQs: Record<Category, FAQ[]> = {
+  general: faqs.filter((faq) => faq.category === "general"),
+  technical: faqs.filter((faq) => faq.category === "technical"),
+  features: faqs.filter((faq) => faq.category === "features"),
+  pricing: faqs.filter((faq) => faq.category === "pricing"),
+  support: faqs.filter((faq) => faq.category === "support"),
+  clinical: faqs.filter((faq) => faq.category === "clinical"),
+  business: faqs.filter((faq) => faq.category === "business"),
 };
 
-const faqs: FAQ[] = [
-  {
-    keywords: ["what is anamvr", "about anamvr", "anamvr platform"],
-    answer:
-      "AnamVR is a mental wellness platform that uses virtual reality and cognitive behavioral therapy techniques to support your mental health.",
-  },
-  {
-    keywords: ["download", "get anamvr", "install"],
-    answer:
-      "You can download AnamVR from the App Store or Google Play. Visit our Download page for direct links.",
-  },
-  {
-    keywords: ["how does anamvr work", "how it works", "how anamvr works"],
-    answer:
-      "AnamVR offers immersive VR experiences and guided exercises designed by mental health professionals to help you relax, focus, and improve your wellbeing.",
-  },
-  {
-    keywords: ["free", "pricing", "cost", "price"],
-    answer:
-      "AnamVR offers both free and premium plans. You can try the basic features for free, or upgrade for more content and features.",
-  },
-  {
-    keywords: [
-      "devices",
-      "device",
-      "supported",
-      "compatibility",
-      "phone",
-      "headset",
-    ],
-    answer:
-      "AnamVR works with most VR headsets and is compatible with iPhone and Android smartphones (4.7-7.2 inch displays).",
-  },
-  {
-    keywords: ["without headset", "no headset", "use without vr"],
-    answer:
-      "Some features can be accessed without a VR headset, but for the best experience, we recommend using a compatible headset.",
-  },
-  {
-    keywords: ["premium", "subscription", "upgrade"],
-    answer:
-      "Premium includes access to exclusive VR experiences, advanced tracking, and personalized wellness plans.",
-  },
-  {
-    keywords: ["support", "help", "contact"],
-    answer:
-      "You can contact our support team through the Contact page or by emailing support@anamvr.com.",
-  },
-  {
-    keywords: ["privacy", "data", "secure"],
-    answer:
-      "Yes, your privacy is important to us. We never share your personal data without your consent.",
-  },
-  {
-    keywords: ["who created", "founder", "team"],
-    answer:
-      "AnamVR was created by a team of mental health professionals and technologists passionate about improving wellbeing through technology.",
-  },
-  {
-    keywords: ["anxiety", "stress", "help with anxiety"],
-    answer:
-      "Yes, AnamVR offers VR exercises and guided meditations specifically designed to help manage anxiety and stress.",
-  },
-  {
-    keywords: ["reset password", "forgot password"],
-    answer:
-      "To reset your password, go to the login screen and click 'Forgot Password', then follow the instructions.",
-  },
-  {
-    keywords: ["buy headset", "purchase headset", "order headset"],
-    answer: "You can purchase the AnamVR headset directly from our Shop page.",
-  },
-  {
-    keywords: ["update", "upgrade app", "latest version"],
-    answer:
-      "Updates are available through your device's app store. Make sure to keep AnamVR updated for the latest features.",
-  },
-  {
-    keywords: ["cancel subscription", "stop subscription", "unsubscribe"],
-    answer:
-      "You can manage or cancel your subscription in your account settings or through your app store subscriptions.",
-  },
-];
+// Popular starting questions for each category
+
+// Modified chatbot to integrate categories into the chat flow
 
 export default function Chatbot() {
   const { showChat, closeChat } = useChatbot();
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "How can I help you today?" },
+    { sender: "bot", text: "Hi there! I'm your AnamVR assistant." },
   ]);
-  const [input, setInput] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<Category | null>(null);
+  const [showCategories, setShowCategories] = useState(false);
+  const [currentOptions, setCurrentOptions] = useState<string[]>([]);
+  const [lastAnsweredQuestion, setLastAnsweredQuestion] = useState<
+    string | null
+  >(null);
+  const [showFeedback, setShowFeedback] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
 
+  // Initialize chat when opened
   useEffect(() => {
     if (showChat) {
-      setMessages([{ sender: "bot", text: "How can I help you today?" }]);
+      setMessages([
+        { sender: "bot", text: "Hi there! I'm your AnamVR assistant." },
+      ]);
+      setIsTyping(true);
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            sender: "bot",
+            text: "How can I help you today? Please select a category you'd like to know more about:",
+          },
+        ]);
+        setIsTyping(false);
+        setShowCategories(true);
+        setActiveCategory(null);
+        setCurrentOptions([]);
+      }, 1000);
     }
   }, [showChat]);
 
@@ -112,7 +76,6 @@ export default function Chatbot() {
     const checkMobile = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      // Auto-expand on mobile devices
       if (mobile && showChat) {
         setIsExpanded(true);
       }
@@ -120,8 +83,6 @@ export default function Chatbot() {
 
     checkMobile();
     window.addEventListener("resize", checkMobile);
-
-    // Clean up
     return () => window.removeEventListener("resize", checkMobile);
   }, [showChat]);
 
@@ -134,31 +95,92 @@ export default function Chatbot() {
     };
 
     scrollToBottom();
-    // Add a small delay to ensure scrolling happens after render
     setTimeout(scrollToBottom, 10);
-  }, [messages]);
+  }, [messages, showCategories, currentOptions]);
 
-  const handleSend = () => {
-    const userInput = input.trim();
-    if (!userInput) return;
+  const handleCategorySelect = (category: Category) => {
+    // Add the category selection as a user message
+    const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
+    setMessages((prev) => [...prev, { sender: "user", text: categoryLabel }]);
+    setIsTyping(true);
+    setShowCategories(false);
 
-    const lowerInput = userInput.toLowerCase();
+    setTimeout(() => {
+      setActiveCategory(category);
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "bot",
+          text: `Great! Here are some common questions about ${categoryLabel}:`,
+        },
+      ]);
+      setIsTyping(false);
+      setCurrentOptions(popularQuestions[category]);
+    }, 800);
+  };
 
-    // Find the first FAQ whose keywords match the user input
-    const match = faqs.find((faq) =>
-      faq.keywords.some((keyword) => lowerInput.includes(keyword))
-    );
+  const handleQuestionSelect = (question: string) => {
+    // Find the FAQ that matches this question
+    const faq = faqs.find((f) => f.question === question);
 
-    const botResponse = match
-      ? match.answer
-      : "I'm sorry, I don't understand that yet.";
+    if (!faq) return;
 
-    setMessages([
-      ...messages,
-      { sender: "user", text: userInput },
-      { sender: "bot", text: botResponse },
+    // Add the user question to the chat
+    setMessages((prev) => [...prev, { sender: "user", text: question }]);
+    setIsTyping(true);
+    setCurrentOptions([]);
+    setLastAnsweredQuestion(question);
+
+    // After a delay, show the bot's answer
+    setTimeout(() => {
+      setMessages((prev) => [...prev, { sender: "bot", text: faq.answer }]);
+      setIsTyping(false);
+      setShowFeedback(true);
+
+      // Set related questions as new options
+      if (faq.relatedQuestions && faq.relatedQuestions.length > 0) {
+        setTimeout(() => {
+          setMessages((prev) => [...prev]);
+          setCurrentOptions(faq.relatedQuestions);
+        }, 500);
+      }
+    }, 1000);
+  };
+
+  const handleFeedback = (isHelpful: boolean) => {
+    setMessages((prev) => [
+      ...prev,
+      {
+        sender: "bot",
+        text: isHelpful
+          ? "Thanks for your feedback! I'm glad that was helpful."
+          : "Thanks for your feedback. I'll try to provide better information next time.",
+      },
     ]);
-    setInput("");
+    setShowFeedback(false);
+
+    if (!isHelpful) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            sender: "bot",
+            text: "Would you like to explore a different category?",
+          },
+        ]);
+        setShowCategories(true);
+      }, 1000);
+    }
+  };
+
+  const resetChat = () => {
+    setMessages([
+      { sender: "bot", text: "Let's start over. How can I help you today?" },
+      { sender: "bot", text: "Please select a category you're interested in:" },
+    ]);
+    setShowCategories(true);
+    setActiveCategory(null);
+    setCurrentOptions([]);
   };
 
   const toggleExpand = () => {
@@ -167,21 +189,21 @@ export default function Chatbot() {
 
   if (!showChat) return null;
 
-  // Determine chat container styles based on device and expanded state
+  // Container styles
   const containerStyle =
     isMobile && isExpanded
       ? {
           position: "fixed",
-          top: "10%", // Start 10% from the top instead of 0
-          left: 0,
-          right: 0,
-          bottom: 0,
+          top: "10%",
+          left: "0",
+          right: "0",
+          bottom: "0",
           width: "100%",
-          height: "90%", // 90% height instead of 100%
+          height: "90%",
           zIndex: 1000,
-          borderRadius: "24px 24px 0 0", // Rounded top corners
-          boxShadow: "0 -8px 32px rgba(72, 124, 229, 0.18)",
-          background: "#b47ddf", // Use solid color to avoid white space
+          borderRadius: "24px 24px 0 0",
+          boxShadow: "0 -8px 32px rgba(119, 69, 184, 0.18)",
+          background: "#ffffff",
         }
       : isMobile
       ? {
@@ -190,51 +212,62 @@ export default function Chatbot() {
           left: 0,
           right: 0,
           width: "100%",
-          height: "60vh", // 60% height instead of 70%
+          height: "60vh",
           zIndex: 1000,
           borderRadius: "24px 24px 0 0",
-          boxShadow: "0 -8px 32px rgba(72, 124, 229, 0.18)",
-          background: "#b47ddf", // Use solid color
+          boxShadow: "0 -8px 32px rgba(119, 69, 184, 0.18)",
+          background: "#ffffff",
         }
       : {
           position: "fixed",
           bottom: "1.5rem",
           right: "1.5rem",
-          width: 340,
-          maxHeight: "80vh", // Limit maximum height
+          width: 430,
+          maxHeight: "80vh",
           borderRadius: 24,
-          boxShadow: "0 8px 32px rgba(72, 124, 229, 0.18)",
-          background: "#b47ddf", // Use solid color
+          boxShadow: "0 8px 32px rgba(119, 69, 184, 0.18)",
+          background: "#ffffff",
         };
 
-  // Adjust heights for content areas based on expansion state
+  // Chat area height
   const chatAreaHeight =
     isMobile && isExpanded
-      ? "calc(90vh - 140px)" // 90% height minus header and input
+      ? "calc(90vh - 140px)"
       : isMobile
-      ? "calc(60vh - 130px)" // 60% height minus header and input
-      : "350px"; // Shorter default for desktop
+      ? "calc(60vh - 140px)"
+      : "560px";
 
   return (
     <div className="fixed z-50" style={containerStyle as React.CSSProperties}>
       {/* Header */}
       <div
-        className="flex items-center justify-between px-5 py-3"
+        className="flex items-center justify-between px-5 py-4"
         style={{
-          borderTopLeftRadius:
-            isMobile && !isExpanded ? 24 : isMobile && isExpanded ? 24 : 24, // Always rounded top corners
-          borderTopRightRadius:
-            isMobile && !isExpanded ? 24 : isMobile && isExpanded ? 24 : 24,
+          borderTopLeftRadius: isMobile && isExpanded ? 0 : 24,
+          borderTopRightRadius: isMobile && isExpanded ? 0 : 24,
           background: "#7745b8",
         }}
       >
-        <span className="text-white font-semibold text-lg flex items-center">
-          AnamVR Assistant
-        </span>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <MessageCircle size={22} className="text-white" />
+          <span className="text-white font-semibold text-lg">
+            AnamVR Assistant
+          </span>
+        </div>
+        <div className="flex items-center gap-3">
+          {isMobile && (
+            <button
+              onClick={toggleExpand}
+              className="text-white hover:text-[#eacfff] transition-colors"
+              aria-label={isExpanded ? "Minimize chat" : "Expand chat"}
+            >
+              {isExpanded ? <ChevronDown size={22} /> : <ChevronUp size={22} />}
+            </button>
+          )}
           <button
             onClick={closeChat}
             className="text-white hover:text-[#eacfff] transition-colors"
+            aria-label="Close chat"
           >
             <X size={22} />
           </button>
@@ -243,14 +276,14 @@ export default function Chatbot() {
 
       {/* Chat Messages */}
       <div
-        className="flex flex-col px-5 py-4 overflow-y-auto bg-[#b47ddf]"
+        className="flex flex-col px-5 py-4 overflow-y-auto bg-[#f6f0ff]"
         style={{
           height: chatAreaHeight,
-          minHeight: isMobile ? "auto" : "280px", // Ensure minimum height on desktop
+          minHeight: isMobile ? "auto" : "280px",
         }}
         ref={chatRef}
       >
-        <div className="flex flex-col gap-2 mb-4">
+        <div className="flex flex-col gap-3 mb-4">
           {messages.map((msg, i) => (
             <div
               key={i}
@@ -258,39 +291,114 @@ export default function Chatbot() {
                 msg.sender === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              <span
-                className={`rounded-2xl px-4 py-2 text-sm max-w-[80%] ${
+              <div
+                className={`rounded-2xl px-4 py-3 text-sm max-w-[85%] ${
                   msg.sender === "user"
-                    ? "bg-[#487ce5] text-white"
-                    : "bg-white text-[#7745b8] border border-[#eacfff]"
+                    ? "bg-[#7745b8] text-white"
+                    : "bg-white text-[#545454] shadow-sm"
                 }`}
               >
                 {msg.text}
-              </span>
+              </div>
             </div>
           ))}
+
+          {/* Typing indicator */}
+          {isTyping && (
+            <div className="flex justify-start">
+              <div className="bg-white text-[#545454] px-4 py-3 rounded-2xl text-sm max-w-[85%] shadow-sm">
+                <div className="flex space-x-1">
+                  <div
+                    className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                    style={{ animationDelay: "0ms" }}
+                  ></div>
+                  <div
+                    className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                    style={{ animationDelay: "150ms" }}
+                  ></div>
+                  <div
+                    className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                    style={{ animationDelay: "300ms" }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Category options */}
+          {showCategories && !isTyping && (
+            <div className="flex justify-end mt-4">
+              <div className="grid md:grid-cols-3 gap-2 items-center">
+                {(
+                  [
+                    "general",
+                    "technical",
+                    "features",
+                    "pricing",
+                    "support",
+                    "clinical",
+                    "business",
+                  ] as Category[]
+                ).map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => handleCategorySelect(category)}
+                    className="bg-[#f6f0ff] justify-center border border-[#7745b8] w-full items-center hover:bg-[#7745b8] hover:text-white text-[#7745b8] rounded-2xl px-4 py-2 text-sm text-center transition-colors"
+                  >
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Question options */}
+          {currentOptions.length > 0 && !isTyping && !showCategories && (
+            <div className="flex justify-end mt-2">
+              <div className="flex flex-col gap-2 justify-end items-end">
+                {currentOptions.map((question, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleQuestionSelect(question)}
+                    className="bg-[#f6f0ff] w-fit border border-[#7745b8] hover:bg-[#7745b8] hover:text-white text-[#7745b8] rounded-2xl px-4 py-2 text-sm text-center transition-colors"
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Feedback buttons after bot answers */}
+          {/* {showFeedback && !isTyping && (
+            <div className="flex justify-center mt-2">
+              <div className="flex gap-3">
+                <button
+                  onClick={() => handleFeedback(true)}
+                  className="flex items-center gap-1 px-3 py-1.5 bg-white hover:bg-gray-100 rounded-full text-xs text-gray-700 transition-colors shadow-sm"
+                >
+                  <ThumbsUp size={14} /> Helpful
+                </button>
+                <button
+                  onClick={() => handleFeedback(false)}
+                  className="flex items-center gap-1 px-3 py-1.5 bg-white hover:bg-gray-100 rounded-full text-xs text-gray-700 transition-colors shadow-sm"
+                >
+                  <ThumbsDown size={14} /> Not helpful
+                </button>
+              </div>
+            </div>
+          )} */}
         </div>
       </div>
 
-      {/* Input - Bottom with no gap or white space */}
-      <div className="px-5 py-3 bg-[#b47ddf]">
-        <div className="flex items-center bg-[#eacfff] rounded-xl px-2 py-1">
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="flex-grow bg-transparent outline-none px-2 text-purple-800 placeholder-purple-600 font-medium"
-            placeholder="Ask"
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
-            style={{ fontSize: 16 }}
-          />
-          <button
-            onClick={handleSend}
-            className="ml-2 bg-[#487ce5] hover:bg-[#7745b8] transition-colors text-white rounded-full w-9 h-9 flex items-center justify-center"
-            aria-label="Send"
-          >
-            <SendHorizonal size={16} />
-          </button>
-        </div>
+      {/* Input/footer area with reset button */}
+      <div className="px-5 py-3 bg-white border-t border-gray-200 flex items-center">
+        <button
+          onClick={resetChat}
+          className="bg-[#f6f0ff] hover:bg-[#e3d5ff] text-[#7745b8] rounded-lg px-4 py-2 text-sm font-medium transition-colors w-full"
+        >
+          Start a new conversation
+        </button>
       </div>
     </div>
   );
