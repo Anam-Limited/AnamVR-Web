@@ -4,6 +4,8 @@ import PhoneMockup from "../src/assets/mockup1.png";
 import assemblyLogo from "../src/assets/AnamVR-IconNoBg.png";
 import spineLogo from "../src/assets/AnamVR-IconNoBg.png";
 import paretoLogo from "../src/assets/AnamVR-IconNoBg.png";
+import mockup1 from "../src/assets/iphone1.avif";
+import mockup2 from "../src/assets/iphone2.avif";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const trustedLogos = [assemblyLogo, spineLogo, paretoLogo];
@@ -19,13 +21,13 @@ export default function LandingPage() {
 
   return (
     <div
-      className="px-6 md:px-12 min-h-[860px] py-12 items-center flex justify-center"
+      className="px-6 md:px-12 min-h-[860px] items-center flex justify-center"
       style={{
         background:
           "linear-gradient(to bottom right, rgb(255, 255, 255), rgb(234, 207, 255), rgb(168, 137, 240))",
       }}
     >
-      <div className="max-w-8xl lg:min-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Main Hero Section */}
 
         <div
@@ -98,7 +100,7 @@ export default function LandingPage() {
                 {/* Inner container with double content for seamless loop */}
                 <div className="flex whitespace-nowrap">
                   {/* First set of logos */}
-                  <div className="flex items-center justify-center gap-4 animate-marquee">
+                  <div className="flex items-center justify-center gap-4">
                     {trustedLogos.map((logo) => (
                       <div className="flex-shrink-0">
                         <img
@@ -117,15 +119,37 @@ export default function LandingPage() {
           {/* Right side */}
           <div
             ref={imageAnimation.ref}
-            className={`max-w-fit lg:w-1/2 mb-12 lg:mb-0 transition-opacity duration-700 ease-out ${
+            className={`relative w-full lg:w-1/2 h-[700px] lg:h-[750px] mb-12 lg:mb-0 transition-opacity duration-700 ease-out ${
               imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
             }`}
           >
-            <img
-              src={PhoneMockup || "/placeholder.svg"}
-              alt="AnamVR App"
-              className="w-52 h-autorounded-lg shadow-lg"
-            />
+            {/* Main center/right phone (mockup2 from original code, now acting as the primary large one) */}
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-[30%] -translate-y-[45%] z-20">
+              <div className="relative">
+                <img
+                  src={mockup2 || "/placeholder.svg"} // Assuming mockup2 is the main large one now
+                  alt="AnamVR App Dashboard"
+                  className="w-72 md:w-80 lg:w-96 h-auto rounded-3xl"
+                />
+                {/* Feature highlight overlay for this phone */}
+              </div>
+            </div>
+
+            {/* Top-left phone (mockup1 from original code, now smaller and to the left) */}
+            <div className="absolute top-[15%] left-[5%] lg:left-[10%] transform -rotate-[15deg] z-10">
+              <div className="relative">
+                <img
+                  src={mockup1 || "/placeholder.svg"}
+                  alt="AnamVR App Main Screen"
+                  className="w-60 md:w-64 lg:w-72 h-auto rounded-3xl"
+                />
+                {/* Optional: Add a small card if needed for this mockup */}
+              </div>
+            </div>
+
+            {/* Decorative gradient elements (adjust if needed) */}
+            <div className="absolute -bottom-10 right-10 w-72 h-72 bg-gradient-to-r from-[#eacfff]/70 to-[#bcdbeb]/70 rounded-full opacity-50 blur-3xl -z-10"></div>
+            <div className="absolute -top-16 left-5 w-56 h-56 bg-gradient-to-r from-[#e9ffdb]/70 to-[#eacfff]/70 rounded-full opacity-40 blur-3xl -z-10"></div>
           </div>
         </div>
       </div>

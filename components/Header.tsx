@@ -28,31 +28,31 @@ export default function Header() {
       }`}
     >
       {/* Left navigation */}
-      <nav className="hidden md:flex items-center space-x-6">
+      <nav className="hidden md:flex items-center font-semibold space-x-6">
         <a
           href="/"
-          className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
+          className="text-black hover:text-[#7745b8] transition-colors relative group"
         >
           Home
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a
           href="download"
-          className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
+          className="text-black hover:text-[#7745b8] transition-colors relative group"
         >
           Download
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a
           href="shop"
-          className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
+          className="text-black hover:text-[#7745b8] transition-colors relative group"
         >
           Shop
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a
           href="blog"
-          className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
+          className="text-black hover:text-[#7745b8] transition-colors relative group"
         >
           Blog
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
@@ -62,7 +62,7 @@ export default function Header() {
             e.preventDefault();
             openChat(); // Open the chatbot when Contact is clicked
           }}
-          className="text-black hover:text-[#7745b8] font-medium transition-colors relative group"
+          className="text-black hover:text-[#7745b8] transition-colors relative group"
         >
           Contact
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
@@ -79,13 +79,19 @@ export default function Header() {
       </div>
 
       {/* Right section buttons */}
-      <div className="hidden md:flex items-center space-x-4">
-        <button className="bg-[#7745b8] text-white px-5 py-2 rounded-full font-medium hover:bg-[#572994] transition-colors shadow-md">
+      <div className="hidden md:flex items-center font-semibold space-x-4">
+        <a
+          href="/for-individuals"
+          className="bg-[#7745b8] text-white px-5 py-2 rounded-full hover:bg-[#572994] transition-colors shadow-md flex items-center justify-center"
+        >
           For Individuals
-        </button>
-        <button className="bg-white text-[#7745b8] border-2 border-[#7745b8] px-5 py-1.5 rounded-full font-medium hover:bg-[#572994] hover:border-[#572994] hover:text-white transition-colors shadow-sm">
+        </a>
+        <a
+          href="/for-organisations"
+          className="bg-white text-[#7745b8] border-2 border-[#7745b8] px-5 py-1.5 rounded-full hover:bg-[#7745b8] hover:border-[#7745b8] hover:text-white transition-colors shadow-sm flex items-center justify-center"
+        >
           For Organisations
-        </button>
+        </a>
       </div>
 
       {/* Mobile menu button */}

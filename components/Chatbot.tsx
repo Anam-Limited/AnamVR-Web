@@ -5,6 +5,7 @@ import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useChatbot } from "../context/ChatbotContext";
 import { X, ChevronDown, ChevronUp, MessageCircle } from "lucide-react";
+import anam from "../src/assets/Anam.png";
 
 import { faqs, popularQuestions } from "../data/chatQuestions";
 import type { FAQ } from "../data/chatQuestions";
@@ -13,7 +14,7 @@ import type { Category } from "../data/chatQuestions";
 export default function Chatbot() {
   const { showChat, closeChat } = useChatbot();
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi there! I'm your AnamVR assistant." },
+    { sender: "bot", text: "Hi there! I'm Anam - your AnamVR assistant." },
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -30,7 +31,7 @@ export default function Chatbot() {
   useEffect(() => {
     if (showChat) {
       setMessages([
-        { sender: "bot", text: "Hi there! I'm your AnamVR assistant." },
+        { sender: "bot", text: "Hi there! I'm Anam - your AnamVR assistant." },
       ]);
       setIsTyping(true);
       setTimeout(() => {
@@ -200,9 +201,7 @@ export default function Chatbot() {
       >
         <div className="flex items-center gap-3">
           <MessageCircle size={22} className="text-white" />
-          <span className="text-white font-semibold text-lg">
-            AnamVR Assistant
-          </span>
+          <span className="text-white font-semibold text-lg">Anam</span>
         </div>
         <div className="flex items-center gap-3">
           {isMobile && (
@@ -237,10 +236,13 @@ export default function Chatbot() {
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={`flex ${
+              className={`flex items-start gap-2 ${
                 msg.sender === "user" ? "justify-end" : "justify-start"
               }`}
             >
+              {msg.sender === "bot" && (
+                <img src={anam} alt="Anam" className="w-6 h-6 mt-2" />
+              )}
               <div
                 className={`rounded-2xl px-4 py-3 text-sm max-w-[85%] ${
                   msg.sender === "user"

@@ -27,7 +27,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function App() {
   return (
-    <div className="min-h-screen justify-center max-w-full bg-gray-100 lg:min-w-5xl mx-auto">
+    <div className="min-h-screen items-center justify-center max-w-full bg-gray-100 lg:min-w-5xl mx-auto">
       {/* Main Content */}
       <Header />
       <LandingPage />
