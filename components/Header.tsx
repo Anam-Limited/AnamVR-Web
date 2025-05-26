@@ -24,11 +24,11 @@ export default function Header() {
   return (
     <header
       className={`flex items-center min-w-full lg:min-w-5xl mx-auto justify-between py-4 px-24 md:px-24 fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+        scrolled ? "bg-white/90 shadow-sm" : "bg-transparent"
       }`}
     >
       {/* Left navigation */}
-      <nav className="hidden md:flex items-center font-semibold space-x-6">
+      <nav className="hidden md:flex items-center font-medium space-x-6">
         <a
           href="/"
           className="text-black hover:text-[#7745b8] transition-colors relative group"
@@ -37,10 +37,10 @@ export default function Header() {
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a
-          href="download"
+          href="about"
           className="text-black hover:text-[#7745b8] transition-colors relative group"
         >
-          Download
+          About
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a
@@ -79,7 +79,7 @@ export default function Header() {
       </div>
 
       {/* Right section buttons */}
-      <div className="hidden md:flex items-center font-semibold space-x-4">
+      <div className="hidden md:flex items-center font-medium space-x-4">
         <a
           href="/for-individuals"
           className="bg-[#7745b8] text-white px-5 py-2 rounded-full hover:bg-[#572994] transition-colors shadow-md flex items-center justify-center"

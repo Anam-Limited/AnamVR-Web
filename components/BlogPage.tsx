@@ -3,6 +3,7 @@ import { Calendar, User, Clock, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import matter from "gray-matter";
 import { Buffer } from "buffer";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 (window as any).Buffer = Buffer;
 
 interface BlogMeta {
@@ -24,6 +25,10 @@ export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const navigate = useNavigate();
+
+  const headerAnimation = useScrollAnimation();
+  const filterAnimation = useScrollAnimation({ threshold: 0.2 });
+  const gridAnimation = useScrollAnimation({ threshold: 0.2 });
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -92,12 +97,24 @@ export default function BlogPage() {
       <section className="w-full min-h-[860px] pt-44 pb-20 px-16 mb-16 bg-gradient-to-br from-[#bcdbeb] to-[#eacfff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-start">
-            <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
+            <h1
+              ref={headerAnimation.ref}
+              className={`text-4xl md:text-5xl font-bold text-black mb-4 transition-opacity duration-700 ${
+                headerAnimation.isVisible ? "animate-slide-up" : "opacity-0"
+              }`}
+            >
               AnamVR Blog
             </h1>
           </div>
           {featuredPost && (
-            <div className="mb-0">
+            <div
+              ref={headerAnimation.ref}
+              className={`mb-0 transform transition-all duration-700 ${
+                headerAnimation.isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
               <div className="mb-6">
                 <span className="text-sm uppercase font-semibold text-black">
                   Featured Article
@@ -152,11 +169,16 @@ export default function BlogPage() {
           <div className="flex items-center mb-10">
             <div className="h-px bg-gray-200 flex-grow"></div>
             <h2 className="px-4 text-2xl font-semibold text-black">
-              Recent Articles
+              All Articles
             </h2>
             <div className="h-px bg-gray-200 flex-grow"></div>
           </div>
-          <div className="mb-12 flex flex-col md:flex-row gap-4 items-center justify-between">
+          <div
+            ref={filterAnimation.ref}
+            className={`mb-12 flex flex-col md:flex-row gap-4 items-center justify-between transition-opacity duration-700 ${
+              filterAnimation.isVisible ? "animate-slide-up" : "opacity-0"
+            }`}
+          >
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
                 <button
@@ -173,7 +195,12 @@ export default function BlogPage() {
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            ref={gridAnimation.ref}
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-700 ${
+              gridAnimation.isVisible ? "animate-slide-up" : "opacity-0"
+            }`}
+          >
             {sortedPosts.map((post) => (
               <div
                 key={post.id}

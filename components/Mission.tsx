@@ -11,9 +11,11 @@ export default function Mission() {
   return (
     <div
       ref={animation.ref}
-      className={`md:col-span-3 lg:col-span-4 bg-yellow-100/80 p-6 rounded-3xl h-full flex flex-col justify-between transition-opacity duration-700 ease-out ${
-        animation.isVisible ? "animate-slide-up" : "opacity-0"
-      }`}
+      className={`col-span-1 sm:col-span-3 md:col-span-3 lg:col-span-4  
+        bg-yellow-100/80 p-6 rounded-3xl h-full min-h-[280px] flex flex-col 
+        justify-between transition-opacity duration-700 ease-out ${
+          animation.isVisible ? "animate-slide-up" : "opacity-0"
+        }`}
     >
       <div>
         <h3 className="font-bold text-xl text-yellow-900 mb-3 flex items-center">
@@ -27,7 +29,7 @@ export default function Mission() {
       </div>
       <a
         href="/about"
-        className="flex items-center text-yellow-700 hover:text-yellow-900 text-base font-semibold"
+        className="flex items-center text-yellow-700 hover:text-yellow-900 text-base font-semibold mt-4"
       >
         Read about us <ArrowRight size={16} className="ml-1 font-semibold" />
       </a>

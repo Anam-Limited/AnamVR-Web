@@ -1,6 +1,7 @@
 "use client";
 
-import PhoneMockup from "../src/assets/mockup1.png";
+import androidBadge from "../src/assets/googlebadge.svg";
+import appleBadge from "../src/assets/appstorebadge.svg";
 import assemblyLogo from "../src/assets/AnamVR-IconNoBg.png";
 import spineLogo from "../src/assets/AnamVR-IconNoBg.png";
 import paretoLogo from "../src/assets/AnamVR-IconNoBg.png";
@@ -61,16 +62,20 @@ export default function LandingPage() {
                 techniques to help you manage emotions and make life easier.
               </p>
             </div>
-            <div className="flex flex-col items-start justify-start gap-2 md:flex-row md:gap-4">
+            <div className="flex flex-col sm:flex-row items-start justify-start gap-2 md:gap-4">
               <div
                 ref={iosButtonAnimation.ref}
                 className={`transition-opacity duration-700 ease-out ${
                   iosButtonAnimation.isVisible ? "animate-fade-in" : "opacity-0"
                 }`}
               >
-                <button className="px-6 py-3 bg-white text-[#7745b8]/80 hover:bg-[#7745b8] hover:text-white rounded-full font-medium shadow transition-colors flex items-center">
-                  Download iOS
-                </button>
+                <a href="/download">
+                  <img
+                    src={appleBadge}
+                    alt="Get it on Google Play"
+                    className="h-12 md:h-14 lg:h-16"
+                  />
+                </a>
               </div>
               <div
                 ref={androidButtonAnimation.ref}
@@ -80,23 +85,27 @@ export default function LandingPage() {
                     : "opacity-0"
                 }`}
               >
-                <button className="px-6 py-3 bg-white text-[#7745b8]/80 hover:bg-[#7745b8] hover:text-white rounded-full font-medium shadow transition-colors flex items-center">
-                  Download Android
-                </button>
+                <a href="/download">
+                  <img
+                    src={androidBadge}
+                    alt="Get it on Google Play"
+                    className="h-12 md:h-14 lg:h-16"
+                  />
+                </a>
               </div>
             </div>
 
             {/* Trusted by slider - Fixed */}
             <div
               ref={logosAnimation.ref}
-              className={`pt-4 flex flex-col items-start transition-opacity duration-700 ease-out ${
+              className={`pt-4 pb-10 flex flex-col items-start transition-opacity duration-700 ease-out ${
                 logosAnimation.isVisible ? "animate-slide-up" : "opacity-0"
               }`}
             >
               <p className="text-gray-600 font-medium mr-8">
                 Trusted by the world’s leading organizations ↘︎
               </p>
-              <div className="relative overflow-hidden flex-1">
+              <div className="relative pt-2 overflow-hidden flex-1">
                 {/* Inner container with double content for seamless loop */}
                 <div className="flex whitespace-nowrap">
                   {/* First set of logos */}

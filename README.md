@@ -1,54 +1,63 @@
-# React + TypeScript + Vite
+## 🧾 Editable Sections Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project contains several dynamic sections that can be easily extended via the codebase. Here’s how you can update or add to them:
 
-Currently, two official plugins are available:
+- **Testimonials**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Location: `components/Testimonial.tsx` for main-page (anamvr.com)
+Location: `components/ForIndividuals.tsx` testimonials for the app (anamvr.com/for-individuals)
+Location: `components/ForOrganisations.tsx` testimonials for the business-app (anamvr.com/for-organisations)
 
-## Expanding the ESLint configuration
+The testimonials are defined as an array of objects inside the component. Each object includes:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```tsx
+{
+  quote: "The testimonial message.",
+  name: "Person's Name",
+  title: "Person's Title",
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+To **add a new testimonial**, simply append another object with the above structure to the array.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Blog Posts**
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+  - Location: `data/blogPost.ts`
+  - Structure Example:
+    ```ts
+    {
+      id: "exploring-virtual-reality",
+      title: "Exploring Virtual Reality Therapy: Revolutionising Mental Health Treatment"
+      excerpt: "Discover how VR therapy is transforming mental health by making treatment immersive, effective, and accessible for anxiety, PTSD, and more."
+      author: "Rob Sheridan"
+      date: "November 18, 2024"
+      readTime: "7 min"
+      category: "VR Therapy"
+      tags: ["Virtual Reality", "Mental Health", "Anxiety", "Innovation"]
+      image: "/blogs/images/exploring-virtual-reality.jpg"
+    }
+    ```
+  - Add a new blog post by appending a new object to the exported array.
+  - Add images under public/blog/images for blogs.
+
+- **FAQs**
+  - Location: `components/Questions.tsx`
+  - An array of:
+    ```ts
+    {
+      question: string;
+      answer: string;
+    }
+    ```
+- **Chat Questions**
+  - Location: `data/chatquestions.ts`
+  - Structure Example:
+    ```ts
+    {
+      question: string;
+      answer: string;
+      category: Category;
+      relatedQuestions?: string[];
+    }
+    ```
+  - These questions are used by the chatbot to guide users through various support topics. Add new entries by appending to the exported array.

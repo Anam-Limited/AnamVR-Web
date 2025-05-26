@@ -31,8 +31,10 @@ export default function BlogContent() {
         const raw = await response.text();
         const { data, content } = matter(raw);
 
-        setPost({ ...data, content } as BlogPost);
-        setLoading(false);
+        setTimeout(() => {
+          setPost({ ...data, content } as BlogPost);
+          setLoading(false);
+        }, 1000);
       } catch (err) {
         console.error(err);
         setError("Blog post not found");

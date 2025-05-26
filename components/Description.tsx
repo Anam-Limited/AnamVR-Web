@@ -15,7 +15,6 @@ const features = [
     subheading: "with daily mood logging",
     description:
       "Easily track your mood throughout the day, with the flexibility to log up to three times daily. Dive deeper into your emotional patterns and progress with our robust analytics, providing valuable insights into your mood fluctuations over time.",
-    buttonText: "Start tracking",
   },
   {
     id: "relief-hub",
@@ -26,7 +25,6 @@ const features = [
     subheading: "with guided meditations",
     description:
       "Find solace and support in our curated selection of situational-based meditations within the Relief Hub. Custom made to address various presentations of mood and anxiety-related issues, these meditations are designed to empower you to navigate life's challenges.",
-    buttonText: "Explore meditations",
   },
   {
     id: "lessons",
@@ -37,7 +35,6 @@ const features = [
     subheading: "with expert guidance",
     description:
       "Delve into the fundamentals of cognitive-behavioural therapy (CBT) with our engaging lessons. Learn practical strategies to apply CBT principles to your daily life, equipping yourself with a comprehensive toolkit to manage life's curveballs effectively.",
-    buttonText: "Start learning",
   },
   {
     id: "vr-hub",
@@ -48,7 +45,6 @@ const features = [
     subheading: "with virtual reality",
     description:
       "By integrating virtual reality (VR), gamification, and CBT techniques, we ensure effective treatment is readily available in the comfort of your own home. Immerse yourself in our VR-based exercises aimed at enhancing anxiety management techniques.",
-    buttonText: "Try VR therapy",
   },
 ];
 
@@ -56,7 +52,6 @@ export default function Description() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [startX, setStartX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
 
   // Scroll animations
   const headerAnimation = useScrollAnimation();
@@ -114,34 +109,18 @@ export default function Description() {
     }
   };
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
-        handlePrevious();
-      } else if (e.key === "ArrowRight") {
-        handleNext();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
-
   return (
-    <div className="max-w-7xl mt-16 mx-auto px-4 py-12">
+    <div className="max-w-7xl mt-8 md:mt-16 mx-auto px-4 py-8 md:py-12">
       <div
         ref={headerAnimation.ref}
-        className={`text-center text-purple-900 mb-16 flex flex-col items-center 
-              transition-opacity duration-700 ease-out 
-              ${headerAnimation.isVisible ? "animate-fade-in" : "opacity-0"}`}
+        className={`text-center text-purple-900 mb-10 md:mb-16 flex flex-col items-center 
+            transition-opacity duration-700 ease-out 
+            ${headerAnimation.isVisible ? "animate-fade-in" : "opacity-0"}`}
       >
-        <span className="font-semibold text-5xl">
+        <span className="font-semibold text-3xl md:text-5xl px-2 md:px-0">
           Empowering you on your journey
         </span>
-        <span className="font-semibold text-5xl">
+        <span className="font-semibold text-3xl md:text-5xl px-2 md:px-0">
           towards better mental health
         </span>
       </div>
@@ -149,16 +128,16 @@ export default function Description() {
       {/* Tabs */}
       <div
         ref={tabsAnimation.ref}
-        className={`flex justify-center mb-8 overflow-x-auto no-scrollbar transition-opacity duration-700 ease-out ${
+        className={`flex justify-center mb-6 md:mb-8 transition-opacity duration-700 ease-out ${
           tabsAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
-        <div className="flex space-x-2 p-1 bg-gray-300 rounded-full">
+        <div className="flex space-x-1 md:space-x-2 p-1 bg-gray-300 rounded-full overflow-x-auto no-scrollbar max-w-full">
           {features.map((feature, index) => (
             <button
               key={feature.id}
               onClick={() => handleTabClick(index)}
-              className={`px-6 py-3 rounded-full text-lg font-medium transition-all duration-200 whitespace-nowrap ${
+              className={`px-3 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-lg font-medium transition-all duration-200 whitespace-nowrap ${
                 activeIndex === index
                   ? "bg-black text-white"
                   : "bg-transparent text-gray-700 hover:bg-gray-200"
@@ -173,7 +152,7 @@ export default function Description() {
       {/* Carousel */}
       <div
         ref={carouselAnimation.ref}
-        className={`relative overflow-hidden rounded-3xl transition-opacity duration-900 ease-out ${
+        className={`relative overflow-hidden rounded-xl md:rounded-3xl transition-opacity duration-900 ease-out ${
           carouselAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
         onTouchStart={handleTouchStart}
@@ -185,23 +164,23 @@ export default function Description() {
         onMouseLeave={handleSwipeEnd}
       >
         <div
-          className="flex transition-transform duration-500 ease-in-out gap-6"
+          className="flex transition-transform duration-500 ease-in-out gap-4 md:gap-6"
           style={{
             transform: `translateX(calc(-${activeIndex * 100}% - ${
-              activeIndex * 1.5
+              activeIndex * (window.innerWidth < 768 ? 1 : 1.5)
             }rem))`,
           }}
         >
           {features.map((feature) => (
             <div
               key={feature.id}
-              className={`w-full flex-shrink-0 ${feature.color} rounded-3xl overflow-hidden transition-all duration-700`}
+              className={`w-full flex-shrink-0 ${feature.color} rounded-xl md:rounded-3xl overflow-hidden transition-all duration-700`}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 min-h-[550px]">
-                <div className="hidden md:flex items-center justify-center p-20">
+              <div className="flex flex-col-reverse md:grid md:grid-cols-2 min-h-[400px] md:min-h-[550px] py-6">
+                <div className="hidden md:flex items-center justify-center p-8 md:p-20">
                   {/* Placeholder for feature image or illustration */}
                   <div className="bg-white bg-opacity-20 rounded-2xl w-full h-4/5 flex items-center justify-center">
-                    <span className="text-white text-6xl">
+                    <span className="text-white text-5xl md:text-6xl">
                       {feature.id === "mood-log" && "📊"}
                       {feature.id === "relief-hub" && "🧘‍♀️"}
                       {feature.id === "lessons" && "📚"}
@@ -209,68 +188,66 @@ export default function Description() {
                     </span>
                   </div>
                 </div>
-                <div className="p-10 md:p-16 flex flex-col justify-center transition-all duration-700 animate-fade-in">
+                <div className="p-6 md:p-10 lg:p-16 flex flex-col justify-center transition-all duration-700 animate-fade-in">
                   <h2
-                    className={`text-4xl md:text-5xl font-bold ${feature.textColor} mb-2`}
+                    className={`text-3xl md:text-4xl lg:text-5xl font-bold ${feature.textColor} mb-1 md:mb-2`}
                   >
                     {feature.heading}
                   </h2>
                   <h3
-                    className={`text-2xl md:text-3xl font-medium ${feature.textColor} opacity-90 mb-6`}
+                    className={`text-xl md:text-2xl lg:text-3xl font-medium ${feature.textColor} opacity-90 mb-3 md:mb-6`}
                   >
                     {feature.subheading}
                   </h3>
                   <p
-                    className={`text-lg mb-8 opacity-90 max-w-lg ${feature.textColor}`}
+                    className={`text-base md:text-lg mb-4 md:mb-8 opacity-90 max-w-lg ${feature.textColor}`}
                   >
                     {feature.description}
                   </p>
-                  {/* <div>
-                    <button className="bg-white text-[#7745b8] font-medium py-3 px-8 rounded-full hover:bg-opacity-90 transition-all">
-                      {feature.buttonText}
-                    </button>
-                  </div> */}
                 </div>
               </div>
             </div>
           ))}
         </div>
-        {/* Navigation arrows */}
-        <button
-          onClick={handlePrevious}
-          className={`absolute left-4 bottom-0 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md transition-all ${
-            activeIndex === 0
-              ? "opacity-50 cursor-not-allowed pointer-events-none"
-              : "hover:bg-opacity-100"
-          }`}
-          aria-label="Previous slide"
-          disabled={activeIndex === 0}
-        >
-          <ChevronLeft className="h-6 w-6 text-black" />
-        </button>
-        <button
-          onClick={handleNext}
-          className={`absolute right-4 bottom-0 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 shadow-md transition-all ${
-            activeIndex === features.length - 1
-              ? "opacity-50 cursor-not-allowed pointer-events-none"
-              : "hover:bg-opacity-100"
-          }`}
-          aria-label="Next slide"
-          disabled={activeIndex === features.length - 1}
-        >
-          <ChevronRight className="h-6 w-6 text-black" />
-        </button>
 
-        {/* Pagination dots */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
+        {/* Navigation arrows - positioned better for mobile */}
+        <div className="hidden md:flex flex-row items-center mt-4 md:mt-6 justify-center gap-8">
+          <button
+            onClick={handlePrevious}
+            className={`rounded-full p-2 md:p-3 transition-all bg-white/30 backdrop-blur-sm shadow-md ${
+              activeIndex === 0
+                ? "opacity-30 cursor-not-allowed pointer-events-none"
+                : "hover:bg-white/50"
+            }`}
+            aria-label="Previous slide"
+            disabled={activeIndex === 0}
+          >
+            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-black" />
+          </button>
+          <button
+            onClick={handleNext}
+            className={`rounded-full p-2 md:p-3 transition-all bg-white/30 backdrop-blur-sm shadow-md ${
+              activeIndex === features.length - 1
+                ? "opacity-30 cursor-not-allowed pointer-events-none"
+                : "hover:bg-white/50"
+            }`}
+            aria-label="Next slide"
+            disabled={activeIndex === features.length - 1}
+          >
+            <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-black" />
+          </button>
+        </div>
+
+        {/* Pagination dots - responsive positioning */}
+        <div className="absolute bottom-4 md:bottom-24 left-1/2 -translate-x-1/2 flex space-x-2">
           {features.map((_, index) => (
             <button
               key={index}
               onClick={() => handleTabClick(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
+              className={`h-2 rounded-full transition-all ${
                 activeIndex === index
-                  ? "bg-white w-6"
-                  : "bg-white bg-opacity-50"
+                  ? "bg-white w-5 md:w-6"
+                  : "bg-white bg-opacity-50 w-2"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

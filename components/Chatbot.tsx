@@ -8,7 +8,6 @@ import { X, ChevronDown, ChevronUp, MessageCircle } from "lucide-react";
 import anam from "../src/assets/Anam.png";
 
 import { faqs, popularQuestions } from "../data/chatQuestions";
-import type { FAQ } from "../data/chatQuestions";
 import type { Category } from "../data/chatQuestions";
 
 export default function Chatbot() {
@@ -157,36 +156,36 @@ export default function Chatbot() {
           background: "#ffffff",
         }
       : isMobile
-      ? {
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          width: "100%",
-          height: "60vh",
-          zIndex: 1000,
-          borderRadius: "24px 24px 0 0",
-          boxShadow: "0 -8px 32px rgba(119, 69, 184, 0.18)",
-          background: "#ffffff",
-        }
-      : {
-          position: "fixed",
-          bottom: "1.5rem",
-          right: "1.5rem",
-          width: 430,
-          maxHeight: "80vh",
-          borderRadius: 24,
-          boxShadow: "0 8px 32px rgba(119, 69, 184, 0.18)",
-          background: "#ffffff",
-        };
+        ? {
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: "100%",
+            height: "60vh",
+            zIndex: 1000,
+            borderRadius: "24px 24px 0 0",
+            boxShadow: "0 -8px 32px rgba(119, 69, 184, 0.18)",
+            background: "#ffffff",
+          }
+        : {
+            position: "fixed",
+            bottom: "1.5rem",
+            right: "1.5rem",
+            width: 460,
+            maxHeight: "80vh",
+            borderRadius: 24,
+            boxShadow: "0 8px 32px rgba(119, 69, 184, 0.18)",
+            background: "#ffffff",
+          };
 
   // Chat area height
   const chatAreaHeight =
     isMobile && isExpanded
       ? "calc(90vh - 140px)"
       : isMobile
-      ? "calc(60vh - 140px)"
-      : "560px";
+        ? "calc(60vh - 140px)"
+        : "560px";
 
   return (
     <div className="fixed z-50" style={containerStyle as React.CSSProperties}>
@@ -241,7 +240,7 @@ export default function Chatbot() {
               }`}
             >
               {msg.sender === "bot" && (
-                <img src={anam} alt="Anam" className="w-6 h-6 mt-2" />
+                <img src={anam} alt="Anam" className="w-8 h-8 mt-2" />
               )}
               <div
                 className={`rounded-2xl px-4 py-3 text-sm max-w-[85%] ${

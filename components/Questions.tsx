@@ -4,7 +4,7 @@ import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const questions = [
   {
-    question: "What is AnamVR",
+    question: "What is AnamVR?",
     answer:
       "AnamVR is a virtual reality app designed to help users manage their emotions and improve their mental well-being through immersive experiences.",
   },
@@ -46,14 +46,12 @@ export default function Questions() {
     <>
       <div
         ref={animation.ref}
-        className={`max-w-7xl mt-16 mx-auto px-4 py-12 transition-opacity duration-700 ease-out ${
+        className={`max-w-7xl my-16 mx-auto px-4 pt-12 pb-24 transition-opacity duration-700 ease-out ${
           animation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
         <div className="text-center text-purple-900 mb-16 flex flex-col items-center">
-          <span className="font-semibold text-5xl">
-            Frequently asked questions
-          </span>
+          <span className="font-semibold text-5xl">FAQs</span>
         </div>
 
         <div className="flex flex-col gap-6 px-48">
@@ -61,18 +59,20 @@ export default function Questions() {
             <div
               key={index}
               className={`pb-6 ${
+                index === 0 ? "border-t border-[#545454]/30 pt-6 " : ""
+              }${
                 index !== questions.length - 1
-                  ? "border-b border-r-1 border-gray-700"
+                  ? "border-b border-[#545454]/30"
                   : ""
               } cursor-pointer`}
               onClick={() => handleToggle(index)}
             >
-              <h3 className="text-2xl flex justify-between font-normal text-black">
+              <h3 className="text-2xl flex items-center justify-between font-medium text-black">
                 {item.question}
                 {activeIndex === index ? (
-                  <Minus size={20} className="mt-4 text-lg text-gray-700" />
+                  <Minus size={20} className="text-lg text-gray-700" />
                 ) : (
-                  <Plus size={20} className="mt-4 text-lg text-gray-700" />
+                  <Plus size={20} className="text-lg text-gray-700" />
                 )}
               </h3>
               {activeIndex === index && (

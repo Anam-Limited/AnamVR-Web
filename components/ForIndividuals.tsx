@@ -22,6 +22,33 @@ import {
   Heart,
 } from "lucide-react";
 
+const testimonials = [
+  {
+    quote:
+      "With AnamVR, a healthcare worker can discreetly connect with support anytime, from anywhere - whether they're on break at the hospital, on the commute, at home or from their desk at work.",
+    name: "Dr. Sarah Chen",
+    title: "Head of Mental Health Services, Metro Hospital",
+  },
+  {
+    quote:
+      "AnamVR has transformed how our students manage stress. The immersive experiences provide them with practical tools they can access whenever they need support.",
+    name: "Michael Roberts",
+    title: "University Wellness Director",
+  },
+  {
+    quote:
+      "The ability to access evidence-based mental health resources through VR has been a game-changer for our remote employees. AnamVR meets people where they are.",
+    name: "Jessica Parenti",
+    title: "Chief People Officer, TechGrowth Inc.",
+  },
+  {
+    quote:
+      "As a busy parent, I love how AnamVR gives me quick, effective ways to manage stress and anxiety. The immersive experiences are like a mini-retreat I can access anytime.",
+    name: "Emily Johnson",
+    title: "Freelance Graphic Designer",
+  },
+];
+
 export default function ForIndividuals() {
   const headerAnimation = useScrollAnimation();
   const introAnimation = useScrollAnimation({ threshold: 0.2 });
@@ -63,35 +90,6 @@ export default function ForIndividuals() {
       setIsPlaying(!isPlaying);
     }
   };
-
-  // Categories carousel implementation (Headspace-style)
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
-  const categories = [
-    {
-      title: "Manage Stress",
-      icon: <Sun className="h-8 w-8" />,
-      description: "Find calm in difficult moments with guided exercises",
-      color: "bg-[#487ce5]",
-      textColor: "text-[#487ce5]",
-      image: "/images/stress-relief.jpg",
-    },
-    {
-      title: "Improve Sleep",
-      icon: <Moon className="h-8 w-8" />,
-      description: "Peaceful sleepcasts and meditations for better rest",
-      color: "bg-[#7745b8]",
-      textColor: "text-[#7745b8]",
-      image: "/images/sleep-better.jpg",
-    },
-    {
-      title: "Boost Mood",
-      icon: <Heart className="h-8 w-8" />,
-      description: "Elevate your state of mind with science-backed techniques",
-      color: "bg-[#3c8c4f]",
-      textColor: "text-[#3c8c4f]",
-      image: "/images/mood-boost.jpg",
-    },
-  ];
 
   return (
     <div className="w-full">
@@ -403,26 +401,7 @@ export default function ForIndividuals() {
           {/* Testimonial content */}
           <div className="relative py-16">
             <div className="transition-opacity duration-500 ease-out">
-              {[
-                {
-                  quote:
-                    "With AnamVR, a healthcare worker can discreetly connect with support anytime, from anywhere - whether they're on break at the hospital, on the commute, at home or from their desk at work.",
-                  name: "Dr. Sarah Chen",
-                  title: "Head of Mental Health Services, Metro Hospital",
-                },
-                {
-                  quote:
-                    "AnamVR has transformed how our students manage stress. The immersive experiences provide them with practical tools they can access whenever they need support.",
-                  name: "Michael Roberts",
-                  title: "University Wellness Director",
-                },
-                {
-                  quote:
-                    "The ability to access evidence-based mental health resources through VR has been a game-changer for our remote employees. AnamVR meets people where they are.",
-                  name: "Jessica Parenti",
-                  title: "Chief People Officer, TechGrowth Inc.",
-                },
-              ].map((testimonial, idx) => (
+              {testimonials.map((testimonial, idx) => (
                 <div
                   key={idx}
                   className={`text-center max-w-4xl mx-auto transition-opacity duration-500 ${
@@ -474,14 +453,16 @@ export default function ForIndividuals() {
 
               <button
                 onClick={() =>
-                  setActiveTestimonial((prev) => Math.min(2, prev + 1))
+                  setActiveTestimonial((prev) =>
+                    Math.min(testimonials.length - 1, prev + 1)
+                  )
                 }
                 className={`transition-opacity ${
-                  activeTestimonial === 2
+                  activeTestimonial === testimonials.length - 1
                     ? "opacity-30 cursor-not-allowed"
                     : "opacity-100 hover:text-[#7745b8]"
                 }`}
-                disabled={activeTestimonial === 2}
+                disabled={activeTestimonial === testimonials.length - 1}
                 aria-label="Next testimonial"
               >
                 <svg
