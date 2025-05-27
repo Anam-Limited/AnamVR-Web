@@ -9,8 +9,8 @@ const features = [
   {
     id: "mood-log",
     title: "Mood Log",
-    color: "bg-[#487ce5]",
-    textColor: "text-white",
+    color: "bg-[#BCDBEB]",
+    textColor: "text-black",
     heading: "Track your emotions",
     subheading: "with daily mood logging",
     description:
@@ -19,8 +19,8 @@ const features = [
   {
     id: "relief-hub",
     title: "Relief Hub",
-    color: "bg-[#7745b8]",
-    textColor: "text-white",
+    color: "bg-[#F5C2D7]",
+    textColor: "text-black",
     heading: "Find relief",
     subheading: "with guided meditations",
     description:
@@ -29,8 +29,8 @@ const features = [
   {
     id: "lessons",
     title: "Lessons",
-    color: "bg-[#3c8c4f]",
-    textColor: "text-white",
+    color: "bg-[#B7EDBB]",
+    textColor: "text-black",
     heading: "Learn CBT techniques",
     subheading: "with expert guidance",
     description:
@@ -39,7 +39,7 @@ const features = [
   {
     id: "vr-hub",
     title: "VR Hub",
-    color: "bg-[#f3d009]",
+    color: "bg-[#FFF5BF]",
     textColor: "text-black",
     heading: "Immersive therapy",
     subheading: "with virtual reality",
@@ -113,7 +113,7 @@ export default function Description() {
     <div className="max-w-7xl mt-8 md:mt-16 mx-auto px-4 py-8 md:py-12">
       <div
         ref={headerAnimation.ref}
-        className={`text-center text-purple-900 mb-10 md:mb-16 flex flex-col items-center 
+        className={`text-center text-[#7745b8] mb-10 md:mb-16 flex flex-col items-center 
             transition-opacity duration-700 ease-out 
             ${headerAnimation.isVisible ? "animate-fade-in" : "opacity-0"}`}
       >
@@ -217,7 +217,7 @@ export default function Description() {
             className={`rounded-full p-2 md:p-3 transition-all bg-white backdrop-blur-sm ${
               activeIndex === 0
                 ? "opacity-30 cursor-not-allowed pointer-events-none"
-                : "hover:bg-white/50"
+                : "hover:bg-black/10"
             }`}
             aria-label="Previous slide"
             disabled={activeIndex === 0}
@@ -229,7 +229,7 @@ export default function Description() {
             className={`rounded-full p-2 md:p-3 transition-all bg-white backdrop-blur-sm ${
               activeIndex === features.length - 1
                 ? "opacity-30 cursor-not-allowed pointer-events-none"
-                : "hover:bg-white/50"
+                : "hover:bg-black/10"
             }`}
             aria-label="Next slide"
             disabled={activeIndex === features.length - 1}
@@ -246,8 +246,8 @@ export default function Description() {
               onClick={() => handleTabClick(index)}
               className={`h-2 rounded-full transition-all ${
                 activeIndex === index
-                  ? "bg-white w-5 md:w-6"
-                  : "bg-white bg-opacity-50 w-2"
+                  ? "bg-gray-700 w-5 md:w-6"
+                  : "bg-gray-700 bg-opacity-50 w-2"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

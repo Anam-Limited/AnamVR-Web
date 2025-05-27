@@ -3,12 +3,11 @@ import LandingPage from "../components/LandingPage";
 import Mission from "../components/Mission";
 import Subscribe from "../components/Subscribe";
 import HeroSection from "../components/HeroSection";
-import AppScreenshot from "../components/AppScreenshot";
 import Testimonial from "../components/Testimonial";
 import BlogPreview from "../components/BlogPreview";
 import Description from "../components/Description";
 import ShopPreview from "../components/ShopPreview";
-import Contact from "../components/Contact";
+import Partners from "../components/Partners";
 import Questions from "../components/Questions";
 
 import "slick-carousel/slick/slick.css";
@@ -22,7 +21,6 @@ export default function App() {
       <LandingPage />
       <main className="max-w-8xl lg:min-w-5xl mx-auto">
         <Description />
-        <Testimonial />
         <div className="max-w-7xl mx-auto px-4 py-16 mt-16">
           <div className="grid grid-cols-1 sm:grid-cols-6 lg:grid-cols-12 gap-6">
             {" "}
@@ -32,8 +30,9 @@ export default function App() {
             <ShopPreview />
           </div>
         </div>
+        <Testimonial />
+        <Partners />
       </main>
-      <Contact />
       <main className="max-w-8xl lg:min-w-5xl mx-auto">
         <Questions />
         <Subscribe />

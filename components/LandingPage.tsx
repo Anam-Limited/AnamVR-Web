@@ -17,28 +17,21 @@ export default function LandingPage() {
   const paragraphAnimation = useScrollAnimation({ delay: 200 });
   const iosButtonAnimation = useScrollAnimation({ delay: 300 });
   const androidButtonAnimation = useScrollAnimation({ delay: 400 });
-  const logosAnimation = useScrollAnimation({ delay: 500 });
   const imageAnimation = useScrollAnimation({ delay: 600 });
 
   return (
-    <div
-      className="px-6 md:px-12 min-h-[860px] items-center flex justify-center"
-      style={{
-        background:
-          "linear-gradient(to bottom right, rgb(255, 255, 255), rgb(234, 207, 255), rgb(168, 137, 240))",
-      }}
-    >
+    <div className="px-6 md:px-12 min-h-[860px] bg-gradient-to-br from-[#FFE3ED] to-[#F7D1C3] items-center flex justify-center">
       <div className="max-w-7xl mx-auto">
         {/* Main Hero Section */}
 
         <div
           ref={heroAnimation.ref}
-          className={`flex flex-col-reverse lg:mt-20 mx-4 md:mx-10 lg:mx-12 mt-36 lg:flex-row items-center justify-between lg:space-x-12 transition-opacity duration-700 ease-out ${
+          className={`flex flex-col lg:mt-0 mx-4 md:mx-10 lg:mx-12 mt-36 lg:flex-row items-center justify-between lg:space-x-12 transition-opacity duration-700 ease-out ${
             heroAnimation.isVisible ? "animate-slide-up" : "opacity-0"
           }`}
         >
           {/* Left side */}
-          <div className="w-full lg:w-1/2 space-y-6">
+          <div className="w-full lg:w-1/2 space-y-6 text-center md:text-start">
             <div
               ref={headingAnimation.ref}
               className={`transition-opacity duration-700 ease-out ${
@@ -46,9 +39,7 @@ export default function LandingPage() {
               }`}
             >
               <h1 className="text-4xl z-50 md:text-6xl font-semibold leading-tight text-black">
-                Reshape your
-                <span className="text-[#7745b8]"> Relationship</span> with
-                <span className="text-[#7745b8]"> Mental Health</span>
+                Reshape your Relationship with Mental Health
               </h1>
             </div>
             <div
@@ -57,12 +48,12 @@ export default function LandingPage() {
                 paragraphAnimation.isVisible ? "animate-fade-in" : "opacity-0"
               }`}
             >
-              <p className="text-lg text-[#7745b8]/80 font-medium">
+              <p className="text-lg text-[#545454] font-medium">
                 AnamVR combines virtual reality with evidence-based therapeutic
                 techniques to help you manage emotions and make life easier.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row items-start justify-start gap-2 md:gap-4">
+            <div className="flex flex-row items-center justify-center md:justify-start gap-2 md:gap-4">
               <div
                 ref={iosButtonAnimation.ref}
                 className={`transition-opacity duration-700 ease-out ${
@@ -94,41 +85,12 @@ export default function LandingPage() {
                 </a>
               </div>
             </div>
-
-            {/* Trusted by slider - Fixed */}
-            <div
-              ref={logosAnimation.ref}
-              className={`pt-4 pb-10 flex flex-col items-start transition-opacity duration-700 ease-out ${
-                logosAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-              }`}
-            >
-              <p className="text-gray-600 font-medium mr-8">
-                Trusted by the world’s leading organizations ↘︎
-              </p>
-              <div className="relative pt-2 overflow-hidden flex-1">
-                {/* Inner container with double content for seamless loop */}
-                <div className="flex whitespace-nowrap">
-                  {/* First set of logos */}
-                  <div className="flex items-center justify-center gap-4">
-                    {trustedLogos.map((logo) => (
-                      <div className="flex-shrink-0">
-                        <img
-                          src={logo}
-                          alt="Companies"
-                          className="h-10 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right side */}
           <div
             ref={imageAnimation.ref}
-            className={`relative w-full lg:w-1/2 h-[700px] lg:h-[750px] mb-12 lg:mb-0 transition-opacity duration-700 ease-out ${
+            className={`relative w-full lg:w-1/2 h-[700px] lg:h-[750px] lg:mb-0 transition-opacity duration-700 ease-out ${
               imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
             }`}
           >
@@ -155,10 +117,6 @@ export default function LandingPage() {
                 {/* Optional: Add a small card if needed for this mockup */}
               </div>
             </div>
-
-            {/* Decorative gradient elements (adjust if needed) */}
-            <div className="absolute -bottom-10 right-10 w-72 h-72 bg-gradient-to-r from-[#eacfff]/70 to-[#bcdbeb]/70 rounded-full opacity-50 blur-3xl -z-10"></div>
-            <div className="absolute -top-16 left-5 w-56 h-56 bg-gradient-to-r from-[#e9ffdb]/70 to-[#eacfff]/70 rounded-full opacity-40 blur-3xl -z-10"></div>
           </div>
         </div>
       </div>
