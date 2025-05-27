@@ -57,7 +57,7 @@ export default function Contact() {
           animation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
-        <div className="rounded-3xl overflow-hidden shadow-lg">
+        <div className="rounded-3xl overflow-hidden shadow-md">
           <div className="grid grid-cols-1 lg:grid-cols-12 bg-gradient-to-br from-[#eacfff]/30 via-[#bcdbeb]/30 to-[#e9ffdb]/30">
             {/* Left side - Contact info */}
             <div className="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between">
@@ -88,13 +88,11 @@ export default function Contact() {
             <div className="lg:col-span-7 bg-white p-8 md:p-12 rounded-tl-3xl rounded-bl-3xl">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="text-[#545454] mb-6">
-                  <h3 className="font-medium mb-1 text-center lg:text-left">
-                    Name <span className="text-[#7745b8]">(required)</span>
-                  </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm mb-1">
-                        First Name
+                        First Name{" "}
+                        <span className="text-[#7745b8]">(required)</span>
                       </label>
                       <input
                         type="text"
@@ -108,7 +106,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <label htmlFor="lastName" className="block text-sm mb-1">
-                        Last Name
+                        Last Name{" "}
+                        <span className="text-[#7745b8]">(required)</span>
                       </label>
                       <input
                         type="text"
@@ -136,23 +135,6 @@ export default function Contact() {
                     required
                     className="w-full px-4 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#7745b8]/50"
                   />
-                </div>
-
-                <div className="flex justify-center lg:justify-start items-center">
-                  <input
-                    type="checkbox"
-                    id="newsletter"
-                    name="newsletter"
-                    checked={formData.newsletter}
-                    onChange={handleCheckboxChange}
-                    className="w-4 h-4 text-[#7745b8] border-gray-300 rounded focus:ring-[#7745b8]"
-                  />
-                  <label
-                    htmlFor="newsletter"
-                    className="ml-2 text-sm text-[#545454]"
-                  >
-                    Sign up for news and updates
-                  </label>
                 </div>
 
                 <div className="text-[#545454]">

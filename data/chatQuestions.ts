@@ -454,6 +454,19 @@ export const faqs: FAQ[] = [
       "Can I track my progress?",
     ],
   },
+  {
+    question: "How can I contact AnamVR?",
+    answer:
+      "Please choose the appropriate contact form based on your needs:\n\n" +
+      "• Sales (for businesses): <a href='/for-organisations#demo-section' target='_blank' rel='noopener noreferrer' style=\"color: #3B82F6; text-decoration: underline;\">Go to business demo form</a>\n" +
+      "• Support: <a href='/for-individuals#contact-us' target='_blank' rel='noopener noreferrer' style=\"color: #3B82F6; text-decoration: underline;\">Go to support form</a>\n",
+    category: "support",
+    relatedQuestions: [
+      "How do I contact support?",
+      "Can I get a demo for my company?",
+      "Is there a version for businesses?",
+    ],
+  },
 ];
 
 export const popularQuestions = {
@@ -478,7 +491,7 @@ export const popularQuestions = {
     "How do I cancel my subscription?",
   ],
   support: [
-    "How do I contact support?",
+    "How can I contact AnamVR?",
     "The app isn't working—what should I do?",
     "How do I reset my password?",
   ],

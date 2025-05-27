@@ -54,7 +54,7 @@ export default function Questions() {
           <span className="font-semibold text-5xl">FAQs</span>
         </div>
 
-        <div className="flex flex-col gap-6 px-48">
+        <div className="flex flex-col gap-6 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-48">
           {questions.map((item, index) => (
             <div
               key={index}

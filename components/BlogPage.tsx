@@ -94,7 +94,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <section className="w-full min-h-[860px] pt-44 pb-20 px-16 mb-16 bg-gradient-to-br from-[#bcdbeb] to-[#eacfff]">
+      <section className="w-full min-h-[860px] pt-44 pb-20 px-6 lg:px-16 mb-16 bg-gradient-to-br from-[#bcdbeb] to-[#eacfff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-start">
             <h1

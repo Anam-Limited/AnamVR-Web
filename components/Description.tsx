@@ -214,7 +214,7 @@ export default function Description() {
         <div className="hidden md:flex flex-row items-center mt-4 md:mt-6 justify-center gap-8">
           <button
             onClick={handlePrevious}
-            className={`rounded-full p-2 md:p-3 transition-all bg-white/30 backdrop-blur-sm shadow-md ${
+            className={`rounded-full p-2 md:p-3 transition-all bg-white backdrop-blur-sm ${
               activeIndex === 0
                 ? "opacity-30 cursor-not-allowed pointer-events-none"
                 : "hover:bg-white/50"
@@ -226,7 +226,7 @@ export default function Description() {
           </button>
           <button
             onClick={handleNext}
-            className={`rounded-full p-2 md:p-3 transition-all bg-white/30 backdrop-blur-sm shadow-md ${
+            className={`rounded-full p-2 md:p-3 transition-all bg-white backdrop-blur-sm ${
               activeIndex === features.length - 1
                 ? "opacity-30 cursor-not-allowed pointer-events-none"
                 : "hover:bg-white/50"

@@ -187,6 +187,15 @@ export default function Chatbot() {
         ? "calc(60vh - 140px)"
         : "560px";
 
+  // Add this helper function to render HTML content safely
+  const renderAnswer = (answer) => {
+    return (
+      <div
+        dangerouslySetInnerHTML={{ __html: answer.replace(/\n/g, "<br>") }}
+      />
+    );
+  };
+
   return (
     <div className="fixed z-50" style={containerStyle as React.CSSProperties}>
       {/* Header */}
@@ -249,7 +258,7 @@ export default function Chatbot() {
                     : "bg-white text-[#545454] shadow-sm"
                 }`}
               >
-                {msg.text}
+                {msg.sender === "bot" ? renderAnswer(msg.text) : msg.text}
               </div>
             </div>
           ))}

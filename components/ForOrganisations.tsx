@@ -67,34 +67,34 @@ export default function ForOrganisationsEnhanced() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative order-2 lg:order-1">
-            <h1 className="text-5xl md:text-6xl font-bold text-black mb-8 leading-tight">
-              AnamVR for <br />
-              <span className="relative inline-block">
-                <span className="relative z-10">Businesses</span>
-                <span className="absolute bottom-2 left-0 w-full h-3 bg-[#e55848] -z-10"></span>
-              </span>
-            </h1>
-            <p className="text-xl text-[#545454] mb-10 max-w-lg">
-              AnamVR makes it easy to deliver meaningful, measurable mental
-              health support across your organisation. With immersive,
-              clinically-backed tools that employees actually want to use — and
-              insights that help you track impact — it's wellness that works for
-              everyone.
-            </p>
-            <div className="flex flex-row gap-2">
-              <a
-                href="#demo-section"
-                className="bg-white text-black px-6 py-3 rounded-full font-semibold text-lg hover:bg-opacity-90 transition duration-300 flex items-center justify-center"
-              >
-                Book a Demo
-                <ChevronRight className="ml-2 h-5 w-5" />
-              </a>
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2 w-full">
+              <h1 className="text-5xl md:text-6xl font-bold text-black mb-8 leading-tight">
+                AnamVR for <br />
+                <span className="relative inline-block">
+                  <span className="relative z-10">Businesses</span>
+                  <span className="absolute bottom-2 left-0 w-full h-3 bg-[#e55848] -z-10"></span>
+                </span>
+              </h1>
+              <p className="text-xl text-[#545454] mb-10 max-w-lg">
+                AnamVR makes it easy to deliver meaningful, measurable mental
+                health support across your organisation. With immersive,
+                clinically-backed tools that employees actually want to use —
+                and insights that help you track impact — it's wellness that
+                works for everyone.
+              </p>
+              <div className="flex flex-row gap-2">
+                <a
+                  href="#demo-section"
+                  className="bg-white text-black px-6 py-3 rounded-full font-semibold text-lg hover:bg-opacity-90 transition duration-300 flex items-center justify-center"
+                >
+                  Book a Demo
+                  <ChevronRight className="ml-2 h-5 w-5" />
+                </a>
+              </div>
             </div>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="hidden lg:block relative">
-              {/* Placeholder for mockup image */}
+            <div className="lg:w-1/2 w-full hidden lg:block relative">
+              <img src={mockup} alt="AnamVR for Business" className="w-full" />
             </div>
           </div>
         </div>
@@ -107,9 +107,17 @@ export default function ForOrganisationsEnhanced() {
           benefitsAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
-        <div className="max-w-6xl flex flex-col lg:flex-row-reverse gap-10 mx-auto transition-opacity duration-700 ease-out">
-          {/* Right Side - Benefits */}
-          <div className="flex flex-col gap-1">
+        <div className="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row-reverse items-center gap-10">
+          {/* Image Side */}
+          <div className="lg:w-1/2 w-full">
+            <img
+              src={mockup || "/placeholder.svg"}
+              alt="AnamVR Mockup"
+              className="w-full"
+            />
+          </div>
+          {/* Text and Accordion Side */}
+          <div className="lg:w-1/2 w-full flex flex-col gap-1">
             <div className="text-start mb-4">
               <h2 className="text-lg font-semibold text-[#545454] mb-2">
                 Why AnamVR
@@ -119,7 +127,6 @@ export default function ForOrganisationsEnhanced() {
                 needs and fits into your lifestyle.
               </p>
             </div>
-
             {/* Accordion-style benefits */}
             {(() => {
               const benefits = [
@@ -198,7 +205,6 @@ export default function ForOrganisationsEnhanced() {
                         <span className="text-[#545454]/70 mr-4 text-sm font-mono w-7 text-right">
                           {String(index + 1).padStart(2, "0")}
                         </span>
-
                         <div className="flex flex-row gap-4 items-center flex-1">
                           <div
                             className={`${benefit.color} text-white p-2 rounded-lg flex items-center justify-center shrink-0 mt-1`}
@@ -211,7 +217,6 @@ export default function ForOrganisationsEnhanced() {
                             {benefit.title}
                           </span>
                         </div>
-
                         <div className="ml-auto flex items-center">
                           {expandedBenefitIndex === index ? (
                             <svg
@@ -244,7 +249,6 @@ export default function ForOrganisationsEnhanced() {
                           )}
                         </div>
                       </div>
-
                       {/* Expandable content */}
                       <div
                         className={`overflow-hidden text-start mt-3 transition-all duration-300 ease-in-out ${
@@ -264,14 +268,6 @@ export default function ForOrganisationsEnhanced() {
                 );
               });
             })()}
-          </div>
-          {/* Left Side - Image */}
-          <div>
-            <img
-              src={mockup || "/placeholder.svg"}
-              alt="AnamVR Mockup"
-              className="w-full"
-            />
           </div>
         </div>
       </section>
@@ -296,7 +292,7 @@ export default function ForOrganisationsEnhanced() {
           </div>
 
           {/* Main Benefits Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {/* Cost Savings Card */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <div className="flex items-start gap-4 mb-6">
@@ -571,7 +567,7 @@ export default function ForOrganisationsEnhanced() {
       <section
         id="demo-section"
         ref={demoAnimation.ref}
-        className={`py-36 px-4 bg-[#3c8c4f] text-white transition-opacity duration-700 ease-out ${
+        className={`py-36 px-6 bg-[#3c8c4f] text-white transition-opacity duration-700 ease-out ${
           demoAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
@@ -603,7 +599,7 @@ export default function ForOrganisationsEnhanced() {
               <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
               <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-[#f3d009]/20 rounded-full blur-xl"></div>
 
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20 w-full max-w-3xl mx-auto">
                 {/* Thank you message after form submission */}
                 {!formSubmitted ? (
                   <form
@@ -620,7 +616,7 @@ export default function ForOrganisationsEnhanced() {
 
                       formData.append(
                         "access_key",
-                        "f408a614-cb91-4835-887a-3bdffa5addef"
+                        "e0d08ccb-aa34-4b38-9068-8531ab111d36"
                       );
                       formData.append(
                         "subject",
@@ -657,8 +653,8 @@ export default function ForOrganisationsEnhanced() {
                         );
                     }}
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
+                    <div className="flex flex-col md:flex-row md:flex-wrap gap-4">
+                      <div className="flex-1 min-w-[200px]">
                         <label
                           htmlFor="firstName"
                           className="block text-sm font-medium text-[#545454] mb-2"
@@ -673,7 +669,7 @@ export default function ForOrganisationsEnhanced() {
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#545454] bg-white/80"
                         />
                       </div>
-                      <div>
+                      <div className="flex-1 min-w-[200px]">
                         <label
                           htmlFor="lastName"
                           className="block text-sm font-medium text-[#545454] mb-2"
@@ -690,40 +686,41 @@ export default function ForOrganisationsEnhanced() {
                       </div>
                     </div>
 
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-[#545454] mb-2"
-                      >
-                        Work Email *
-                      </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#545454] bg-white/80"
-                      />
+                    <div className="flex flex-col md:flex-row md:flex-wrap gap-4">
+                      <div className="flex-1 min-w-[200px]">
+                        <label
+                          htmlFor="email"
+                          className="block text-sm font-medium text-[#545454] mb-2"
+                        >
+                          Work Email *
+                        </label>
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#545454] bg-white/80"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-[200px]">
+                        <label
+                          htmlFor="company"
+                          className="block text-sm font-medium text-[#545454] mb-2"
+                        >
+                          Company *
+                        </label>
+                        <input
+                          id="company"
+                          name="company"
+                          type="text"
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#545454] bg-white/80"
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <label
-                        htmlFor="company"
-                        className="block text-sm font-medium text-[#545454] mb-2"
-                      >
-                        Company *
-                      </label>
-                      <input
-                        id="company"
-                        name="company"
-                        type="text"
-                        required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#545454] bg-white/80"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
+                    <div className="flex flex-col md:flex-row md:flex-wrap gap-4">
+                      <div className="flex-1 min-w-[200px]">
                         <label
                           htmlFor="size"
                           className="block text-sm font-medium text-[#545454] mb-2"
@@ -744,7 +741,7 @@ export default function ForOrganisationsEnhanced() {
                           <option value="1001+">1001+ employees</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="flex-1 min-w-[200px]">
                         <label
                           htmlFor="role"
                           className="block text-sm font-medium text-[#545454] mb-2"
@@ -769,34 +766,21 @@ export default function ForOrganisationsEnhanced() {
                       </div>
                     </div>
 
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-medium text-[#545454] mb-2"
-                      >
-                        Phone Number (optional)
-                      </label>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#545454] bg-white/80"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium text-[#545454] mb-2"
-                      >
-                        Tell us about your needs (optional)
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={4}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#545454] bg-white/80 resize-none"
-                      ></textarea>
+                    <div className="flex flex-col md:flex-row md:flex-wrap gap-4">
+                      <div className="flex-1 min-w-[200px]">
+                        <label
+                          htmlFor="message"
+                          className="block text-sm font-medium text-[#545454] mb-2"
+                        >
+                          Tell us about your needs (optional)
+                        </label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          rows={4}
+                          className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[#545454] bg-white/80 resize-none"
+                        ></textarea>
+                      </div>
                     </div>
 
                     <button
