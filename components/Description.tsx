@@ -4,6 +4,7 @@ import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import campFireVR from "../src/assets/campFireVR.png";
 
 const features = [
   {
@@ -17,6 +18,7 @@ const features = [
       "Easily track your mood throughout the day, with the flexibility to log up to three times daily.",
       "Dive deeper into your emotional patterns and progress with our robust analytics, providing valuable insights into your mood fluctuations over time.",
     ],
+    image: campFireVR,
   },
   {
     id: "relief-hub",
@@ -29,6 +31,7 @@ const features = [
       "Find solace and support in our curated selection of situational-based meditations within the Relief Hub.",
       "Custom made to address various presentations of mood and anxiety-related issues, these meditations are designed to empower you to navigate life's challenges.",
     ],
+    image: campFireVR,
   },
   {
     id: "lessons",
@@ -41,6 +44,7 @@ const features = [
       "Delve into the fundamentals of cognitive-behavioural therapy (CBT) with our engaging lessons.",
       "Learn practical strategies to apply CBT principles to your daily life, equipping yourself with a comprehensive toolkit to manage life's curveballs effectively.",
     ],
+    image: campFireVR,
   },
   {
     id: "vr-hub",
@@ -53,6 +57,7 @@ const features = [
       "By integrating virtual reality (VR), gamification, and CBT techniques, we ensure effective treatment is readily available in the comfort of your own home.",
       "Immerse yourself in our VR-based exercises aimed at enhancing anxiety management techniques.",
     ],
+    image: campFireVR,
   },
 ];
 
@@ -185,15 +190,14 @@ export default function Description() {
               className={`w-full flex-shrink-0 ${feature.color} rounded-xl md:rounded-3xl overflow-hidden transition-all duration-700`}
             >
               <div className="flex flex-col-reverse md:grid md:grid-cols-2 min-h-[400px] md:min-h-[550px] py-6">
-                <div className="hidden md:flex items-center justify-center p-8 md:p-20">
-                  {/* Placeholder for feature image or illustration */}
-                  <div className="bg-white bg-opacity-20 rounded-2xl w-full h-4/5 flex items-center justify-center">
-                    <span className="text-white text-5xl md:text-6xl">
-                      {feature.id === "mood-log" && "📊"}
-                      {feature.id === "relief-hub" && "🧘‍♀️"}
-                      {feature.id === "lessons" && "📚"}
-                      {feature.id === "vr-hub" && "🥽"}
-                    </span>
+                <div className="flex p-6 md:p-10 lg:p-16 pb-10 md:pb-0 items-center justify-center">
+                  {/* Square cropped image for md+ screens, full image for mobile */}
+                  <div className="w-full md:aspect-square md:overflow-hidden rounded-lg">
+                    <img
+                      src={feature.image}
+                      alt={`${feature.title} illustration`}
+                      className="w-full h-auto md:h-full md:w-auto md:min-w-full md:min-h-full object-cover md:object-center"
+                    />
                   </div>
                 </div>
                 <div className="p-6 md:p-10 lg:p-16 flex flex-col justify-center transition-all duration-700 animate-fade-in">
