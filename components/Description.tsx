@@ -141,7 +141,7 @@ export default function Description() {
         </span>
       </div>
 
-      {/* Tabs */}
+      {/* Tabs with matching border colors */}
       <div
         ref={tabsAnimation.ref}
         className={`flex justify-center mb-6 md:mb-8 transition-opacity duration-700 ease-out ${
@@ -149,19 +149,29 @@ export default function Description() {
         }`}
       >
         <div className="flex space-x-1 md:space-x-2 p-1 bg-gray-300 rounded-full overflow-x-auto no-scrollbar max-w-full">
-          {features.map((feature, index) => (
-            <button
-              key={feature.id}
-              onClick={() => handleTabClick(index)}
-              className={`px-3 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-lg font-semibold transition-all duration-200 whitespace-nowrap ${
-                activeIndex === index
-                  ? "border-2 border-[#487CE5] text-[#487CE5]"
-                  : "border-2 border-transparent bg-transparent text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              {feature.title}
-            </button>
-          ))}
+          {features.map((feature, index) => {
+            // Define matching border colors for each tab
+            const borderColors = {
+              "mood-log": "border-[#487CE5] text-[#2b2b2b]",
+              "relief-hub": "border-[#F05984] text-[#2b2b2b]",
+              lessons: "border-[#3C8C4F] text-[#2b2b2b]",
+              "vr-hub": "border-[#F3D009] text-[#2b2b2b",
+            };
+
+            return (
+              <button
+                key={feature.id}
+                onClick={() => handleTabClick(index)}
+                className={`px-3 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-lg font-semibold transition-all duration-200 whitespace-nowrap ${
+                  activeIndex === index
+                    ? `border-2 ${borderColors[feature.id]}`
+                    : "border-2 border-transparent bg-transparent text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                {feature.title}
+              </button>
+            );
+          })}
         </div>
       </div>
 

@@ -30,15 +30,16 @@ export default function LandingPage() {
           }`}
         >
           {/* Left side */}
-          <div className="w-full lg:w-1/2 space-y-6 text-center md:text-start">
+          <div className="w-full lg:w-7/12 space-y-6 text-center md:text-start">
             <div
               ref={headingAnimation.ref}
               className={`transition-opacity duration-700 ease-out ${
                 headingAnimation.isVisible ? "animate-slide-up" : "opacity-0"
               }`}
             >
-              <h1 className="text-4xl z-50 md:text-6xl font-semibold leading-spacious text-[#2b2b2b]">
-                Reshape your Relationship with Mental Health
+              {/* Updated title: Oxygen bold font, size 60, two lines */}
+              <h1 className="font-['Oxygen'] text-[#2b2b2b] font-bold text-[52px] leading-[1.3]">
+                Reshape Your Relationship with Mental Health
               </h1>
             </div>
             <div
@@ -64,10 +65,11 @@ export default function LandingPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
+                  {/* Made badges slightly smaller */}
                   <img
                     src={appleBadge}
                     alt="Get it on App Store"
-                    className="h-12 md:h-14 lg:h-16"
+                    className="h-10 md:h-12 lg:h-14"
                   />
                 </a>
               </div>
@@ -84,28 +86,30 @@ export default function LandingPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
+                  {/* Made badges slightly smaller */}
                   <img
                     src={androidBadge}
                     alt="Get it on Google Play"
-                    className="h-12 md:h-14 lg:h-16"
+                    className="h-10 md:h-12 lg:h-14"
                   />
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right side - Simplified and responsive */}
+          {/* Right side - Scaled down mockup */}
           <div
             ref={imageAnimation.ref}
-            className={`w-full pb-14 md:pb-0 lg:w-1/2 mt-12 flex justify-center lg:justify-end transition-opacity duration-700 ease-out ${
+            className={`w-full pb-14 md:pb-0 lg:w-5/12 mt-12 flex justify-center lg:justify-end transition-opacity duration-700 ease-out ${
               imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
             }`}
           >
-            <div className="relative max-w-sm md:max-w-md lg:max-w-lg">
+            {/* Reduced max-width classes to scale down the mockup */}
+            <div className="relative max-w-xs md:max-w-sm lg:max-w-md">
               <img
                 src={AppMockupLanding || "/placeholder.svg"}
                 alt="AnamVR App Mockup"
-                className="w-full h-auto object-contain"
+                className="w-96 h-auto object-contain"
               />
             </div>
           </div>

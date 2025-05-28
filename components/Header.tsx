@@ -43,12 +43,19 @@ export default function Header() {
       <header
         className={`flex items-center min-w-full lg:min-w-5xl mx-auto justify-between py-4 px-6 md:px-14 fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${
           scrolled || (typeof window !== "undefined" && window.innerWidth < 768)
-            ? "bg-white/90 shadow-sm"
+            ? "bg-[#fafafa]/90 shadow-sm"
             : "bg-transparent"
         }`}
       >
         {/* Left navigation */}
         <nav className="hidden md:flex items-center text-sm lg:text-base font-medium space-x-4 lg:space-x-6">
+          <a
+            href="home"
+            className="text-black hover:text-[#7745b8] transition-colors relative group"
+          >
+            Home
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
+          </a>
           <a
             href="about"
             className="text-black hover:text-[#7745b8] transition-colors relative group"
@@ -104,7 +111,7 @@ export default function Header() {
           </a>
           <a
             href="/for-organisations"
-            className="bg-white text-[#7745b8] border-2 border-[#7745b8] px-4 py-2 lg:px-5 lg:py-1.5 rounded-full hover:bg-[#7745b8] hover:border-[#7745b8] hover:text-white transition-colors shadow-sm flex items-center justify-center"
+            className="bg-[#7745b8] text-white px-4 py-2 lg:px-5 lg:py-2 rounded-full hover:bg-[#572994] transition-colors shadow-md flex items-center justify-center"
           >
             For Organisations
           </a>
@@ -120,7 +127,7 @@ export default function Header() {
             />
           </a>
           <button
-            className="p-2 rounded-full bg-white/80 text-[#7745b8] shadow-sm border border-[#eacfff] hover:bg-[#eacfff] transition-colors"
+            className="p-2 rounded-full bg-[#fafafa]/80 text-[#7745b8] shadow-sm border border-[#eacfff] hover:bg-[#eacfff] transition-colors"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -174,6 +181,7 @@ export default function Header() {
             {" "}
             {/* Main links scrollable */}
             {[
+              { href: "/home", label: "Home" },
               { href: "/about", label: "About" },
               { href: "/shop", label: "Shop" },
               { href: "/blog", label: "Blog" },
@@ -208,7 +216,7 @@ export default function Header() {
             </a>
             <a
               href="/for-organisations"
-              className="flex w-full items-center text-lg justify-center bg-white text-[#7745b8] border-2 border-[#7745b8] px-6 py-3 rounded-full hover:bg-[#7745b8] hover:text-white transition-all duration-200 shadow-md hover:shadow-purple-200/50 transform hover:-translate-y-0.5"
+              className="flex w-full items-center text-lg justify-center bg-[#7745b8] text-white px-6 py-3.5 rounded-full hover:bg-opacity-90 transition-all duration-200 shadow-lg hover:shadow-purple-300/50 transform hover:-translate-y-0.5"
               onClick={toggleMobileMenu}
             >
               For Organisations

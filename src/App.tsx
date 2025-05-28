@@ -21,7 +21,6 @@ export default function App() {
       <LandingPage />
       <main className="max-w-8xl lg:min-w-5xl mx-auto">
         <Description />
-        <Partners />
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="grid grid-cols-1 sm:grid-cols-6 lg:grid-cols-12 gap-6">
             {" "}
@@ -34,6 +33,7 @@ export default function App() {
         </div>
         <Testimonial />
       </main>
+      <Partners />
       <main className="max-w-8xl lg:min-w-5xl mx-auto">
         <Questions />
         <Subscribe />
