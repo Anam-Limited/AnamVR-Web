@@ -172,14 +172,22 @@ export default function ForIndividuals() {
                   of your own home.
                 </p>
                 <div className="flex flex-col md:flex-row gap-2">
-                  <a href="/download">
+                  <a
+                    href="https://apps.apple.com/ie/app/anamvr/id6499339767"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img
                       src={appleBadge}
                       alt="Download on the App Store"
                       className="h-16 w-auto"
                     />
                   </a>
-                  <a href="/download">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img
                       src={androidBadge}
                       alt="Get it on Google Play"
@@ -713,14 +721,22 @@ export default function ForIndividuals() {
 
                 {/* App store badges */}
                 <div className="flex flex-col md:flex-row gap-4">
-                  <a href="/download">
+                  <a
+                    href="https://apps.apple.com/ie/app/anamvr/id6499339767"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img
                       src={appleBadge}
                       alt="Download on the App Store"
                       className="h-14 w-auto"
                     />
                   </a>
-                  <a href="/download">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img
                       src={androidBadge}
                       alt="Get it on Google Play"

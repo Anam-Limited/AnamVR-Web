@@ -83,7 +83,10 @@ export default function Header() {
         </nav>
 
         {/* Logo (center) */}
-        <a href="/" className="flex items-center justify-center">
+        <a
+          href="/"
+          className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+        >
           <img
             src={anamvrLogo || "/placeholder.svg"}
             className="w-14 h-auto lg:w-16 transition-transform hover:scale-105 duration-300"

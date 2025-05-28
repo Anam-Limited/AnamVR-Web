@@ -3,8 +3,11 @@
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import BannerLessons from "../src/assets/Banner_Lessons.jpg";
+import BannerMoodLog from "../src/assets/Banner_MoodLog.jpg";
+import BannerReliefHub from "../src/assets/Banner_ReliefHub.jpg";
+import BannerVR from "../src/assets/Banner_VR.jpg";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import campFireVR from "../src/assets/campFireVR.png";
 
 const features = [
   {
@@ -18,7 +21,7 @@ const features = [
       "Easily track your mood throughout the day, with the flexibility to log up to three times daily.",
       "Dive deeper into your emotional patterns and progress with our robust analytics, providing valuable insights into your mood fluctuations over time.",
     ],
-    image: campFireVR,
+    image: BannerMoodLog,
   },
   {
     id: "relief-hub",
@@ -31,7 +34,7 @@ const features = [
       "Find solace and support in our curated selection of situational-based meditations within the Relief Hub.",
       "Custom made to address various presentations of mood and anxiety-related issues, these meditations are designed to empower you to navigate life's challenges.",
     ],
-    image: campFireVR,
+    image: BannerReliefHub,
   },
   {
     id: "lessons",
@@ -44,7 +47,7 @@ const features = [
       "Delve into the fundamentals of cognitive-behavioural therapy (CBT) with our engaging lessons.",
       "Learn practical strategies to apply CBT principles to your daily life, equipping yourself with a comprehensive toolkit to manage life's curveballs effectively.",
     ],
-    image: campFireVR,
+    image: BannerLessons,
   },
   {
     id: "vr-hub",
@@ -57,7 +60,7 @@ const features = [
       "By integrating virtual reality (VR), gamification, and CBT techniques, we ensure effective treatment is readily available in the comfort of your own home.",
       "Immerse yourself in our VR-based exercises aimed at enhancing anxiety management techniques.",
     ],
-    image: campFireVR,
+    image: BannerVR,
   },
 ];
 
@@ -190,13 +193,13 @@ export default function Description() {
               className={`w-full flex-shrink-0 ${feature.color} rounded-xl md:rounded-3xl overflow-hidden transition-all duration-700`}
             >
               <div className="flex flex-col-reverse md:grid md:grid-cols-2 min-h-[400px] md:min-h-[550px] py-6">
-                <div className="flex p-6 md:p-10 lg:p-16 pb-10 md:pb-0 items-center justify-center">
-                  {/* Square cropped image for md+ screens, full image for mobile */}
-                  <div className="w-full md:aspect-square md:overflow-hidden rounded-lg">
+                <div className="hidden md:flex items-center justify-center p-8 md:p-20">
+                  {/* Placeholder for feature image or illustration */}
+                  <div className="bg-opacity-20 rounded-2xl w-full h-4/5 flex items-center justify-center">
                     <img
                       src={feature.image}
-                      alt={`${feature.title} illustration`}
-                      className="w-full h-auto md:h-full md:w-auto md:min-w-full md:min-h-full object-cover md:object-center"
+                      alt={feature.heading}
+                      className="text-white text-5xl md:text-6xl"
                     />
                   </div>
                 </div>

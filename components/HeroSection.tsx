@@ -1,7 +1,5 @@
 import { ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import appleBadge from "../src/assets/appstorebadge.svg";
-import googlebadge from "../src/assets/googlebadge.svg";
 
 export default function HeroSection() {
   const animation = useScrollAnimation({ delay: 100 });

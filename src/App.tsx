@@ -5,6 +5,7 @@ import Subscribe from "../components/Subscribe";
 import HeroSection from "../components/HeroSection";
 import Testimonial from "../components/Testimonial";
 import BlogPreview from "../components/BlogPreview";
+import ContributorsPreview from "../components/ContributorsPreview";
 import Description from "../components/Description";
 import ShopPreview from "../components/ShopPreview";
 import Partners from "../components/Partners";
@@ -28,6 +29,7 @@ export default function App() {
             <Mission />
             <BlogPreview />
             <ShopPreview />
+            <ContributorsPreview />
           </div>
         </div>
         <Testimonial />

@@ -59,7 +59,11 @@ export default function LandingPage() {
                   iosButtonAnimation.isVisible ? "animate-fade-in" : "opacity-0"
                 }`}
               >
-                <a href="/download">
+                <a
+                  href="https://apps.apple.com/ie/app/anamvr/id6499339767"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img
                     src={appleBadge}
                     alt="Get it on App Store"
@@ -75,7 +79,11 @@ export default function LandingPage() {
                     : "opacity-0"
                 }`}
               >
-                <a href="/download">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img
                     src={androidBadge}
                     alt="Get it on Google Play"

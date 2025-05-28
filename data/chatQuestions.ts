@@ -29,7 +29,7 @@ export const faqs: FAQ[] = [
   {
     question: "How do I download or install AnamVR?",
     answer:
-      "You can download AnamVR from the App Store or Google Play. Visit our Download page for direct links.",
+      "You can download AnamVR from the following links:<br/><br/>• <a href='https://play.google.com/store/apps/details?id=com.anamvr&hl=en' target='_blank' rel='noopener noreferrer' style=\"color: #3B82F6;\">Google Play Store</a><br/>• <a href='https://apps.apple.com/ie/app/anamvr/id6499339767' target='_blank' rel='noopener noreferrer' style=\"color: #3B82F6;\">Apple App Store</a>",
     category: "technical",
     relatedQuestions: [
       "What devices are supported?",

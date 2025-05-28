@@ -12,6 +12,7 @@ import { ChatbotProvider } from "../context/ChatbotContext.tsx";
 import Chatbot from "../components/Chatbot";
 import ForIndividuals from "../components/ForIndividuals.tsx";
 import ForOrganisations from "../components/ForOrganisations.tsx";
+import Contributors from "../components/Contributors.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/blog/:blogId" element={<BlogContent />} />
             <Route path="for-individuals" element={<ForIndividuals />} />
             <Route path="for-organisations" element={<ForOrganisations />} />
+            <Route path="contributors" element={<Contributors />} />
           </Route>
         </Routes>
         <Chatbot />

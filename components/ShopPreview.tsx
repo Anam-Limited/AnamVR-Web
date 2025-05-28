@@ -8,7 +8,7 @@ export default function ShopPreview() {
   return (
     <div
       ref={animation.ref}
-      className={`md:col-span-6 lg:col-span-8 sm:col-span-3 bg-blue-100 p-6 rounded-3xl flex flex-col justify-between transition-opacity duration-700 ease-out ${
+      className={`md:col-span-3 lg:col-span-5 sm:col-span-3 bg-blue-100 p-6 rounded-3xl flex flex-col justify-between transition-opacity duration-700 ease-out ${
         animation.isVisible ? "animate-slide-up" : "opacity-0"
       }`}
     >
@@ -16,7 +16,7 @@ export default function ShopPreview() {
         <ShoppingCart size={18} className="text-blue-900 mr-2" />
         Shop
       </h3>
-      <div className="flex-grow flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-6">
+      <div className="flex-grow flex flex-col-reverse sm:flex-row items-start md:items-start justify-between gap-6">
         {/* Left Side: Pricing and Features */}
         <div className="min-h-[250px] flex flex-col">
           <div className="mb-4">
