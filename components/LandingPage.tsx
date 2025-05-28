@@ -38,7 +38,7 @@ export default function LandingPage() {
                 headingAnimation.isVisible ? "animate-slide-up" : "opacity-0"
               }`}
             >
-              <h1 className="text-4xl z-50 md:text-6xl font-semibold leading-tight text-black">
+              <h1 className="text-4xl z-50 md:text-6xl font-semibold leading-tight text-[#2b2b2b]">
                 Reshape your Relationship with Mental Health
               </h1>
             </div>
@@ -48,7 +48,7 @@ export default function LandingPage() {
                 paragraphAnimation.isVisible ? "animate-fade-in" : "opacity-0"
               }`}
             >
-              <p className="text-lg text-[#545454] font-medium">
+              <p className="text-lg text-[#2b2b2b] font-medium">
                 AnamVR combines virtual reality with evidence-based therapeutic
                 techniques to help you manage emotions and make life easier.
               </p>

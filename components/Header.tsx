@@ -50,13 +50,6 @@ export default function Header() {
         {/* Left navigation */}
         <nav className="hidden md:flex items-center text-sm lg:text-base font-medium space-x-4 lg:space-x-6">
           <a
-            href="/"
-            className="text-black hover:text-[#7745b8] transition-colors relative group"
-          >
-            Home
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a
             href="about"
             className="text-black hover:text-[#7745b8] transition-colors relative group"
           >
@@ -90,13 +83,13 @@ export default function Header() {
         </nav>
 
         {/* Logo (center) */}
-        <div className="flex items-center justify-center">
+        <a href="/" className="flex items-center justify-center">
           <img
             src={anamvrLogo || "/placeholder.svg"}
             className="w-14 h-auto lg:w-16 transition-transform hover:scale-105 duration-300"
             alt="AnamVR Logo"
           />
-        </div>
+        </a>
 
         {/* Right section buttons */}
         <div className="hidden md:flex items-center text-sm lg:text-base font-medium space-x-4 lg:space-x-6">
@@ -150,19 +143,14 @@ export default function Header() {
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Menu header with close button */}
-        <div className="flex items-center justify-between p-5 border-b border-purple-100">
-          <img
-            src={anamvrLogo || "/placeholder.svg"}
-            className="w-12 h-auto" // Slightly smaller logo for balance
-            alt="AnamVR Logo"
-          />
+        {/* Menu header with close button properly aligned to right */}
+        <div className="flex justify-end items-center p-5 border-b border-purple-100 w-full">
           <button
             onClick={toggleMobileMenu}
-            className="p-2 rounded-full text-purple-600 hover:bg-purple-100/80 hover:text-purple-800 transition-colors"
+            className="p-2 rounded-full bg-gray-200 text-black transition-colors"
             aria-label="Close menu"
           >
-            <X size={28} /> {/* Slightly larger close icon */}
+            <X size={28} />
           </button>
         </div>
 
@@ -174,7 +162,6 @@ export default function Header() {
             {" "}
             {/* Main links scrollable */}
             {[
-              { href: "/", label: "Home" },
               { href: "/about", label: "About" },
               { href: "/shop", label: "Shop" },
               { href: "/blog", label: "Blog" },

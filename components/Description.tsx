@@ -10,41 +10,49 @@ const features = [
     id: "mood-log",
     title: "Mood Log",
     color: "bg-[#BCDBEB]",
-    textColor: "text-black",
+    textColor: "text-[#2b2b2b]",
     heading: "Track your emotions",
     subheading: "with daily mood logging",
-    description:
-      "Easily track your mood throughout the day, with the flexibility to log up to three times daily. Dive deeper into your emotional patterns and progress with our robust analytics, providing valuable insights into your mood fluctuations over time.",
+    description: [
+      "Easily track your mood throughout the day, with the flexibility to log up to three times daily.",
+      "Dive deeper into your emotional patterns and progress with our robust analytics, providing valuable insights into your mood fluctuations over time.",
+    ],
   },
   {
     id: "relief-hub",
     title: "Relief Hub",
     color: "bg-[#F5C2D7]",
-    textColor: "text-black",
+    textColor: "text-[#2b2b2b]",
     heading: "Find relief",
     subheading: "with guided meditations",
-    description:
-      "Find solace and support in our curated selection of situational-based meditations within the Relief Hub. Custom made to address various presentations of mood and anxiety-related issues, these meditations are designed to empower you to navigate life's challenges.",
+    description: [
+      "Find solace and support in our curated selection of situational-based meditations within the Relief Hub.",
+      "Custom made to address various presentations of mood and anxiety-related issues, these meditations are designed to empower you to navigate life's challenges.",
+    ],
   },
   {
     id: "lessons",
     title: "Lessons",
     color: "bg-[#B7EDBB]",
-    textColor: "text-black",
+    textColor: "text-[#2b2b2b]",
     heading: "Learn CBT techniques",
     subheading: "with expert guidance",
-    description:
-      "Delve into the fundamentals of cognitive-behavioural therapy (CBT) with our engaging lessons. Learn practical strategies to apply CBT principles to your daily life, equipping yourself with a comprehensive toolkit to manage life's curveballs effectively.",
+    description: [
+      "Delve into the fundamentals of cognitive-behavioural therapy (CBT) with our engaging lessons.",
+      "Learn practical strategies to apply CBT principles to your daily life, equipping yourself with a comprehensive toolkit to manage life's curveballs effectively.",
+    ],
   },
   {
     id: "vr-hub",
     title: "VR Hub",
     color: "bg-[#FFF5BF]",
-    textColor: "text-black",
+    textColor: "text-[#2b2b2b]",
     heading: "Immersive therapy",
     subheading: "with virtual reality",
-    description:
-      "By integrating virtual reality (VR), gamification, and CBT techniques, we ensure effective treatment is readily available in the comfort of your own home. Immerse yourself in our VR-based exercises aimed at enhancing anxiety management techniques.",
+    description: [
+      "By integrating virtual reality (VR), gamification, and CBT techniques, we ensure effective treatment is readily available in the comfort of your own home.",
+      "Immerse yourself in our VR-based exercises aimed at enhancing anxiety management techniques.",
+    ],
   },
 ];
 
@@ -137,10 +145,10 @@ export default function Description() {
             <button
               key={feature.id}
               onClick={() => handleTabClick(index)}
-              className={`px-3 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-lg font-medium transition-all duration-200 whitespace-nowrap ${
+              className={`px-3 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-lg font-semibold transition-all duration-200 whitespace-nowrap ${
                 activeIndex === index
-                  ? "bg-black text-white"
-                  : "bg-transparent text-gray-700 hover:bg-gray-200"
+                  ? "border-2 border-[#487CE5] text-[#487CE5]"
+                  : "border-2 border-transparent bg-transparent text-gray-700 hover:bg-gray-200"
               }`}
             >
               {feature.title}
@@ -199,11 +207,16 @@ export default function Description() {
                   >
                     {feature.subheading}
                   </h3>
-                  <p
-                    className={`text-base md:text-lg mb-4 md:mb-8 opacity-90 max-w-lg ${feature.textColor}`}
-                  >
-                    {feature.description}
-                  </p>
+                  <div className="flex flex-col gap-4">
+                    {feature.description.map((paragraph, idx) => (
+                      <p
+                        key={idx}
+                        className={`text-base md:text-lg opacity-90 max-w-lg ${feature.textColor}`}
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -222,7 +235,7 @@ export default function Description() {
             aria-label="Previous slide"
             disabled={activeIndex === 0}
           >
-            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-black" />
+            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-[#2b2b2b]" />
           </button>
           <button
             onClick={handleNext}
@@ -234,7 +247,7 @@ export default function Description() {
             aria-label="Next slide"
             disabled={activeIndex === features.length - 1}
           >
-            <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-black" />
+            <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-[#2b2b2b]" />
           </button>
         </div>
 
