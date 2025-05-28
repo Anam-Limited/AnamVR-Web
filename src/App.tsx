@@ -22,7 +22,7 @@ export default function App() {
       <main className="max-w-8xl lg:min-w-5xl mx-auto">
         <Description />
         <Partners />
-        <div className="max-w-7xl mx-auto px-4 py-16 mt-16">
+        <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="grid grid-cols-1 sm:grid-cols-6 lg:grid-cols-12 gap-6">
             {" "}
             <HeroSection />
