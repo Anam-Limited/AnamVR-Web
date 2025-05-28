@@ -67,7 +67,7 @@ export default function Questions() {
               } cursor-pointer`}
               onClick={() => handleToggle(index)}
             >
-              <h3 className="text-2xl flex items-center justify-between font-medium text-black">
+              <h3 className="md:text-2xl sm:text-xl text-lg flex items-center justify-between font-medium text-black">
                 {item.question}
                 {activeIndex === index ? (
                   <Minus size={20} className="text-lg text-gray-700" />
@@ -76,7 +76,9 @@ export default function Questions() {
                 )}
               </h3>
               {activeIndex === index && (
-                <p className="mt-4 text-lg text-gray-700">{item.answer}</p>
+                <p className="mt-4 text-base sm:text-lg text-gray-700">
+                  {item.answer}
+                </p>
               )}
             </div>
           ))}
