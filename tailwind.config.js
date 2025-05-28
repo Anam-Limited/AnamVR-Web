@@ -29,6 +29,18 @@ module.exports = {
           "100%": { transform: "scale(1)", opacity: 1 },
         },
       },
+      lineHeight: {
+        relaxed: "1.3",
+        spacious: "1.5",
+        title: "1.25", // This should now work
+        heading: "1.2", // Additional option
+      },
+      letterSpacing: {
+        normal: "0",
+        wide: "0.025em",
+        wider: "0.05em",
+        title: "0.01em",
+      },
       maxWidth: {
         "8xl": "1350px",
         "9xl": "1920px",

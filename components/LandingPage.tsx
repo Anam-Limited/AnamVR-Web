@@ -5,8 +5,8 @@ import appleBadge from "../src/assets/appstorebadge.svg";
 import assemblyLogo from "../src/assets/AnamVR-IconNoBg.png";
 import spineLogo from "../src/assets/AnamVR-IconNoBg.png";
 import paretoLogo from "../src/assets/AnamVR-IconNoBg.png";
-import mockup1 from "../src/assets/iphone1.avif";
-import mockup2 from "../src/assets/iphone2.avif";
+import AppMockupLanding from "../src/assets/AppMockupLanding.png";
+import AppMockupVR from "../src/assets/AppMockupVR.png";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const trustedLogos = [assemblyLogo, spineLogo, paretoLogo];
@@ -20,10 +20,9 @@ export default function LandingPage() {
   const imageAnimation = useScrollAnimation({ delay: 600 });
 
   return (
-    <div className="px-6 md:px-12 min-h-[860px] bg-gradient-to-br from-[#FFE3ED] to-[#F7D1C3] items-center flex justify-center">
+    <div className="px-6 md:px-12 min-h-[880px] bg-gradient-to-br from-[#FFE3ED] to-[#F7D1C3] items-center flex justify-center">
       <div className="max-w-7xl mx-auto">
         {/* Main Hero Section */}
-
         <div
           ref={heroAnimation.ref}
           className={`flex flex-col lg:mt-0 mx-4 md:mx-10 lg:mx-12 mt-36 lg:flex-row items-center justify-between lg:space-x-12 transition-opacity duration-700 ease-out ${
@@ -38,7 +37,7 @@ export default function LandingPage() {
                 headingAnimation.isVisible ? "animate-slide-up" : "opacity-0"
               }`}
             >
-              <h1 className="text-4xl z-50 md:text-6xl font-semibold leading-tight text-[#2b2b2b]">
+              <h1 className="text-4xl z-50 md:text-6xl font-semibold leading-spacious text-[#2b2b2b]">
                 Reshape your Relationship with Mental Health
               </h1>
             </div>
@@ -63,7 +62,7 @@ export default function LandingPage() {
                 <a href="/download">
                   <img
                     src={appleBadge}
-                    alt="Get it on Google Play"
+                    alt="Get it on App Store"
                     className="h-12 md:h-14 lg:h-16"
                   />
                 </a>
@@ -87,35 +86,19 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Right side */}
+          {/* Right side - Simplified and responsive */}
           <div
             ref={imageAnimation.ref}
-            className={`relative w-full lg:w-1/2 h-[700px] lg:h-[750px] lg:mb-0 transition-opacity duration-700 ease-out ${
+            className={`w-full pb-14 md:pb-0 lg:w-1/2 mt-12 flex justify-center lg:justify-end transition-opacity duration-700 ease-out ${
               imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
             }`}
           >
-            {/* Main center/right phone (mockup2 from original code, now acting as the primary large one) */}
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-[30%] -translate-y-[45%] z-20">
-              <div className="relative">
-                <img
-                  src={mockup2 || "/placeholder.svg"} // Assuming mockup2 is the main large one now
-                  alt="AnamVR App Dashboard"
-                  className="w-72 md:w-80 lg:w-96 h-auto rounded-3xl"
-                />
-                {/* Feature highlight overlay for this phone */}
-              </div>
-            </div>
-
-            {/* Top-left phone (mockup1 from original code, now smaller and to the left) */}
-            <div className="absolute top-[15%] left-[5%] lg:left-[10%] transform -rotate-[15deg] z-10">
-              <div className="relative">
-                <img
-                  src={mockup1 || "/placeholder.svg"}
-                  alt="AnamVR App Main Screen"
-                  className="w-60 md:w-64 lg:w-72 h-auto rounded-3xl"
-                />
-                {/* Optional: Add a small card if needed for this mockup */}
-              </div>
+            <div className="relative max-w-sm md:max-w-md lg:max-w-lg">
+              <img
+                src={AppMockupLanding || "/placeholder.svg"}
+                alt="AnamVR App Mockup"
+                className="w-full h-auto object-contain"
+              />
             </div>
           </div>
         </div>

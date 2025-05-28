@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import anamMascot from "../src/assets/Anam.png";
+import caraMascot from "../src/assets/Cara.png";
 
 type TestimonialType = {
   id: string;
@@ -170,10 +170,10 @@ export default function Testimonial() {
       </div>
 
       {/* Anam Mascot */}
-      <div className="absolute top-45 left-60 -z-10 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block">
+      <div className="absolute top-64 left-60 -z-10 transform -translate-x-1/2 -translate-y-1/2 hidden md:block">
         <img
-          src={anamMascot || "/placeholder.svg"}
-          alt="Anam mascot"
+          src={caraMascot || "/placeholder.svg"}
+          alt="Cara mascot"
           className="w-32 h-32 lg:w-40 lg:h-40 object-contain"
         />
       </div>
