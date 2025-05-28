@@ -162,7 +162,7 @@ export default function Description() {
               <button
                 key={feature.id}
                 onClick={() => handleTabClick(index)}
-                className={`px-3 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-lg font-semibold transition-all duration-200 whitespace-nowrap ${
+                className={`px-2 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-lg font-semibold transition-all duration-200 whitespace-nowrap ${
                   activeIndex === index
                     ? `border-2 ${borderColors[feature.id]}`
                     : "border-2 border-transparent bg-transparent text-gray-700 hover:bg-gray-200"
