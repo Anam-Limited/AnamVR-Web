@@ -10,7 +10,7 @@ type ChatbotContextType = {
 
 const ChatbotContext = createContext<ChatbotContextType | undefined>(undefined);
 
-export const ChatbotProvider = ({ children }: { children: ReactNode }) => {
+export function ChatbotProvider({ children }: { children: ReactNode }) {
   const [showChat, setShowChat] = useState(false);
 
   const toggleChat = () => setShowChat((prev) => !prev);
@@ -24,7 +24,7 @@ export const ChatbotProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </ChatbotContext.Provider>
   );
-};
+}
 
 export const useChatbot = () => {
   const context = useContext(ChatbotContext);

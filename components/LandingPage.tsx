@@ -20,7 +20,7 @@ export default function LandingPage() {
   const imageAnimation = useScrollAnimation({ delay: 600 });
 
   return (
-    <div className="px-6 md:px-12 min-h-[880px] bg-gradient-to-br from-[#FFE3ED] to-[#F7D1C3] items-center flex justify-center">
+    <div className="px-6 md:px-12 lg:pt-14 min-h-[720px] bg-gradient-to-br from-[#FFE3ED] to-[#F7D1C3] items-center flex justify-center">
       <div className="max-w-7xl mx-auto">
         {/* Main Hero Section */}
         <div
@@ -100,7 +100,7 @@ export default function LandingPage() {
           {/* Right side - Scaled down mockup */}
           <div
             ref={imageAnimation.ref}
-            className={`w-full pb-14 md:pb-0 lg:w-5/12 mt-12 flex justify-center lg:justify-end transition-opacity duration-700 ease-out ${
+            className={`w-full pb-14 lg:w-5/12 mt-12 flex justify-center lg:justify-end transition-opacity duration-700 ease-out ${
               imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
             }`}
           >

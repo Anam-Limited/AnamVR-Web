@@ -29,6 +29,10 @@ body {
   animation: fadeIn 0.3s ease-in-out;
 }
 
+.animate-fadeOut {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
 @keyframes bounce {
   0%,
   100% {

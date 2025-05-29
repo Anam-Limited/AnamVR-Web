@@ -41,7 +41,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`flex items-center min-w-full lg:min-w-5xl mx-auto justify-between py-4 px-6 md:px-14 fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${
+        className={`flex items-center min-w-full lg:min-w-5xl mx-auto justify-between py-6 px-6 md:px-14 fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${
           scrolled || (typeof window !== "undefined" && window.innerWidth < 768)
             ? "bg-[#fafafa]/90 shadow-sm"
             : "bg-transparent"
@@ -57,14 +57,7 @@ export default function Header() {
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a
-            href="about"
-            className="text-black hover:text-[#7745b8] transition-colors relative group"
-          >
-            About
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a
-            href="shop"
+            href="https://shop.anamvr.com"
             className="text-black hover:text-[#7745b8] transition-colors relative group"
           >
             Shop
@@ -77,16 +70,47 @@ export default function Header() {
             Blog
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              openChat();
-            }}
+          <a
+            href="contact"
             className="text-black hover:text-[#7745b8] transition-colors relative group"
           >
             Contact
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
-          </button>
+          </a>
+          <a
+            className="relative text-black hover:text-[#7745b8] transition-colors group"
+            tabIndex={0}
+          >
+            About Us
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
+            {/* Dropdown */}
+            <div className="absolute left-0 top-full mt-2 min-w-[180px] bg-white rounded-xl shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto transition-all duration-200 z-50">
+              <a
+                href="/our-mission"
+                className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] rounded-t-xl transition-colors"
+              >
+                Our Mission
+              </a>
+              <a
+                href="/our-pillars"
+                className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] transition-colors"
+              >
+                Our Pillars
+              </a>
+              <a
+                href="/our-team"
+                className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] transition-colors"
+              >
+                Our Team
+              </a>
+              <a
+                href="/our-contributors"
+                className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] rounded-b-xl transition-colors"
+              >
+                Our Contributors
+              </a>
+            </div>
+          </a>
         </nav>
 
         {/* Logo (center) */}
@@ -182,9 +206,9 @@ export default function Header() {
             {/* Main links scrollable */}
             {[
               { href: "/", label: "Home" },
-              { href: "/about", label: "About" },
               { href: "/shop", label: "Shop" },
               { href: "/blog", label: "Blog" },
+              { href: "/about", label: "About Us" },
             ].map((item) => (
               <a
                 key={item.href}

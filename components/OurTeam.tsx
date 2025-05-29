@@ -2,7 +2,7 @@ import { Linkedin, GalleryHorizontalEnd, Code, Brain } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import ishaanJain from "../src/assets/ishaan_jain.webp";
 
-interface Contributor {
+interface Team {
   id: string;
   name: string;
   role: string;
@@ -17,7 +17,7 @@ interface Contributor {
   };
 }
 
-const contributors: Contributor[] = [
+const teams: Team[] = [
   {
     id: "ishaan-jain",
     name: "Ishaan Jain",
@@ -128,9 +128,9 @@ const contributors: Contributor[] = [
   },
 ];
 
-export default function ContributorsPage() {
-  // Animation hooks for each contributor card
-  const contributorAnimations = contributors.map((_, index) =>
+export default function TeamPage() {
+  // Animation hooks for each team member card
+  const teamMemberAnimations = teams.map((_, index) =>
     useScrollAnimation({ delay: index * 200 })
   );
   return (
@@ -141,26 +141,26 @@ export default function ContributorsPage() {
           <h1 className="text-5xl md:text-6xl font-bold text-[#2b2b2b] mb-6">
             Our{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-purple-800">
-              Contributors
+              Team
             </span>
           </h1>
           <p className="text-xl text-[#2b2b2b] max-w-3xl mx-auto leading-relaxed">
-            From advisors and researchers to creatives and collaborators, this
-            platform was enriched by the generous input of people beyond our
-            core team. We’re proud to recognise their valuable contributions.
+            Lorem ipsum dolor sit amet. Et similique quisquam ab internos
+            distinctio aut tenetur dolores quo voluptatem debitis quo fuga
+            galisum ut numquam libero qui dignissimos aspernatur.
           </p>
         </div>
       </div>
 
-      {/* Contributors Grid */}
+      {/* teams Grid */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {contributors.map((contributor, index) => (
+          {teams.map((team, index) => (
             <div
-              key={contributor.id}
-              ref={contributorAnimations[index].ref}
+              key={team.id}
+              ref={teamMemberAnimations[index].ref}
               className={`group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 ${
-                contributorAnimations[index].isVisible
+                teamMemberAnimations[index].isVisible
                   ? "animate-slide-up"
                   : "opacity-0"
               }`}
@@ -168,27 +168,27 @@ export default function ContributorsPage() {
               {/* Image Section */}
               <div className="relative h-64 overflow-hidden">
                 <img
-                  src={contributor.image || "/placeholder.svg"}
-                  alt={contributor.name}
+                  src={team.image || "/placeholder.svg"}
+                  alt={team.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
                 {/* Role Icon */}
                 <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-full p-3 text-white">
-                  {contributor.icon}
+                  {team.icon}
                 </div>
               </div>
 
               {/* Content Section */}
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#2b2b2b] mb-1">
-                  {contributor.name}
+                  {team.name}
                 </h3>
                 <p className="text-lg font-semibold text-[#7745b8] mb-3">
-                  {contributor.role}
+                  {team.role}
                 </p>
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  {contributor.bio}
+                  {team.bio}
                 </p>
 
                 {/* Work Highlights */}
@@ -196,7 +196,7 @@ export default function ContributorsPage() {
                   <h4 className="text-sm font-semibold text-gray-800 mb-2">
                     Key Contributions:
                   </h4>
-                  {contributor.workHighlights.map((highlight, idx) => (
+                  {team.workHighlights.map((highlight, idx) => (
                     <div
                       key={idx}
                       className="flex items-start gap-2 text-sm text-gray-600"
@@ -209,9 +209,9 @@ export default function ContributorsPage() {
 
                 {/* Bottom Social Links */}
                 <div className="flex gap-3 mt-6 pt-4 border-t border-gray-100">
-                  {contributor.socialLinks.linkedin && (
+                  {team.socialLinks.linkedin && (
                     <a
-                      href={contributor.socialLinks.linkedin}
+                      href={team.socialLinks.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-3 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium"
@@ -220,9 +220,9 @@ export default function ContributorsPage() {
                       LinkedIn
                     </a>
                   )}
-                  {contributor.socialLinks.portfolio && (
+                  {team.socialLinks.portfolio && (
                     <a
-                      href={contributor.socialLinks.portfolio}
+                      href={team.socialLinks.portfolio}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-3 py-2 bg-sky-50 text-sky-600 rounded-lg hover:bg-sky-100 transition-colors text-sm font-medium"

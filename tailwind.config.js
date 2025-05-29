@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       animation: {
         "fade-in": "fadeIn 0.8s ease-out forwards",
+        "fade-out": "fadeOut 0.8s ease-out forwards",
         "slide-up": "slideUp 0.8s ease-out forwards",
         "zoom-in": "zoomIn 0.8s ease-out forwards",
       },

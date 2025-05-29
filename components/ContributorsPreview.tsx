@@ -21,12 +21,11 @@ export default function ContributorsPreview() {
           Our Contributors
         </h3>
         <p className="text-md text-green-800">
-          To transform the landscape of anxiety management through innovative VR
-          technology, making mental wellness accessible to everyone, everywhere.
+          Meet the brilliant contributors who helped shape AnamVR.
         </p>
       </div>
       <a
-        href="/contributors"
+        href="/our-contributors"
         className="flex items-center text-green-700 hover:text-green-900 text-base font-semibold mt-4"
       >
         Know more <ArrowRight size={16} className="ml-1 font-semibold" />
