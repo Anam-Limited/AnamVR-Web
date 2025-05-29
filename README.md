@@ -50,6 +50,7 @@ To **add a new testimonial**, simply append another object with the above struct
     }
     ```
 - **Chat Questions**
+
   - Location: `data/chatquestions.ts`
   - Structure Example:
     ```ts
@@ -61,3 +62,7 @@ To **add a new testimonial**, simply append another object with the above struct
     }
     ```
   - These questions are used by the chatbot to guide users through various support topics. Add new entries by appending to the exported array.
+
+- (For my purpose)
+  npm run build
+  firebase deploy --only hosting
