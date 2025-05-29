@@ -200,7 +200,7 @@ export default function Description() {
           {features.map((feature) => (
             <div
               key={feature.id}
-              className={`w-full flex-shrink-0 ${feature.color} rounded-xl md:rounded-3xl overflow-hidden transition-all duration-700`}
+              className={`w-full flex-shrink-0 pb-10 sm:pb-6 ${feature.color} rounded-xl md:rounded-3xl overflow-hidden transition-all duration-700`}
             >
               <div className="flex flex-col-reverse md:grid md:grid-cols-2 min-h-[400px] md:min-h-[550px]">
                 <div className="hidden md:flex items-center justify-center p-8 md:px-20 md:py-10">
