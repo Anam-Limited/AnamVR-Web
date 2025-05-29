@@ -20,7 +20,7 @@ export default function LandingPage() {
   const imageAnimation = useScrollAnimation({ delay: 600 });
 
   return (
-    <div className="px-6 md:px-12 lg:pt-14 min-h-[720px] bg-gradient-to-br from-[#FFE3ED] to-[#F7D1C3] items-center flex justify-center">
+    <div className="px-6 md:px-12 lg:pt-14 min-h-[710px] bg-gradient-to-br from-[#FFE3ED] to-[#F7D1C3] items-center flex justify-center">
       <div className="max-w-7xl mx-auto">
         {/* Main Hero Section */}
         <div

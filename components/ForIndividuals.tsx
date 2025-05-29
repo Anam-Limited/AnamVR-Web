@@ -176,7 +176,7 @@ export default function ForIndividuals() {
       {/* bg-gradient-to-br from-[#bcdbeb] to-[#eacfff] */}
       <section
         ref={headerAnimation.ref}
-        className={`w-full min-h-[860px] py-20 px-16 bg-[#bcdbeb] transition-opacity duration-700 ease-out ${
+        className={`w-full min-h-[720px] py-20 px-16 bg-[#bcdbeb] transition-opacity duration-700 ease-out ${
           headerAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
@@ -230,6 +230,7 @@ export default function ForIndividuals() {
                 </div>
               </div>
             </div>
+
             {/* Right Image Content */}
             <div className="lg:w-1/2 w-full">
               <div
