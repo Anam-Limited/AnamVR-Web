@@ -1,10 +1,4 @@
-import {
-  Linkedin,
-  Github,
-  GalleryHorizontalEnd,
-  Code,
-  Brain,
-} from "lucide-react";
+import { Linkedin, GalleryHorizontalEnd, Code, Brain } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import ishaanJain from "../src/assets/ishaan_jain.webp";
 
@@ -19,7 +13,6 @@ interface Contributor {
   icon: React.ReactNode;
   socialLinks: {
     linkedin?: string;
-    github?: string;
     portfolio?: string;
   };
 }
@@ -40,15 +33,14 @@ const contributors: Contributor[] = [
     ],
     socialLinks: {
       linkedin: "https://linkedin.com/in/ishaanj9",
-      github: "https://github.com/ishaanj91",
       portfolio: "https://jaini.me",
     },
   },
   {
     id: "agustina-alvarez",
     name: "Agustina Alvarez",
-    role: "DBT Therapist & Content Contributor",
-    bio: "Licensed DBT therapist who contributed therapeutic content and validated our anxiety management techniques.",
+    role: "Content Contributor",
+    bio: "Agustina is a Dialectical Behavioural Therapist based in Córdoba, Argentina. She has contributed several mindfulness exercises to the app, drawing on her area of expertise.",
     image: "/placeholder.svg?height=400&width=300",
     backgroundColor: "bg-gradient-to-br from-green-500 to-emerald-600",
     icon: <Brain className="w-5 h-5" />,
@@ -58,7 +50,8 @@ const contributors: Contributor[] = [
       "Created evidence-based interventions",
     ],
     socialLinks: {
-      linkedin: "https://linkedin.com/in/agustina-alvarez",
+      linkedin:
+        "https://www.linkedin.com/in/agustina-alvarez-ulfohn-520922191/",
     },
   },
 ];
@@ -153,17 +146,6 @@ export default function ContributorsPage() {
                     >
                       <Linkedin className="w-4 h-4" />
                       LinkedIn
-                    </a>
-                  )}
-                  {contributor.socialLinks.github && (
-                    <a
-                      href={contributor.socialLinks.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-2 bg-gray-50 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium"
-                    >
-                      <Github className="w-4 h-4" />
-                      GitHub
                     </a>
                   )}
                   {contributor.socialLinks.portfolio && (

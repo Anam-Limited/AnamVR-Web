@@ -50,7 +50,7 @@ export default function Header() {
         {/* Left navigation */}
         <nav className="hidden md:flex items-center text-sm lg:text-base font-medium space-x-4 lg:space-x-6">
           <a
-            href="home"
+            href="/"
             className="text-black hover:text-[#7745b8] transition-colors relative group"
           >
             Home
@@ -181,7 +181,7 @@ export default function Header() {
             {" "}
             {/* Main links scrollable */}
             {[
-              { href: "/home", label: "Home" },
+              { href: "/", label: "Home" },
               { href: "/about", label: "About" },
               { href: "/shop", label: "Shop" },
               { href: "/blog", label: "Blog" },

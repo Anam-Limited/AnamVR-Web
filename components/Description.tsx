@@ -202,8 +202,8 @@ export default function Description() {
               key={feature.id}
               className={`w-full flex-shrink-0 ${feature.color} rounded-xl md:rounded-3xl overflow-hidden transition-all duration-700`}
             >
-              <div className="flex flex-col-reverse md:grid md:grid-cols-2 min-h-[400px] md:min-h-[550px] py-6">
-                <div className="hidden md:flex items-center justify-center p-8 md:p-20">
+              <div className="flex flex-col-reverse md:grid md:grid-cols-2 min-h-[400px] md:min-h-[550px]">
+                <div className="hidden md:flex items-center justify-center p-8 md:px-20 md:py-10">
                   {/* Placeholder for feature image or illustration */}
                   <div className="bg-opacity-20 rounded-2xl w-full h-4/5 flex items-center justify-center">
                     <img
