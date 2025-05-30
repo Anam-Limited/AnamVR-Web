@@ -11,9 +11,9 @@ export default function Footer() {
     <footer className="bg-black text-white py-8">
       <div className="max-w-7xl mb-20 mt-10 mx-auto px-6">
         {/* Main footer content in a row */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+        <div className="flex flex-col lg:flex-row justify-between items-center mb-8">
           {/* Logo */}
-          <div className="flex items-center mb-6 md:mb-0">
+          <div className="flex items-center mb-6 lg:mb-0">
             <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center mr-2">
               <img
                 src={anamvrLogo || "/placeholder.svg"}
@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
 
           {/* Main navigation links */}
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-6 md:mb-0">
+          <div className="flex flex-wrap text-xs md:text-base justify-center gap-x-3 sm:gap-x-6 gap-y-3 mb-6 lg:mb-0">
             <a
               href="/"
               className="text-gray-400 hover:text-white transition-colors"
@@ -65,22 +65,27 @@ export default function Footer() {
           </div>
 
           {/* App download badges - UPDATED */}
-          <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3 mb-6 md:mb-0">
-            <a href="/ios-app" className="transition-opacity hover:opacity-90">
+          <div className="flex flex-row items-center sm:space-y-0 space-x-3 mb-6 lg:mb-0">
+            <a
+              href="https://apps.apple.com/ie/app/anamvr/id6499339767"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={appleBadge}
                 alt="Download on the App Store"
-                className="h-10 w-auto"
+                className="h-8 sm:h-10 w-auto"
               />
             </a>
             <a
-              href="/android-app"
-              className="transition-opacity hover:opacity-90"
+              href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <img
                 src={androidBadge}
                 alt="Get it on Google Play"
-                className="h-10 w-auto"
+                className="h-8 sm:h-10 w-auto"
               />
             </a>
           </div>
@@ -88,21 +93,21 @@ export default function Footer() {
           {/* Social icons */}
           <div className="flex space-x-4">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/anamvr/"
               aria-label="LinkedIn"
               className="text-gray-400 hover:text-white transition-colors"
             >
               <Linkedin size={18} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/anamvrhealthcare/"
               aria-label="Instagram"
               className="text-gray-400 hover:text-white transition-colors"
             >
               <Instagram size={18} />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/anamvrhealthcare/"
               aria-label="Facebook"
               className="text-gray-400 hover:text-white transition-colors"
             >

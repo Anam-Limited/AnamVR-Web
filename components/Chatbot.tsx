@@ -25,6 +25,9 @@ export default function Chatbot() {
     string | null
   >(null);
   const chatRef = useRef<HTMLDivElement>(null);
+  const [availableHeight, setAvailableHeight] = useState(0);
+  const [availableWidth, setAvailableWidth] = useState(0);
+  const chatbotRef = useRef<HTMLDivElement>(null);
 
   // Only initialize chat on first open, not every time showChat changes
   const initializedRef = useRef(false);
@@ -167,7 +170,27 @@ export default function Chatbot() {
     setIsExpanded(!isExpanded);
   };
 
-  // Container styles
+  // Add this useEffect to measure available space
+  useEffect(() => {
+    if (!showChat) return;
+
+    const updateAvailableSpace = () => {
+      const viewportHeight = window.innerHeight;
+      const viewportWidth = window.innerWidth;
+      setAvailableHeight(viewportHeight);
+      setAvailableWidth(viewportWidth);
+    };
+
+    updateAvailableSpace();
+    window.addEventListener("resize", updateAvailableSpace);
+    return () => window.removeEventListener("resize", updateAvailableSpace);
+  }, [showChat]);
+
+  // Dynamically calculate safe dimensions
+  const safeMaxHeight = Math.min(availableHeight * 0.8, 600); // Max 80% of viewport height or 600px
+  const safeMaxWidth = Math.min(availableWidth * 0.9, 460);   // Max 90% of viewport width or 460px
+
+  // Container styles with dynamic sizing
   const containerStyle =
     isMobile && isExpanded
       ? {
@@ -175,45 +198,50 @@ export default function Chatbot() {
           top: "10%",
           left: "0",
           right: "0",
-          bottom: "0",
+          bottom: "0", 
           width: "100%",
           height: "90%",
+          maxHeight: `${safeMaxHeight}px`,
           zIndex: 1000,
           borderRadius: "24px 24px 0 0",
           boxShadow: "0 -8px 32px rgba(119, 69, 184, 0.18)",
           background: "#ffffff",
         }
       : isMobile
-        ? {
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            width: "100%",
-            height: "60vh",
-            zIndex: 1000,
-            borderRadius: "24px 24px 0 0",
-            boxShadow: "0 -8px 32px rgba(119, 69, 184, 0.18)",
-            background: "#ffffff",
-          }
-        : {
-            position: "fixed",
-            bottom: "1.5rem",
-            right: "1.5rem",
-            width: 460,
-            maxHeight: "80vh",
-            borderRadius: 24,
-            boxShadow: "0 8px 32px rgba(119, 69, 184, 0.18)",
-            background: "#ffffff",
-          };
+      ? {
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: `${Math.min(availableHeight * 0.6, 500)}px`, // Adjust dynamically
+          maxHeight: `${availableHeight * 0.8}px`, // Never more than 80% of viewport
+          zIndex: 1000,
+          borderRadius: "24px 24px 0 0",
+          boxShadow: "0 -8px 32px rgba(119, 69, 184, 0.18)",
+          background: "#ffffff",
+        }
+      : {
+          position: "fixed",
+          bottom: "1.5rem",
+          right: "1.5rem",
+          width: `${Math.min(safeMaxWidth, availableWidth - 48)}px`, // Dynamic width
+          height: "auto", // Let height be determined by content
+          maxHeight: `${safeMaxHeight}px`, // Safe max height
+          borderRadius: 24,
+          boxShadow: "0 8px 32px rgba(119, 69, 184, 0.18)",
+          background: "#ffffff",
+          overflow: "hidden",
+          transform: "translateZ(0)",
+        };
 
-  // Chat area height
+  // Chat area height - calculate dynamically
   const chatAreaHeight =
     isMobile && isExpanded
-      ? "calc(90vh - 140px)"
+      ? `${safeMaxHeight - 140}px` // Dynamic calculation
       : isMobile
-        ? "calc(60vh - 140px)"
-        : "530px";
+      ? `${Math.min(availableHeight * 0.6 - 140, 360)}px` // Dynamic with fallback
+      : `${Math.min(safeMaxHeight - 140, 460)}px`; // Dynamic with fallback
 
   // Add this helper function to render HTML content safely
   const renderAnswer = (answer: string) => {
@@ -243,11 +271,12 @@ export default function Chatbot() {
     <>
       {showChat && (
         <div
-          className="fixed inset-0 bg-gray-700/10 z-40 animate-fadeIn "
+          className="fixed inset-0 bg-gray-700/10 z-40 animate-fadeIn"
           onClick={closeChat}
         />
       )}
       <div
+        ref={chatbotRef}
         className="fixed z-50"
         style={{ ...containerStyle, overflow: "hidden" } as React.CSSProperties}
         onClick={(e) => e.stopPropagation()}
