@@ -213,7 +213,7 @@ export default function Chatbot() {
       ? "calc(90vh - 140px)"
       : isMobile
         ? "calc(60vh - 140px)"
-        : "560px";
+        : "530px";
 
   // Add this helper function to render HTML content safely
   const renderAnswer = (answer: string) => {
