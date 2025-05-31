@@ -311,6 +311,7 @@ export default function ForIndividuals() {
                 <img
                   src={appMockup || "/placeholder.svg"}
                   alt="AnamVR App Dashboard"
+                  loading="lazy"
                   className="w-64 md:w-80 lg:w-96 h-auto rounded-3xl"
                   width={384}
                   height={768}

@@ -68,6 +68,7 @@ export default function LandingPage() {
                 alt="AnamVR App Mockup"
                 fetchPriority="high"
                 decoding="async"
+                loading="lazy"
                 className="w-64 md:w-80 lg:w-96 h-auto rounded-3xl"
               />
             </div>
