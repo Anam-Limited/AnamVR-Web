@@ -6,22 +6,17 @@ import androidBadge from "../src/assets/googlebadge.svg";
 import appleBadge from "../src/assets/appstorebadge.svg";
 import vrheadset from "../src/assets/vr-image.png";
 import mockup from "../src/assets/mockupicon.webp";
-import mockup1 from "../src/assets/iphone1.avif";
-import mockup2 from "../src/assets/iphone2.avif";
+import appMockup from "../src/assets/AppMockupIndividual.png";
+import cardMockUpOne from "../src/assets/cardMockUp1.svg";
 import {
-  Check,
-  ArrowRight,
-  Play,
-  Pause,
-  BarChart3,
   Brain,
-  ShieldCheck,
-  Sparkles,
+  CircleDollarSign,
+  Activity,
   Headphones,
-  Zap,
-  Sun,
-  Moon,
-  Heart,
+  ChartLine,
+  Hospital,
+  RectangleGoggles,
+  HeartHandshake,
 } from "lucide-react";
 
 const testimonials = [
@@ -51,18 +46,80 @@ const testimonials = [
   },
 ];
 
+// Define the benefits array
+const benefits = [
+  {
+    icon: <CircleDollarSign className="w-6 h-6" />,
+    title: "Affordable, Expert-Backed Support",
+    description:
+      "Access clinically grounded tools and experiences without the high costs of traditional therapy.",
+    color: "bg-[#7745b8]",
+    textColor: "text-[#7745b8]",
+    bgColor: "bg-[#7745b8]/10",
+  },
+  {
+    icon: <Activity className="w-6 h-6" />,
+    title: "Mindfulness & Meditation in VR",
+    description:
+      "Step into calming, immersive environments guided by experts to help you relax, refocus, and recharge.",
+    color: "bg-[#487ce5]",
+    textColor: "text-[#487ce5]",
+    bgColor: "bg-[#487CE5]/10",
+  },
+  {
+    icon: <Headphones className="w-6 h-6" />,
+    title: "Tools to Break Unhelpful Thought Patterns",
+    description:
+      "Learn simple, effective ways to challenge negative thinking using proven psychological techniques based on CBT.",
+    color: "bg-[#3c8c4f]",
+    textColor: "text-[#3c8c4f]",
+    bgColor: "bg-[#3C8C4F]/10",
+  },
+  {
+    icon: <ChartLine className="w-6 h-6" />,
+    title: "See Your Progress Clearly",
+    description:
+      "Track your mental health journey with simple, easy-to-understand dashboards — no jargon, just insight.",
+    color: "bg-[#E74856]",
+    textColor: "text-[#E74856]",
+    bgColor: "bg-[#E74856]/10",
+  },
+  {
+    icon: <Hospital className="w-6 h-6" />,
+    title: "Self-Guided Clinical Assessments",
+    description:
+      "Use recognised tools like GAD-7 and PHQ-9 to check in with your mental wellbeing regularly — on your own terms.",
+    color: "bg-[#F05984]",
+    textColor: "text-[#F05984]",
+    bgColor: "bg-[#F05984]/10",
+  },
+  {
+    icon: <HeartHandshake className="w-6 h-6" />,
+    title: "Personalised Recommendations",
+    description:
+      "Let AnamVR guide you to the most helpful content based on your mood, usage, and personal goals.",
+    color: "bg-[#FF7A1A]",
+    textColor: "text-[#FF7A1A]",
+    bgColor: "bg-[#FF7A1A]/10",
+  },
+  {
+    icon: <RectangleGoggles className="w-6 h-6" />,
+    title: "Immersive VR Wellness — Without the Price Tag",
+    description:
+      "All you need is your smartphone and an affordable headset to unlock a whole new way to care for your mind.",
+    color: "bg-[#D5B500]",
+    textColor: "text-[#D5B500]",
+    bgColor: "bg-[#D5B500]/10",
+  },
+];
+
 export default function ForIndividuals() {
   const headerAnimation = useScrollAnimation();
   const introAnimation = useScrollAnimation({ threshold: 0.2 });
   const benefitsAnimation = useScrollAnimation({ threshold: 0.2 });
-  const featuresAnimation = useScrollAnimation({ threshold: 0.2 });
-  const contentAnimation = useScrollAnimation({ threshold: 0.2 });
-  const toolsAnimation = useScrollAnimation({ threshold: 0.2 });
-  const journeyAnimation = useScrollAnimation({ threshold: 0.2 });
   const testimonialAnimation = useScrollAnimation({ threshold: 0.2 });
   const ctaAnimation = useScrollAnimation({ threshold: 0.2 });
   const imageAnimation = useScrollAnimation({ threshold: 0.2 });
-  const categoriesAnimation = useScrollAnimation({ threshold: 0.2 });
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [expandedBenefitIndex, setExpandedBenefitIndex] = useState<
     number | null
@@ -79,7 +136,6 @@ export default function ForIndividuals() {
     message: "",
     newsletter: false,
   });
-  const animation = useScrollAnimation({ delay: 100 });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -170,13 +226,23 @@ export default function ForIndividuals() {
     }
   };
 
+  // Move this OUTSIDE of render/return:
+  const benefitAnimations = [
+    useScrollAnimation({ delay: 100 }),
+    useScrollAnimation({ delay: 200 }),
+    useScrollAnimation({ delay: 300 }),
+    useScrollAnimation({ delay: 400 }),
+    useScrollAnimation({ delay: 500 }),
+    useScrollAnimation({ delay: 600 }),
+    useScrollAnimation({ delay: 700 }),
+  ];
+
   return (
     <div className="w-full">
-      {/* Hero Section - Headspace-inspired with softer transitions */}
-      {/* bg-gradient-to-br from-[#bcdbeb] to-[#eacfff] */}
+      {/* Hero Section */}
       <section
         ref={headerAnimation.ref}
-        className={`w-full min-h-[720px] py-20 px-16 bg-[#bcdbeb] transition-opacity duration-700 ease-out ${
+        className={`w-full min-h-[710px] py-28 px-16 bg-gradient-to-br from-[#B7EDBB] to-[#BCDBEB] transition-opacity duration-700 ease-out ${
           headerAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
@@ -190,21 +256,17 @@ export default function ForIndividuals() {
             {/* Left Text Content */}
             <div className="lg:w-1/2 w-full">
               <div className="relative order-2 lg:order-1">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#7745b8] mb-8 leading-tight">
-                  Feel better. <br />
-                  Think clearer. <br />
-                  <span className="relative inline-block">
-                    <span className="relative z-10">Breathe easier</span>
-                    <span className="absolute bottom-2 left-0 w-full h-3 bg-[#487ce5]/30 -z-10"></span>
-                  </span>
+                <h1 className="text-2xl sm:text-5xl md:text-5xl text-center lg:text-start font-normal text-[#2b2b2b] mb-8 leading-tight">
+                  <b>Feel {""}</b> better. {""}
+                  <b>Think {""}</b> clearer. {""}
+                  <b>Breathe {""}</b> easier.
                 </h1>
-                <p className="text-xl text-[#545454] mb-10 max-w-lg">
-                  With immersive mental wellness that fits your life. Whether
-                  you're managing stress, low mood, or simply need space to
-                  reset, AnamVR gives you expert-designed tools in the comfort
-                  of your own home.
+                <p className="text-lg md:text-xl text-center lg:text-start text-[#545454] mb-10 lg:pr-6">
+                  AnamVR gives you expert-designed tools in the comfort of your
+                  own home. Experience powerful support that helps you take
+                  control of your mental wellbeing — anytime, anywhere.
                 </p>
-                <div className="flex flex-col md:flex-row gap-2">
+                <div className="flex justify-center items-center lg:justify-start lg:items-start flex-row gap-2">
                   <a
                     href="https://apps.apple.com/ie/app/anamvr/id6499339767"
                     target="_blank"
@@ -213,7 +275,7 @@ export default function ForIndividuals() {
                     <img
                       src={appleBadge}
                       alt="Download on the App Store"
-                      className="h-16 w-auto"
+                      className="h-10 md:h-12 lg:h-14 w-auto"
                     />
                   </a>
                   <a
@@ -224,7 +286,7 @@ export default function ForIndividuals() {
                     <img
                       src={androidBadge}
                       alt="Get it on Google Play"
-                      className="h-16 w-auto"
+                      className="h-10 md:h-12 lg:h-14 w-auto"
                     />
                   </a>
                 </div>
@@ -232,36 +294,19 @@ export default function ForIndividuals() {
             </div>
 
             {/* Right Image Content */}
-            <div className="lg:w-1/2 w-full">
+            <div className="lg:w-1/2 w-full flex mb-12 lg:mb-0 items-start justify-start mt-6 lg:mt-0 lg:items-center lg:justify-center">
               <div
                 ref={imageAnimation.ref}
-                className={`relative w-full h-[700px] lg:h-[750px] lg:mb-0 transition-opacity duration-700 ease-out ${
+                className={`relative w-full max-w-[420px] h-fit lg:h-[600px] flex items-start justify-start lg:items-center lg:justify-center transition-opacity duration-700 ease-out ${
                   imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
                 }`}
               >
-                {/* Main center/right phone (mockup2 from original code, now acting as the primary large one) */}
-                <div className="absolute left-1/2 top-1/2 transform -translate-x-[30%] -translate-y-[45%] z-20">
-                  <div className="relative">
-                    <img
-                      src={mockup2 || "/placeholder.svg"} // Assuming mockup2 is the main large one now
-                      alt="AnamVR App Dashboard"
-                      className="w-72 md:w-80 lg:w-96 h-auto rounded-3xl"
-                    />
-                    {/* Feature highlight overlay for this phone */}
-                  </div>
-                </div>
-
-                {/* Top-left phone (mockup1 from original code, now smaller and to the left) */}
-                <div className="absolute top-[15%] left-[5%] lg:left-[10%] transform -rotate-[15deg] z-10">
-                  <div className="relative">
-                    <img
-                      src={mockup1 || "/placeholder.svg"}
-                      alt="AnamVR App Main Screen"
-                      className="w-60 md:w-64 lg:w-72 h-auto rounded-3xl"
-                    />
-                    {/* Optional: Add a small card if needed for this mockup */}
-                  </div>
-                </div>
+                {/* Main phone mockup */}
+                <img
+                  src={appMockup || "/placeholder.svg"}
+                  alt="AnamVR App Dashboard"
+                  className="w-64 md:w-80 lg:w-96 h-auto rounded-3xl"
+                />
               </div>
             </div>
           </div>
@@ -275,7 +320,7 @@ export default function ForIndividuals() {
           benefitsAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
-        <div className="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row-reverse gap-10 items-center transition-opacity duration-700 ease-out">
+        <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row-reverse gap-10 items-center transition-opacity duration-700 ease-out">
           {/* Right Side - Image */}
           <div>
             <img src={mockup} alt="AnamVR Mockup" className="w-full" />
@@ -284,168 +329,94 @@ export default function ForIndividuals() {
           {/* Left Side - Benefits */}
           <div className="flex flex-col gap-1">
             <div className="text-start mb-4">
-              <h2 className="text-lg font-semibold text-[#545454] mb-2">
+              <h2 className="text-xl font-semibold text-[#545454] mb-2">
                 Why AnamVR
               </h2>
-              <p className="text-xl text-[#545454] font-medium max-w-2xl">
-                Experience mental health support that adapts to your unique
-                needs and fits into your lifestyle.
-              </p>
             </div>
 
             {/* Accordion-style benefits */}
             {/* Accordion-style benefits with animation */}
-            {(() => {
-              const benefits = [
-                {
-                  title: "Affordable, Expert-Backed Support",
-                  description:
-                    "Access clinically grounded tools and experiences without the high costs of traditional therapy.",
-                  icon: <ShieldCheck className="h-4 w-4" />,
-                  color: "bg-[#7745b8]",
-                  textColor: "text-[#7745b8]",
-                  bgColor: "bg-[#7745b8]/5",
-                },
-                {
-                  title: "Mindfulness & Meditation in VR",
-                  description:
-                    "Step into calming, immersive environments guided by experts to help you relax, refocus, and recharge.",
-                  icon: <Headphones className="h-4 w-4" />,
-                  color: "bg-[#487ce5]",
-                  textColor: "text-[#487ce5]",
-                  bgColor: "bg-[#487ce5]/5",
-                },
-                {
-                  title: "Tools to Break Unhelpful Thought Patterns",
-                  description:
-                    "Learn simple, effective ways to challenge negative thinking using proven psychological techniques based on CBT.",
-                  icon: <Brain className="h-4 w-4" />,
-                  color: "bg-[#3c8c4f]",
-                  textColor: "text-[#3c8c4f]",
-                  bgColor: "bg-[#3c8c4f]/5",
-                },
-                {
-                  title: "See Your Progress Clearly",
-                  description:
-                    "Track your mental health journey with simple, easy-to-understand dashboards — no jargon, just insight.",
-                  icon: <BarChart3 className="h-4 w-4" />,
-                  color: "bg-[#e74856]",
-                  textColor: "text-[#e74856]",
-                  bgColor: "bg-[#e74856]/5",
-                },
-                {
-                  title: "Self-Guided Clinical Assessments",
-                  description:
-                    "Use recognised tools like GAD-7 and PHQ-9 to check in with your mental wellbeing regularly — on your own terms.",
-                  icon: <Sparkles className="h-4 w-4" />,
-                  color: "bg-[#ff7a1a]",
-                  textColor: "text-[#ff7a1a]",
-                  bgColor: "bg-[#ff7a1a]/5",
-                },
-                {
-                  title: "Personalised Recommendations",
-                  description:
-                    "Let AnamVR guide you to the most helpful content based on your mood, usage, and personal goals.",
-                  icon: <Zap className="h-4 w-4" />,
-                  color: "bg-[#f3d009]",
-                  textColor: "text-[#f3d009]",
-                  bgColor: "bg-[#f3d009]/5",
-                },
-              ];
-              const benefitAnimations = [
-                useScrollAnimation({ delay: 100 }),
-                useScrollAnimation({ delay: 200 }),
-                useScrollAnimation({ delay: 300 }),
-                useScrollAnimation({ delay: 400 }),
-                useScrollAnimation({ delay: 500 }),
-                useScrollAnimation({ delay: 600 }),
-              ];
-              return benefits.map((benefit, index) => {
-                const animation = benefitAnimations[index];
-                return (
-                  <div
-                    key={index}
-                    ref={animation.ref}
-                    className={`border-b border-gray-100 last:border-0 transition-opacity duration-700 ease-out ${
-                      animation.isVisible ? "animate-slide-up" : "opacity-0"
+            {benefits.map((benefit, index) => {
+              const animation = benefitAnimations[index];
+              return (
+                <div
+                  key={index}
+                  ref={animation.ref}
+                  className={`border-b border-gray-100 last:border-0 transition-opacity duration-700 ease-out ${
+                    animation.isVisible ? "animate-slide-up" : "opacity-0"
+                  }`}
+                >
+                  <button
+                    onClick={() => toggleBenefit(index)}
+                    className={`w-full py-4 flex flex-col items-start justify-between rounded-lg px-3 transition-all ${
+                      expandedBenefitIndex === index ? benefit.bgColor : ""
                     }`}
                   >
-                    <button
-                      onClick={() => toggleBenefit(index)}
-                      className={`w-full py-4 flex flex-col items-start justify-between rounded-lg px-3 transition-all ${
-                        expandedBenefitIndex === index ? benefit.bgColor : ""
+                    <div className="flex items-center w-full">
+                      <span className="text-[#545454]/70 mr-4 text-sm font-mono w-7 text-right">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
+                      <div className="flex flex-row gap-4 text-start items-center flex-1">
+                        <div
+                          className={`${benefit.color} text-white p-2 rounded-lg flex items-center justify-center shrink-0 mt-1`}
+                        >
+                          {benefit.icon}
+                        </div>
+                        <span className={`font-semibold ${benefit.textColor}`}>
+                          {benefit.title}
+                        </span>
+                      </div>
+
+                      <div className="ml-auto flex items-center">
+                        {expandedBenefitIndex === index ? (
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={benefit.textColor}
+                          >
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                          </svg>
+                        ) : (
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-[#545454]"
+                          >
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Expandable content */}
+                    <div
+                      className={`overflow-hidden text-start mt-3 transition-all duration-300 ease-in-out ${
+                        expandedBenefitIndex === index
+                          ? "max-h-72 opacity-100 mb-6"
+                          : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="flex items-center w-full">
-                        <span className="text-[#545454]/70 mr-4 text-sm font-mono w-7 text-right">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-
-                        <div className="flex flex-row gap-4 text-start items-center flex-1">
-                          <div
-                            className={`${benefit.color} text-white p-2 rounded-lg flex items-center justify-center shrink-0 mt-1`}
-                          >
-                            {benefit.icon}
-                          </div>
-                          <span
-                            className={`font-semibold ${benefit.textColor}`}
-                          >
-                            {benefit.title}
-                          </span>
-                        </div>
-
-                        <div className="ml-auto flex items-center">
-                          {expandedBenefitIndex === index ? (
-                            <svg
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className={benefit.textColor}
-                            >
-                              <polyline points="18 15 12 9 6 15"></polyline>
-                            </svg>
-                          ) : (
-                            <svg
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="text-[#545454]"
-                            >
-                              <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                          )}
-                        </div>
+                      <div className="px-12 flex items-start gap-4">
+                        <p className="text-[#545454]">{benefit.description}</p>
                       </div>
-
-                      {/* Expandable content */}
-                      <div
-                        className={`overflow-hidden text-start mt-3 transition-all duration-300 ease-in-out ${
-                          expandedBenefitIndex === index
-                            ? "max-h-72 opacity-100 mb-6"
-                            : "max-h-0 opacity-0"
-                        }`}
-                      >
-                        <div className="px-12 flex items-start gap-4">
-                          <p className="text-[#545454]">
-                            {benefit.description}
-                          </p>
-                        </div>
-                      </div>
-                    </button>
-                  </div>
-                );
-              });
-            })()}
+                    </div>
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -453,7 +424,7 @@ export default function ForIndividuals() {
       {/* Intro Section - Simplified Headspace-style */}
       <section
         ref={introAnimation.ref}
-        className={`py-20 px-4 bg-gradient-to-br from-purple-500 to-purple-600 transition-opacity duration-700 ease-out ${
+        className={`py-10 px-4 bg-gradient-to-r from-[#F5C2D7] to-[#FFD4C5] transition-opacity duration-700 ease-out ${
           introAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
@@ -465,14 +436,22 @@ export default function ForIndividuals() {
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#2b2b2b] mb-6">
                 Immersive mental wellness that fits your life
               </h2>
-              <p className="text-xl text-white mb-6">
+              <p className="text-xl text-[#2b2b2b] mb-10">
                 Using your smartphone and a low-cost headset, experience
                 powerful support that helps you take control of your mental
                 wellbeing — anytime, anywhere.
               </p>
+              <a
+                href="https://shop.anamvr.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#7745b8] text-[#fafafa] text-xl px-6 py-4 rounded-full font-semibold hover:bg-[#6b3f9a] cursor-pointer transition-all duration-200 underline-offset-4 decoration-2"
+              >
+                Get your headset here
+              </a>
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div className="relative">
@@ -481,9 +460,6 @@ export default function ForIndividuals() {
                   alt="VR headset with smartphone"
                   className="w-96 h-auto"
                 />
-                {/* Decorative elements */}
-                <div className="absolute -z-10 -right-4 -bottom-4 w-24 h-24 rounded-full bg-[#7745b8]/10"></div>
-                <div className="absolute -z-10 -left-4 -top-4 w-16 h-16 rounded-full bg-[#487ce5]/10"></div>
               </div>
             </div>
           </div>

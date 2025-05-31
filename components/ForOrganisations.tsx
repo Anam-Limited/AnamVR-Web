@@ -1,20 +1,98 @@
 import { useState } from "react";
 import {
-  BarChart3,
-  Brain,
-  ChevronRight,
-  HeartPulse,
   Headphones,
-  Shield,
-  Sparkles,
   TrendingUp,
-  DollarSign,
+  CircleDollarSign,
   Clock,
   Users,
   CheckCircle,
+  Activity,
+  DollarSign,
+  HeartHandshake,
+  RectangleGoggles,
+  Hospital,
+  ChartLine,
 } from "lucide-react";
+import androidBadge from "../src/assets/googlebadge.svg";
+import appleBadge from "../src/assets/appstorebadge.svg";
 import mockup from "../src/assets/mockupicon.webp";
+import cardMockUp from "../src/assets/cardMockUp1.svg";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+
+const benefits = [
+  {
+    icon: <CircleDollarSign className="w-6 h-6" />,
+    title: "Private, On-Demand Support",
+    description:
+      "Employees can access immersive mental wellness tools from anywhere — using just a smartphone and a low-cost headset.",
+    color: "bg-[#7745b8]",
+    textColor: "text-[#7745b8]",
+    bgColor: "bg-[#7745b8]/10",
+  },
+  {
+    icon: <Activity className="w-6 h-6" />,
+    title: "Meditation & Mindfulness That Feels Natural ",
+    description:
+      "Calming, guided VR experiences crafted by mental health experts to reduce stress and boost focus.",
+    color: "bg-[#487ce5]",
+    textColor: "text-[#487ce5]",
+    bgColor: "bg-[#487CE5]/10",
+  },
+  {
+    icon: <Headphones className="w-6 h-6" />,
+    title: "Tools to Reframe Unhelpful Thinking",
+    description:
+      "Practical exercises based on Cognitive Behavioural Therapy to help manage anxiety, low mood, and stress.",
+    color: "bg-[#3c8c4f]",
+    textColor: "text-[#3c8c4f]",
+    bgColor: "bg-[#3C8C4F]/10",
+  },
+  {
+    icon: <ChartLine className="w-6 h-6" />,
+    title: "Personal Progress Tracking",
+    description:
+      "Easy-to-use dashboards let users see their own growth over time, supporting reflection and motivation.",
+    color: "bg-[#E74856]",
+    textColor: "text-[#E74856]",
+    bgColor: "bg-[#E74856]/10",
+  },
+  {
+    icon: <Hospital className="w-6 h-6" />,
+    title: "Clinically Validated Assessments",
+    description:
+      "Regular check-ins with tools like GAD-7 and PHQ-9 — helping users better understand their mental wellbeing.",
+    color: "bg-[#F05984]",
+    textColor: "text-[#F05984]",
+    bgColor: "bg-[#F05984]/10",
+  },
+  {
+    icon: <HeartHandshake className="w-6 h-6" />,
+    title: "Personalised Content Recommendations",
+    description:
+      "Smart suggestions based on user needs and patterns to keep engagement high and content relevant.",
+    color: "bg-[#FF7A1A]",
+    textColor: "text-[#FF7A1A]",
+    bgColor: "bg-[#FF7A1A]/10",
+  },
+];
+
+const productivity = [
+  {
+    content:
+      "Healthier, More Resilient Teams Improved focus & productivity, reduced levels of burnout and absenteeism, and higher satisfaction thanks to engaging, evidence-based support.",
+    icon: <Users className="w-6 h-6" />,
+  },
+  {
+    content:
+      "Proven Outcomes from Virtual Reality Therapy (VRT) Scientifically supported improvements in stress, anxiety, and emotional wellbeing — outperforming traditional wellness apps.",
+    icon: <RectangleGoggles className="w-6 h-6" />,
+  },
+  {
+    content:
+      "Enterprise-Ready at a Startup Cost Scalable support for your entire team with minimal overhead — no expensive hardware or complex setup.",
+    icon: <HeartHandshake className="w-6 h-6" />,
+  },
+];
 
 export default function ForOrganisationsEnhanced() {
   const headerAnimation = useScrollAnimation();
@@ -22,6 +100,8 @@ export default function ForOrganisationsEnhanced() {
   const businessGainsAnimation = useScrollAnimation({ threshold: 0.2 });
   const demoAnimation = useScrollAnimation({ threshold: 0.2 });
   const testimonialAnimation = useScrollAnimation({ threshold: 0.2 });
+  const imageAnimation = useScrollAnimation({ threshold: 0.2 });
+
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   const [expandedBenefitIndex, setExpandedBenefitIndex] = useState<
@@ -62,39 +142,74 @@ export default function ForOrganisationsEnhanced() {
       {/* Hero Section */}
       <section
         ref={headerAnimation.ref}
-        className={`w-full min-h-[860px] pt-60 pb-20 px-4 sm:px-6 lg:px-8 bg-[#f3d009] text-black transition-opacity duration-700 ease-out ${
+        className={`w-full min-h-[710px] py-28 px-16 bg-gradient-to-br from-[#F7F296] to-[#F7D1C3] transition-opacity duration-700 ease-out ${
           headerAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col-reverse lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2 w-full">
-              <h1 className="text-5xl md:text-6xl font-bold text-black mb-8 leading-tight">
-                AnamVR for <br />
-                <span className="relative inline-block">
-                  <span className="relative z-10">Businesses</span>
-                  <span className="absolute bottom-2 left-0 w-full h-3 bg-[#e55848] -z-10"></span>
-                </span>
-              </h1>
-              <p className="text-xl text-[#545454] mb-10 max-w-lg">
-                AnamVR makes it easy to deliver meaningful, measurable mental
-                health support across your organisation. With immersive,
-                clinically-backed tools that employees actually want to use —
-                and insights that help you track impact — it's wellness that
-                works for everyone.
-              </p>
-              <div className="flex flex-row gap-2">
-                <a
-                  href="#demo-section"
-                  className="bg-white text-black px-6 py-3 rounded-full font-semibold text-lg hover:bg-opacity-90 transition duration-300 flex items-center justify-center"
-                >
-                  Book a Demo
-                  <ChevronRight className="ml-2 h-5 w-5" />
-                </a>
+        <div className="max-w-7xl mx-auto md:px-6 lg:px-8">
+          <div
+            ref={headerAnimation.ref}
+            className={`flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-16 transition-opacity duration-700 ease-out ${
+              headerAnimation.isVisible ? "animate-slide-up" : "opacity-0"
+            }`}
+          >
+            {/* Left Text Content */}
+            <div className="lg:w-2/3 w-full">
+              <div className="relative order-2 lg:order-1">
+                <h1 className="text-2xl sm:text-5xl md:text-5xl text-center lg:text-start font-normal text-[#2b2b2b] mb-8 leading-tight">
+                  <b>Support {""}</b> your people. {""}
+                  <b>Strengthen {""}</b> your culture. {""}
+                  <b>Improve {""}</b> Outcomes.
+                </h1>
+                <p className="text-lg md:text-xl text-center lg:text-start text-[#545454] mb-10 lg:pr-6">
+                  AnamVR makes it easy to deliver meaningful, measurable mental
+                  health support across your organisation. With immersive,
+                  clinically-backed tools that employees actually want to use —
+                  and insights that help you track impact — it’s wellness that
+                  works for everyone.
+                </p>
+                <div className="flex justify-center items-center lg:justify-start lg:items-start flex-row gap-2">
+                  <a
+                    href="https://apps.apple.com/ie/app/anamvr/id6499339767"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={appleBadge}
+                      alt="Download on the App Store"
+                      className="h-10 md:h-12 lg:h-14 w-auto"
+                    />
+                  </a>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={androidBadge}
+                      alt="Get it on Google Play"
+                      className="h-10 md:h-12 lg:h-14 w-auto"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
-            <div className="lg:w-1/2 w-full hidden lg:block relative">
-              <img src={mockup} alt="AnamVR for Business" className="w-full" />
+
+            {/* Right Image Content */}
+            <div className="lg:w-1/3 w-full flex mb-12 lg:mb-0 items-start justify-start mt-6 lg:mt-0 lg:items-center lg:justify-center">
+              <div
+                ref={imageAnimation.ref}
+                className={`relative w-full max-w-[420px] h-fit lg:h-[600px] flex items-start justify-start lg:items-center lg:justify-center transition-opacity duration-700 ease-out ${
+                  imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
+                }`}
+              >
+                {/* Main phone mockup */}
+                <img
+                  src={cardMockUp || "/placeholder.svg"}
+                  alt="AnamVR App Dashboard"
+                  className="w-64 md:w-80 lg:w-96 h-auto rounded-3xl animate-float"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -107,339 +222,37 @@ export default function ForOrganisationsEnhanced() {
           benefitsAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
-        <div className="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row-reverse items-center gap-10">
-          {/* Image Side */}
-          <div className="lg:w-1/2 w-full">
-            <img
-              src={mockup || "/placeholder.svg"}
-              alt="AnamVR Mockup"
-              className="w-full"
-            />
-          </div>
-          {/* Text and Accordion Side */}
-          <div className="lg:w-1/2 w-full flex flex-col gap-1">
-            <div className="text-start mb-4">
-              <h2 className="text-lg font-semibold text-[#545454] mb-2">
-                Why AnamVR
-              </h2>
-              <p className="text-xl text-[#545454] font-medium max-w-2xl">
-                Experience mental health support that adapts to your unique
-                needs and fits into your lifestyle.
-              </p>
-            </div>
-            {/* Accordion-style benefits */}
-            {(() => {
-              const benefits = [
-                {
-                  title: "Private, On-Demand Support",
-                  description:
-                    "Employees can access immersive mental wellness tools from anywhere — using just a smartphone and a low-cost headset.",
-                  icon: <Headphones className="h-4 w-4" />,
-                  color: "bg-[#7745b8]",
-                  textColor: "text-[#7745b8]",
-                  bgColor: "bg-[#7745b8]/5",
-                },
-                {
-                  title: "Meditation & Mindfulness That Feels Natural",
-                  description:
-                    "Calming, guided VR experiences crafted by mental health experts to reduce stress and boost focus.",
-                  icon: <HeartPulse className="h-4 w-4" />,
-                  color: "bg-[#487ce5]",
-                  textColor: "text-[#487ce5]",
-                  bgColor: "bg-[#487ce5]/5",
-                },
-                {
-                  title: "Tools to Reframe Unhelpful Thinking",
-                  description:
-                    "Practical exercises based on Cognitive Behavioural Therapy to help manage anxiety, low mood, and stress.",
-                  icon: <Brain className="h-4 w-4" />,
-                  color: "bg-[#3c8c4f]",
-                  textColor: "text-[#3c8c4f]",
-                  bgColor: "bg-[#3c8c4f]/5",
-                },
-                {
-                  title: "Personal Progress Tracking",
-                  description:
-                    "Easy-to-use dashboards let users see their own growth over time, supporting reflection and motivation.",
-                  icon: <BarChart3 className="h-4 w-4" />,
-                  color: "bg-[#e74856]",
-                  textColor: "text-[#e74856]",
-                  bgColor: "bg-[#e74856]/5",
-                },
-                {
-                  title: "Clinically Validated Assessments",
-                  description:
-                    "Regular check-ins with tools like GAD-7 and PHQ-9 — helping users better understand their mental wellbeing.",
-                  icon: <Shield className="h-4 w-4" />,
-                  color: "bg-[#ff7a1a]",
-                  textColor: "text-[#ff7a1a]",
-                  bgColor: "bg-[#ff7a1a]/5",
-                },
-                {
-                  title: "Personalised Content Recommendations",
-                  description:
-                    "Smart suggestions based on user needs and patterns to keep engagement high and content relevant.",
-                  icon: <Sparkles className="h-4 w-4" />,
-                  color: "bg-[#f3d009]",
-                  textColor: "text-[#f3d009]",
-                  bgColor: "bg-[#f3d009]/5",
-                },
-              ];
-              return benefits.map((benefit, index) => {
-                const animation = benefitAnimations[index];
-                return (
-                  <div
-                    key={index}
-                    ref={animation.ref}
-                    className={`border-b border-gray-100 last:border-0 transition-opacity duration-700 ease-out ${
-                      animation.isVisible ? "animate-slide-up" : "opacity-0"
-                    }`}
-                  >
-                    <button
-                      onClick={() => toggleBenefit(index)}
-                      className={`w-full py-4 flex flex-col items-start justify-between rounded-lg px-3 transition-all ${
-                        expandedBenefitIndex === index ? benefit.bgColor : ""
-                      }`}
-                    >
-                      <div className="flex items-center w-full">
-                        <span className="text-[#545454]/70 mr-4 text-sm font-mono w-7 text-right">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div className="flex flex-row gap-4 items-center flex-1">
-                          <div
-                            className={`${benefit.color} text-white p-2 rounded-lg flex items-center justify-center shrink-0 mt-1`}
-                          >
-                            {benefit.icon}
-                          </div>
-                          <span
-                            className={`font-semibold ${benefit.textColor}`}
-                          >
-                            {benefit.title}
-                          </span>
-                        </div>
-                        <div className="ml-auto flex items-center">
-                          {expandedBenefitIndex === index ? (
-                            <svg
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className={benefit.textColor}
-                            >
-                              <polyline points="18 15 12 9 6 15"></polyline>
-                            </svg>
-                          ) : (
-                            <svg
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="text-[#545454]"
-                            >
-                              <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                          )}
-                        </div>
-                      </div>
-                      {/* Expandable content */}
-                      <div
-                        className={`overflow-hidden text-start mt-3 transition-all duration-300 ease-in-out ${
-                          expandedBenefitIndex === index
-                            ? "max-h-72 opacity-100 mb-6"
-                            : "max-h-0 opacity-0"
-                        }`}
-                      >
-                        <div className="px-12 flex items-start gap-4">
-                          <p className="text-[#545454]">
-                            {benefit.description}
-                          </p>
-                        </div>
-                      </div>
-                    </button>
-                  </div>
-                );
-              });
-            })()}
-          </div>
-        </div>
-      </section>
-
-      {/* Enhanced What Your Business Will Gain Section */}
-      <section
-        ref={businessGainsAnimation.ref}
-        className={`py-24 px-4 bg-gray-100 transition-opacity duration-700 ease-out ${
-          businessGainsAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              What Your Business Will Gain
+        <div className="max-w-6xl mx-auto flex flex-col justify-center items-center gap-10">
+          <div className="text-center mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2b2b2b] mb-2">
+              Wellness that works for everyone
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Transform your workplace culture with measurable mental health
-              outcomes that drive real business results
-            </p>
           </div>
-
-          {/* Main Benefits Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {/* Cost Savings Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="bg-green-100 p-3 rounded-xl">
-                  <DollarSign className="h-8 w-8 text-green-600" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Reduce Healthcare Costs
-                  </h3>
-                  <p className="text-gray-600">
-                    Lower mental health-related claims and medical expenses
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700">
-                    Average 23% reduction in healthcare costs
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700">
-                    Decreased emergency mental health interventions
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700">
-                    Preventive care reduces long-term costs
-                  </span>
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Benefit Cards */}
+            {benefits.map((benefit, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300"
+                onClick={() => toggleBenefit(index)}
+              >
+                <div className="flex items-start gap-4">
+                  <div
+                    className={`p-3 rounded-xl ${benefit.bgColor} ${benefit.textColor}`}
+                  >
+                    {benefit.icon}
+                  </div>
+                  <div>
+                    <h3
+                      className={`text-xl font-semibold  mb-1 ${benefit.textColor} transition-colors duration-300`}
+                    >
+                      {benefit.title}
+                    </h3>
+                    <p className="text-[#2b2b2b]">{benefit.description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Productivity Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="bg-blue-100 p-3 rounded-xl">
-                  <TrendingUp className="h-8 w-8 text-blue-600" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Boost Productivity
-                  </h3>
-                  <p className="text-gray-600">
-                    Improved focus, creativity, and work performance
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-500" />
-                  <span className="text-gray-700">
-                    18% increase in task completion rates
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-500" />
-                  <span className="text-gray-700">
-                    Better decision-making under pressure
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-500" />
-                  <span className="text-gray-700">
-                    Enhanced creative problem-solving
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Retention Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="bg-purple-100 p-3 rounded-xl">
-                  <Users className="h-8 w-8 text-purple-600" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Improve Retention
-                  </h3>
-                  <p className="text-gray-600">
-                    Keep your best talent with comprehensive wellness support
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-purple-500" />
-                  <span className="text-gray-700">
-                    34% reduction in voluntary turnover
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-purple-500" />
-                  <span className="text-gray-700">
-                    Higher employee satisfaction scores
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-purple-500" />
-                  <span className="text-gray-700">
-                    Stronger employer brand reputation
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Absenteeism Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="bg-orange-100 p-3 rounded-xl">
-                  <Clock className="h-8 w-8 text-orange-600" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Reduce Absenteeism
-                  </h3>
-                  <p className="text-gray-600">
-                    Fewer sick days and mental health-related absences
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-orange-500" />
-                  <span className="text-gray-700">
-                    45% decrease in stress-related absences
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-orange-500" />
-                  <span className="text-gray-700">
-                    Improved work-life balance
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-orange-500" />
-                  <span className="text-gray-700">
-                    Better team continuity and planning
-                  </span>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -563,11 +376,78 @@ export default function ForOrganisationsEnhanced() {
         </div>
       </section>
 
+      {/* What your business will gain? */}
+      <section
+        ref={businessGainsAnimation.ref}
+        className={`py-24 px-4 bg-gray-100 transition-opacity duration-700 ease-out ${
+          businessGainsAnimation.isVisible ? "animate-slide-up" : "opacity-0"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              What Your Business Will Gain
+            </h2>
+          </div>
+
+          {/* Main Benefits Grid - Bento Box Style */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {/* First box (larger, spanning 2 columns) */}
+            <div className="md:col-span-2 bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+              <div className="flex items-start gap-6">
+                <div className="p-4 rounded-2xl bg-[#7745b8]/10 text-[#7745b8]">
+                  {productivity[0].icon}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 text-[#2b2b2b]">
+                    Healthier, More Resilient Teams
+                  </h3>
+                  <p className="text-[#545454] leading-relaxed">
+                    {productivity[0].content}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Second box (taller) */}
+            <div className="bg-[#487ce5]/10 rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-300 md:row-span-2 flex flex-col">
+              <div className="p-4 rounded-2xl bg-white text-[#487ce5] self-start mb-4">
+                {productivity[1].icon}
+              </div>
+              <h3 className="text-2xl font-semibold mb-4 text-[#2b2b2b]">
+                Proven Outcomes from VRT
+              </h3>
+              <p className="text-[#545454] leading-relaxed">
+                {productivity[1].content}
+              </p>
+            </div>
+
+            {/* Third box */}
+            <div className="md:col-span-2 bg-[#F2D147]/20 rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-300 border border-[#F2D147]/10">
+              <div className="flex items-start gap-6">
+                <div className="p-4 rounded-2xl bg-white text-[#FF7A1A]">
+                  {productivity[2].icon}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 text-[#2b2b2b]">
+                    Enterprise-Ready at a Startup Cost
+                  </h3>
+                  <p className="text-[#545454] leading-relaxed">
+                    {productivity[2].content}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Book a Demo CTA Section - Enhanced */}
       <section
         id="demo-section"
         ref={demoAnimation.ref}
-        className={`py-36 px-6 bg-[#3c8c4f] text-white transition-opacity duration-700 ease-out ${
+        className={`py-36 px-6 bg-[#F2D147] text-white transition-opacity duration-700 ease-out ${
           demoAnimation.isVisible ? "animate-slide-up" : "opacity-0"
         }`}
       >
@@ -575,22 +455,16 @@ export default function ForOrganisationsEnhanced() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Left Side - Content */}
             <div className="flex flex-col items-start">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+              <div className="inline-flex items-center gap-2 bg-black/30 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
                 <div className="w-2 h-2 bg-[#f3d009] rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium">
+                <span className="text-sm text-[#fafafa] font-medium">
                   Book Your Demo Today
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl text-[#2b2b2b] font-bold mb-6 leading-tight">
                 Ready to transform mental health support in your organization?
               </h2>
-
-              <p className="text-xl mb-8 text-white/90 leading-relaxed">
-                Book a personalized demo to see how AnamVR can work for your
-                team. Our experts will walk you through the platform and show
-                you measurable results.
-              </p>
             </div>
 
             {/* Right Side - Enhanced Form */}

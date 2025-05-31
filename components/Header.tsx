@@ -78,7 +78,7 @@ export default function Header() {
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7745b8] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a
-            className="relative text-black hover:text-[#7745b8] transition-colors group"
+            className="relative text-black hover:text-[#7745b8] cursor-pointer transition-colors group"
             tabIndex={0}
           >
             About Us
@@ -86,28 +86,40 @@ export default function Header() {
             {/* Dropdown */}
             <div className="absolute left-0 top-full mt-2 min-w-[180px] bg-white rounded-xl shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto transition-all duration-200 z-50">
               <a
-                href="/our-mission"
+                href="/about"
                 className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] rounded-t-xl transition-colors"
               >
-                Our Mission
+                About AnamVR
               </a>
               <a
-                href="/our-pillars"
+                href="/mission"
                 className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] transition-colors"
               >
-                Our Pillars
+                Mission
               </a>
               <a
-                href="/our-team"
+                href="/pillars"
                 className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] transition-colors"
               >
-                Our Team
+                Pillars
+              </a>
+              <a
+                href="/research"
+                className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] rounded-b-xl transition-colors"
+              >
+                Research
               </a>
               <a
                 href="/our-contributors"
                 className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] rounded-b-xl transition-colors"
               >
-                Our Contributors
+                Contributors
+              </a>
+              <a
+                href="/our-team"
+                className="block px-5 py-3 text-gray-700 hover:bg-[#f6f0ff] rounded-b-xl transition-colors"
+              >
+                Team
               </a>
             </div>
           </a>

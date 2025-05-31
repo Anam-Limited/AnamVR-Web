@@ -15,6 +15,7 @@ module.exports = {
         "fade-out": "fadeOut 0.8s ease-out forwards",
         "slide-up": "slideUp 0.8s ease-out forwards",
         "zoom-in": "zoomIn 0.8s ease-out forwards",
+        float: "float 3s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -28,6 +29,10 @@ module.exports = {
         zoomIn: {
           "0%": { transform: "scale(0.95)", opacity: 0 },
           "100%": { transform: "scale(1)", opacity: 1 },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(-15)" },
+          "50%": { transform: "translateY(15px)" },
         },
       },
       lineHeight: {
