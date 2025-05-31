@@ -86,7 +86,7 @@ export default function Questions() {
 
         {/* Have more questions button */}
         <div className="mt-16 flex justify-center">
-          <a href="/contact">
+          <a href="/contact" aria-label="Contact us for more questions">
             <button className="px-8 py-3 bg-[#7745b8] hover:bg-[#6a3ba6] text-white rounded-full font-semibold transition-colors flex items-center gap-2">
               Have more questions?
             </button>

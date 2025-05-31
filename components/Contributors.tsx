@@ -213,6 +213,7 @@ export default function ContributorsPage() {
                     <a
                       href={contributor.socialLinks.linkedin}
                       target="_blank"
+                      aria-label="LinkedIn Profile"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-3 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium"
                     >
@@ -225,6 +226,7 @@ export default function ContributorsPage() {
                       href={contributor.socialLinks.portfolio}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Portfolio Website"
                       className="flex items-center gap-2 px-3 py-2 bg-sky-50 text-sky-600 rounded-lg hover:bg-sky-100 transition-colors text-sm font-medium"
                     >
                       <GalleryHorizontalEnd className="w-4 h-4" />

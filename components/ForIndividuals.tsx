@@ -4,10 +4,10 @@ import { useState, useRef, useEffect } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import androidBadge from "../src/assets/googlebadge.svg";
 import appleBadge from "../src/assets/appstorebadge.svg";
-import vrheadset from "../src/assets/vr-image.png";
+import vrheadset from "../src/assets/vr-image.webp";
 import mockup from "../src/assets/mockupicon.webp";
-import appMockup from "../src/assets/AppMockupIndividual.png";
-import cardMockUpOne from "../src/assets/cardMockUp1.svg";
+import appMockup from "../src/assets/AppMockupIndividual.webp";
+
 import {
   Brain,
   CircleDollarSign,
@@ -270,23 +270,29 @@ export default function ForIndividuals() {
                   <a
                     href="https://apps.apple.com/ie/app/anamvr/id6499339767"
                     target="_blank"
+                    aria-label="Download on the App Store"
                     rel="noopener noreferrer"
                   >
                     <img
                       src={appleBadge}
                       alt="Download on the App Store"
                       className="h-10 md:h-12 lg:h-14 w-auto"
+                      width={135}
+                      height={45}
                     />
                   </a>
                   <a
                     href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
                     target="_blank"
+                    aria-label="Get it on Google Play"
                     rel="noopener noreferrer"
                   >
                     <img
                       src={androidBadge}
                       alt="Get it on Google Play"
                       className="h-10 md:h-12 lg:h-14 w-auto"
+                      width={135}
+                      height={45}
                     />
                   </a>
                 </div>
@@ -306,6 +312,8 @@ export default function ForIndividuals() {
                   src={appMockup || "/placeholder.svg"}
                   alt="AnamVR App Dashboard"
                   className="w-64 md:w-80 lg:w-96 h-auto rounded-3xl"
+                  width={384}
+                  height={768}
                 />
               </div>
             </div>
@@ -323,7 +331,13 @@ export default function ForIndividuals() {
         <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row-reverse gap-10 items-center transition-opacity duration-700 ease-out">
           {/* Right Side - Image */}
           <div>
-            <img src={mockup} alt="AnamVR Mockup" className="w-full" />
+            <img
+              src={mockup}
+              alt="AnamVR Mockup"
+              className="w-full"
+              width={512}
+              height={512}
+            />
           </div>
 
           {/* Left Side - Benefits */}
@@ -447,6 +461,7 @@ export default function ForIndividuals() {
               <a
                 href="https://shop.anamvr.com"
                 target="_blank"
+                aria-label="Get your headset from the AnamVR Shop"
                 rel="noopener noreferrer"
                 className="bg-[#7745b8] text-[#fafafa] text-xl px-6 py-4 rounded-full font-semibold hover:bg-[#6b3f9a] cursor-pointer transition-all duration-200 underline-offset-4 decoration-2"
               >
@@ -777,23 +792,29 @@ export default function ForIndividuals() {
                   <a
                     href="https://apps.apple.com/ie/app/anamvr/id6499339767"
                     target="_blank"
+                    aria-label="Download on the App Store"
                     rel="noopener noreferrer"
                   >
                     <img
                       src={appleBadge}
                       alt="Download on the App Store"
                       className="h-14 w-auto"
+                      width={135}
+                      height={45}
                     />
                   </a>
                   <a
                     href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
                     target="_blank"
+                    aria-label="Get it on Google Play"
                     rel="noopener noreferrer"
                   >
                     <img
                       src={androidBadge}
                       alt="Get it on Google Play"
                       className="h-14 w-auto"
+                      width={135}
+                      height={45}
                     />
                   </a>
                 </div>
@@ -809,6 +830,8 @@ export default function ForIndividuals() {
                     src={mockup}
                     alt="AnamVR App"
                     className="w-[300px] md:w-[400px]"
+                    width={400}
+                    height={800}
                   />
                   {/* Notification cards */}
                   <div className="absolute top-20 right-[280px] bg-white rounded-xl p-3 shadow-lg max-w-[220px] transform rotate-[-5deg]">
@@ -831,6 +854,8 @@ export default function ForIndividuals() {
                         src="/images/calm-scene.jpg"
                         alt="Meditation scene"
                         className="w-40 h-24 object-cover rounded-lg mb-2"
+                        width={160}
+                        height={96}
                       />
                       <p className="font-medium text-sm">Ocean Calm</p>
                       <p className="text-[#3c8c4f] text-sm font-bold">

@@ -77,6 +77,7 @@ export default function BlogPreview() {
       </div>
       <a
         href="/blog"
+        aria-label="View all blog posts that are in AnamVR Website"
         className="flex items-center text-purple-900 hover:text-purple-950 text-base font-semibold"
       >
         View all <ArrowRight size={16} className="ml-1 font-semibold" />

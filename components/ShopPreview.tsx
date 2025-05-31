@@ -1,5 +1,5 @@
 import { ArrowRight, ShoppingCart } from "lucide-react";
-import vrImage from "../src/assets/vr-image.png";
+import vrImage from "../src/assets/vr-image.webp";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function ShopPreview() {
@@ -69,6 +69,7 @@ export default function ShopPreview() {
 
       <a
         href="shop"
+        aria-label="View more details about the shop"
         className="flex items-center text-blue-700 hover:text-blue-800 text-sm sm:text-base font-semibold cursor-pointer mt-2"
       >
         View more details <ArrowRight size={16} className="ml-1" />

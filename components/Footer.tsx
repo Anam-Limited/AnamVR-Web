@@ -2,7 +2,7 @@ import React from "react";
 import { Instagram, Linkedin, Twitter, Facebook } from "lucide-react";
 import androidBadge from "../src/assets/googlebadge.svg";
 import appleBadge from "../src/assets/appstorebadge.svg";
-import anamvrLogo from "../src/assets/AnamVR-Icon.png";
+import anamvrLogo from "../src/assets/AnamVR-Icon.webp";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -28,36 +28,42 @@ export default function Footer() {
           <div className="flex flex-wrap text-xs md:text-base justify-center gap-x-3 sm:gap-x-6 gap-y-3 mb-6 lg:mb-0">
             <a
               href="/"
+              aria-label="Homepage"
               className="text-gray-400 hover:text-white transition-colors"
             >
               Home
             </a>
             <a
               href="https://shop.anamvr.com"
+              aria-label="Shop"
               className="text-gray-400 hover:text-white transition-colors"
             >
               Shop
             </a>
             <a
               href="/blog"
+              aria-label="Blog"
               className="text-gray-400 hover:text-white transition-colors"
             >
               Blog
             </a>
             <a
               href="/contact"
+              aria-label="Contact"
               className="text-gray-400 hover:text-white transition-colors"
             >
               Contact
             </a>
             <a
               href="/our-team"
+              aria-label="Our Team"
               className="text-gray-400 hover:text-white transition-colors"
             >
               Our Team
             </a>
             <a
               href="/our-contributors"
+              aria-label="Our Contributors"
               className="text-gray-400 hover:text-white transition-colors"
             >
               Our Contributors
@@ -70,6 +76,7 @@ export default function Footer() {
               href="https://apps.apple.com/ie/app/anamvr/id6499339767"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Download on the App Store"
             >
               <img
                 src={appleBadge}
@@ -81,6 +88,7 @@ export default function Footer() {
               href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Get it on Google Play"
             >
               <img
                 src={androidBadge}
@@ -128,12 +136,14 @@ export default function Footer() {
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <a
               href="/"
+              aria-label="Privacy Policy"
               className="text-gray-500 hover:text-white transition-colors text-sm"
             >
               Privacy Policy
             </a>
             <a
               href="/terms"
+              aria-label="Terms of Service"
               className="text-gray-500 hover:text-white transition-colors text-sm"
             >
               Terms of Service

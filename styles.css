@@ -63,16 +63,6 @@ body {
   animation: slideUp 0.3s ease-out forwards;
 }
 
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
 .dot-flash::after {
   content: "...";
   display: inline-block;

@@ -26,6 +26,7 @@ export default function ContributorsPreview() {
       </div>
       <a
         href="/our-contributors"
+        aria-label="Know more about our contributors"
         className="flex items-center text-green-700 hover:text-green-900 text-base font-semibold mt-4"
       >
         Know more <ArrowRight size={16} className="ml-1 font-semibold" />

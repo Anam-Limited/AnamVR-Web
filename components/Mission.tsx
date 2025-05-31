@@ -29,6 +29,7 @@ export default function Mission() {
       </div>
       <a
         href="/about"
+        aria-label="Read about us"
         className="flex items-center text-yellow-700 hover:text-yellow-900 text-base font-semibold mt-4"
       >
         Read about us <ArrowRight size={16} className="ml-1 font-semibold" />

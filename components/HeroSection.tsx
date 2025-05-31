@@ -27,10 +27,11 @@ export default function HeroSection() {
       <div className="flex flex-wrap gap-3 sm:gap-4">
         <a
           href="/for-individuals"
+          aria-label="Learn more about AnamVR for individuals and how it can support your emotional well-being"
           className="inline-flex items-center bg-white text-[#7745b8] hover:bg-[#eacfff] 
-                     px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-colors"
+               px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-colors"
         >
-          Learn more <ArrowRight size={18} className="ml-2" />
+          Learn More <ArrowRight size={18} className="ml-2" />
         </a>
       </div>
     </div>

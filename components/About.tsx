@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import assemblyLogo from "../src/assets/AnamVR-IconNoBg.png";
-import spineLogo from "../src/assets/AnamVR-IconNoBg.png";
-import paretoLogo from "../src/assets/AnamVR-IconNoBg.png";
-import team from "../src/assets/team.jpg";
+import assemblyLogo from "../src/assets/AnamVR-IconNoBg.webp";
+import spineLogo from "../src/assets/AnamVR-IconNoBg.webp";
+import paretoLogo from "../src/assets/AnamVR-IconNoBg.webp";
+import team from "../src/assets/team.webp";
 import { Download } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://anamvr-2024.web.app/sitemap.xml
+Sitemap: https://rainbow-capybara-9dcb29.netlify.app/sitemap.xml

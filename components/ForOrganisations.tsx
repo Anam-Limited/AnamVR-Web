@@ -1,13 +1,9 @@
 import { useState } from "react";
 import {
   Headphones,
-  TrendingUp,
   CircleDollarSign,
-  Clock,
   Users,
-  CheckCircle,
   Activity,
-  DollarSign,
   HeartHandshake,
   RectangleGoggles,
   Hospital,
@@ -15,9 +11,7 @@ import {
 } from "lucide-react";
 import androidBadge from "../src/assets/googlebadge.svg";
 import appleBadge from "../src/assets/appstorebadge.svg";
-import mockup from "../src/assets/mockupicon.webp";
 import cardMockUp from "../src/assets/cardMockUp1.svg";
-import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const benefits = [
   {
@@ -95,13 +89,6 @@ const productivity = [
 ];
 
 export default function ForOrganisationsEnhanced() {
-  const headerAnimation = useScrollAnimation();
-  const benefitsAnimation = useScrollAnimation({ threshold: 0.2 });
-  const businessGainsAnimation = useScrollAnimation({ threshold: 0.2 });
-  const demoAnimation = useScrollAnimation({ threshold: 0.2 });
-  const testimonialAnimation = useScrollAnimation({ threshold: 0.2 });
-  const imageAnimation = useScrollAnimation({ threshold: 0.2 });
-
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   const [expandedBenefitIndex, setExpandedBenefitIndex] = useState<
@@ -110,15 +97,6 @@ export default function ForOrganisationsEnhanced() {
 
   // Track form submission for thank you message
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  const benefitAnimations = [
-    useScrollAnimation({ delay: 100 }),
-    useScrollAnimation({ delay: 200 }),
-    useScrollAnimation({ delay: 300 }),
-    useScrollAnimation({ delay: 400 }),
-    useScrollAnimation({ delay: 500 }),
-    useScrollAnimation({ delay: 600 }),
-  ];
 
   // Demo form state for client-side submission
   const [demoState, setDemoState] = useState<{
@@ -140,19 +118,9 @@ export default function ForOrganisationsEnhanced() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section
-        ref={headerAnimation.ref}
-        className={`w-full min-h-[710px] py-28 px-16 bg-gradient-to-br from-[#F7F296] to-[#F7D1C3] transition-opacity duration-700 ease-out ${
-          headerAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-        }`}
-      >
+      <section className="w-full min-h-[710px] py-28 px-16 bg-gradient-to-br from-[#F7F296] to-[#F7D1C3] transition-opacity duration-700 ease-out animate-slide-up">
         <div className="max-w-7xl mx-auto md:px-6 lg:px-8">
-          <div
-            ref={headerAnimation.ref}
-            className={`flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-16 transition-opacity duration-700 ease-out ${
-              headerAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-            }`}
-          >
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-16 transition-opacity duration-700 ease-out animate-slide-up">
             {/* Left Text Content */}
             <div className="lg:w-2/3 w-full">
               <div className="relative order-2 lg:order-1">
@@ -172,6 +140,7 @@ export default function ForOrganisationsEnhanced() {
                   <a
                     href="https://apps.apple.com/ie/app/anamvr/id6499339767"
                     target="_blank"
+                    aria-label="Download on the App Store"
                     rel="noopener noreferrer"
                   >
                     <img
@@ -183,6 +152,7 @@ export default function ForOrganisationsEnhanced() {
                   <a
                     href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
                     target="_blank"
+                    aria-label="Get it on Google Play"
                     rel="noopener noreferrer"
                   >
                     <img
@@ -197,12 +167,7 @@ export default function ForOrganisationsEnhanced() {
 
             {/* Right Image Content */}
             <div className="lg:w-1/3 w-full flex mb-12 lg:mb-0 items-start justify-start mt-6 lg:mt-0 lg:items-center lg:justify-center">
-              <div
-                ref={imageAnimation.ref}
-                className={`relative w-full max-w-[420px] h-fit lg:h-[600px] flex items-start justify-start lg:items-center lg:justify-center transition-opacity duration-700 ease-out ${
-                  imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-                }`}
-              >
+              <div className="relative w-full max-w-[420px] h-fit lg:h-[600px] flex items-start justify-start lg:items-center lg:justify-center transition-opacity duration-700 ease-out animate-slide-up">
                 {/* Main phone mockup */}
                 <img
                   src={cardMockUp || "/placeholder.svg"}
@@ -216,12 +181,7 @@ export default function ForOrganisationsEnhanced() {
       </section>
 
       {/* What You'll Get Section - Headspace Card Style */}
-      <section
-        ref={benefitsAnimation.ref}
-        className={`py-36 px-4 bg-gray-100 transition-opacity duration-700 ease-out ${
-          benefitsAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-        }`}
-      >
+      <section className="py-36 px-4 bg-gray-100 transition-opacity duration-700 ease-out animate-slide-up">
         <div className="max-w-6xl mx-auto flex flex-col justify-center items-center gap-10">
           <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2b2b2b] mb-2">
@@ -258,18 +218,8 @@ export default function ForOrganisationsEnhanced() {
       </section>
 
       {/* Testimonial Section */}
-      <section
-        ref={testimonialAnimation.ref}
-        className={`py-32 px-4 bg-white transition-opacity duration-700 ease-out ${
-          testimonialAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-        }`}
-      >
-        <div
-          ref={testimonialAnimation.ref}
-          className={`max-w-5xl mx-auto transition-opacity duration-700 ease-out ${
-            testimonialAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-          }`}
-        >
+      <section className="py-32 px-4 bg-white transition-opacity duration-700 ease-out animate-slide-up">
+        <div className="max-w-5xl mx-auto transition-opacity duration-700 ease-out animate-slide-up">
           <div className="relative py-16">
             <div className="transition-opacity duration-500 ease-out">
               {[
@@ -377,12 +327,7 @@ export default function ForOrganisationsEnhanced() {
       </section>
 
       {/* What your business will gain? */}
-      <section
-        ref={businessGainsAnimation.ref}
-        className={`py-24 px-4 bg-gray-100 transition-opacity duration-700 ease-out ${
-          businessGainsAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-        }`}
-      >
+      <section className="py-24 px-4 bg-gray-100 transition-opacity duration-700 ease-out animate-slide-up">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
@@ -446,10 +391,7 @@ export default function ForOrganisationsEnhanced() {
       {/* Book a Demo CTA Section - Enhanced */}
       <section
         id="demo-section"
-        ref={demoAnimation.ref}
-        className={`py-36 px-6 bg-[#F2D147] text-white transition-opacity duration-700 ease-out ${
-          demoAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-        }`}
+        className="py-36 px-6 bg-[#F2D147] text-white transition-opacity duration-700 ease-out animate-slide-up"
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -505,8 +447,11 @@ export default function ForOrganisationsEnhanced() {
                         formData.append("company", form.company.value);
                       if (form.size?.value)
                         formData.append("size", form.size.value);
-                      if (form.role?.value)
-                        formData.append("role", form.role.value);
+                      const roleElement = form.elements.namedItem(
+                        "role"
+                      ) as HTMLInputElement | null;
+                      if (roleElement && roleElement.value)
+                        formData.append("role", roleElement.value);
                       if (form.phone?.value)
                         formData.append("phone", form.phone.value);
 

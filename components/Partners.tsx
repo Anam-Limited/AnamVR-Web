@@ -1,7 +1,7 @@
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import socialIreland from "../src/assets/socialIreelandLogo.png";
-import enterpriseIreland from "../src/assets/enterpriseLogo.png";
-import furthrLogo from "../src/assets/furthrLogo.png";
+import socialIreland from "../src/assets/socialIreelandLogo.webp";
+import enterpriseIreland from "../src/assets/enterpriseLogo.webp";
+import furthrLogo from "../src/assets/furthrLogo.webp";
 
 const trustedLogos = [
   {

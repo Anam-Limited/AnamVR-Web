@@ -5,7 +5,7 @@ import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useChatbot } from "../context/ChatbotContext";
 import { X, ChevronDown, ChevronUp, Info, User } from "lucide-react";
-import anam from "../src/assets/Anam.png";
+import anam from "../src/assets/Anam.webp";
 
 import { faqs, popularQuestions } from "../data/chatQuestions";
 import type { Category } from "../data/chatQuestions";
@@ -188,7 +188,7 @@ export default function Chatbot() {
 
   // Dynamically calculate safe dimensions
   const safeMaxHeight = Math.min(availableHeight * 0.8, 600); // Max 80% of viewport height or 600px
-  const safeMaxWidth = Math.min(availableWidth * 0.9, 460);   // Max 90% of viewport width or 460px
+  const safeMaxWidth = Math.min(availableWidth * 0.9, 460); // Max 90% of viewport width or 460px
 
   // Container styles with dynamic sizing
   const containerStyle =
@@ -198,7 +198,7 @@ export default function Chatbot() {
           top: "10%",
           left: "0",
           right: "0",
-          bottom: "0", 
+          bottom: "0",
           width: "100%",
           height: "90%",
           maxHeight: `${safeMaxHeight}px`,
@@ -208,40 +208,40 @@ export default function Chatbot() {
           background: "#ffffff",
         }
       : isMobile
-      ? {
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          width: "100%",
-          height: `${Math.min(availableHeight * 0.6, 500)}px`, // Adjust dynamically
-          maxHeight: `${availableHeight * 0.8}px`, // Never more than 80% of viewport
-          zIndex: 1000,
-          borderRadius: "24px 24px 0 0",
-          boxShadow: "0 -8px 32px rgba(119, 69, 184, 0.18)",
-          background: "#ffffff",
-        }
-      : {
-          position: "fixed",
-          bottom: "1.5rem",
-          right: "1.5rem",
-          width: `${Math.min(safeMaxWidth, availableWidth - 48)}px`, // Dynamic width
-          height: "auto", // Let height be determined by content
-          maxHeight: `${safeMaxHeight}px`, // Safe max height
-          borderRadius: 24,
-          boxShadow: "0 8px 32px rgba(119, 69, 184, 0.18)",
-          background: "#ffffff",
-          overflow: "hidden",
-          transform: "translateZ(0)",
-        };
+        ? {
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: "100%",
+            height: `${Math.min(availableHeight * 0.6, 500)}px`, // Adjust dynamically
+            maxHeight: `${availableHeight * 0.8}px`, // Never more than 80% of viewport
+            zIndex: 1000,
+            borderRadius: "24px 24px 0 0",
+            boxShadow: "0 -8px 32px rgba(119, 69, 184, 0.18)",
+            background: "#ffffff",
+          }
+        : {
+            position: "fixed",
+            bottom: "1.5rem",
+            right: "1.5rem",
+            width: `${Math.min(safeMaxWidth, availableWidth - 48)}px`, // Dynamic width
+            height: "auto", // Let height be determined by content
+            maxHeight: `${safeMaxHeight}px`, // Safe max height
+            borderRadius: 24,
+            boxShadow: "0 8px 32px rgba(119, 69, 184, 0.18)",
+            background: "#ffffff",
+            overflow: "hidden",
+            transform: "translateZ(0)",
+          };
 
   // Chat area height - calculate dynamically
   const chatAreaHeight =
     isMobile && isExpanded
       ? `${safeMaxHeight - 140}px` // Dynamic calculation
       : isMobile
-      ? `${Math.min(availableHeight * 0.6 - 140, 360)}px` // Dynamic with fallback
-      : `${Math.min(safeMaxHeight - 140, 460)}px`; // Dynamic with fallback
+        ? `${Math.min(availableHeight * 0.6 - 140, 360)}px` // Dynamic with fallback
+        : `${Math.min(safeMaxHeight - 140, 460)}px`; // Dynamic with fallback
 
   // Add this helper function to render HTML content safely
   const renderAnswer = (answer: string) => {

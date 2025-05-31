@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import caraMascot from "../src/assets/Cara.png";
+import caraMascot from "../src/assets/Cara.webp";
 
 type TestimonialType = {
   id: string;

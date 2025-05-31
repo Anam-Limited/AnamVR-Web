@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import element from "../src/assets/elements.png";
+import element from "../src/assets/elements.webp";
 import { useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
@@ -61,7 +61,13 @@ export default function SubscribeSection() {
               By signing up, you're agreeing to receive marketing emails from
               AnamVR. You can unsubscribe at any time. For more details, check
               out our{" "}
-              <a href="/privacy" className="underline hover:text-[#7745b8]">
+              <a
+                href="/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Privacy Policy"
+                className="underline hover:text-[#7745b8]"
+              >
                 Privacy Policy
               </a>
               .

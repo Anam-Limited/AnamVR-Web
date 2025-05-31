@@ -3,10 +3,10 @@
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import BannerLessons from "../src/assets/Banner_Lessons.jpg";
-import BannerMoodLog from "../src/assets/Banner_MoodLog.jpg";
-import BannerReliefHub from "../src/assets/Banner_ReliefHub.jpg";
-import BannerVR from "../src/assets/Banner_VR.jpg";
+import BannerLessons from "../src/assets/Banner_Lessons.webp";
+import BannerMoodLog from "../src/assets/Banner_MoodLog.webp";
+import BannerReliefHub from "../src/assets/Banner_ReliefHub.webp";
+import BannerVR from "../src/assets/Banner_VR.webp";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const features = [

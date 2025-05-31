@@ -42,18 +42,16 @@ export default function BlogPage() {
 
       for (const file of files) {
         try {
-          // Use correct fetch path for public/blogs/
           const res = await fetch(`/blogs/${file}`);
           if (!res.ok) {
             console.error(`Failed to fetch ${file}`, res.statusText);
             continue;
           }
           const raw = await res.text();
-          const { data, content } = matter(raw);
-          console.log("Loaded post:", data.title);
+          const { data } = matter(raw);
           posts.push({
             ...(data as Omit<BlogMeta, "slug" | "content">),
-            content,
+            content: "", // Do not include full content
             slug: file.replace(".md", ""),
           });
         } catch (err) {
