@@ -13,80 +13,45 @@ const trustedLogos = [assemblyLogo, spineLogo, paretoLogo];
 
 export default function LandingPage() {
   const heroAnimation = useScrollAnimation();
-  const headingAnimation = useScrollAnimation({ delay: 100 });
-  const paragraphAnimation = useScrollAnimation({ delay: 200 });
-  const iosButtonAnimation = useScrollAnimation({ delay: 300 });
-  const androidButtonAnimation = useScrollAnimation({ delay: 400 });
-  const imageAnimation = useScrollAnimation({ delay: 600 });
+  const imageAnimation = useScrollAnimation({ delay: 300 });
 
   return (
-    <div className="px-6 md:px-12 lg:pt-14 min-h-[710px] bg-gradient-to-br from-[#FFE3ED] to-[#F7D1C3] items-center flex justify-center">
-      <div className="max-w-7xl mx-auto">
+    <div className="w-full min-h-[710px] py-28 px-16 bg-gradient-to-br from-[#FFE3ED] to-[#F7D1C3] transition-opacity duration-700 ease-out">
+      <div className="max-w-7xl mx-auto md:px-6 lg:px-8">
         {/* Main Hero Section */}
         <div
           ref={heroAnimation.ref}
-          className={`flex flex-col lg:mt-0 mx-4 md:mx-10 lg:mx-12 mt-36 lg:flex-row items-center justify-between lg:space-x-12 transition-opacity duration-700 ease-out ${
+          className={`flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-16 transition-opacity duration-700 ease-out ${
             heroAnimation.isVisible ? "animate-slide-up" : "opacity-0"
           }`}
         >
           {/* Left side */}
-          <div className="w-full lg:w-7/12 space-y-6 text-center md:text-start">
-            <div
-              ref={headingAnimation.ref}
-              className={`transition-opacity duration-700 ease-out ${
-                headingAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-              }`}
-            >
-              {/* Updated title: Oxygen bold font, size 60, two lines */}
-              <h1 className="font-['Oxygen'] text-[#2b2b2b] font-bold text-[52px] leading-[1.3]">
+          <div className="lg:w-2/3 w-full">
+            <div className="relative">
+              <h1 className="text-4xl sm:text-5xl md:text-5xl text-center lg:text-start font-bold text-[#2b2b2b] mb-8 leading-tight">
                 Reshape Your Relationship with Mental Health
               </h1>
-            </div>
-            <div
-              ref={paragraphAnimation.ref}
-              className={`transition-opacity duration-700 ease-out ${
-                paragraphAnimation.isVisible ? "animate-fade-in" : "opacity-0"
-              }`}
-            >
-              <p className="text-lg text-[#2b2b2b] font-medium">
+              <p className="text-lg md:text-xl text-center lg:text-start text-[#545454] mb-10">
                 AnamVR combines virtual reality with evidence-based therapeutic
                 techniques to help you manage emotions and make life easier.
               </p>
-            </div>
-            <div className="flex flex-row items-center justify-center md:justify-start gap-2 md:gap-4">
-              <div
-                ref={iosButtonAnimation.ref}
-                className={`transition-opacity duration-700 ease-out ${
-                  iosButtonAnimation.isVisible ? "animate-fade-in" : "opacity-0"
-                }`}
-              >
+              <div className="flex flex-row items-center justify-center lg:justify-start gap-2 md:gap-4">
                 <a
                   href="https://apps.apple.com/ie/app/anamvr/id6499339767"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {/* Made badges slightly smaller */}
                   <img
                     src={appleBadge}
                     alt="Get it on App Store"
                     className="h-10 md:h-12 lg:h-14"
                   />
                 </a>
-              </div>
-              <div
-                ref={androidButtonAnimation.ref}
-                className={`transition-opacity duration-700 ease-out ${
-                  androidButtonAnimation.isVisible
-                    ? "animate-fade-in"
-                    : "opacity-0"
-                }`}
-              >
                 <a
                   href="https://play.google.com/store/apps/details?id=com.anamvr&hl=en"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {/* Made badges slightly smaller */}
                   <img
                     src={androidBadge}
                     alt="Get it on Google Play"
@@ -97,19 +62,18 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Right side - Scaled down mockup */}
-          <div
-            ref={imageAnimation.ref}
-            className={`w-full pb-14 lg:w-5/12 mt-12 flex justify-center lg:justify-end transition-opacity duration-700 ease-out ${
-              imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
-            }`}
-          >
-            {/* Reduced max-width classes to scale down the mockup */}
-            <div className="relative max-w-xs md:max-w-sm lg:max-w-md">
+          {/* Right side - Mockup */}
+          <div className="lg:w-1/3 w-full flex mb-12 lg:mb-0 items-start justify-start mt-6 lg:mt-0 lg:items-center lg:justify-center">
+            <div
+              ref={imageAnimation.ref}
+              className={`relative w-full max-w-[420px] h-fit lg:h-[600px] flex items-start justify-start lg:items-center lg:justify-center transition-opacity duration-700 ease-out ${
+                imageAnimation.isVisible ? "animate-slide-up" : "opacity-0"
+              }`}
+            >
               <img
                 src={AppMockupLanding || "/placeholder.svg"}
                 alt="AnamVR App Mockup"
-                className="w-96 h-auto object-contain"
+                className="w-64 md:w-80 lg:w-96 h-auto rounded-3xl"
               />
             </div>
           </div>
